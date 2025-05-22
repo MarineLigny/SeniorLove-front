@@ -23,7 +23,7 @@
     z-index: -1;
     object-fit: cover;
     object-position: right;
-    border-radius: 0.625rem;
+    border-top-left-radius:  0 ;
   }
 
   //text du header
@@ -52,26 +52,32 @@
 
 //Partie de présentation/d'accroche de l'accueil du site 
 .teaser {
-  //padding: 2.5rem 1.25rem;
   background-color: white;
   margin: 0.3rem auto;
   max-width: 100%;
   border-radius: 0.625rem;
 
-  &-main {
+  &-main {   
     padding: 1.25rem;
     border-radius: 0.625rem;
     background-color: white;
 
+    &-text {  
+      padding: 1rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+    &-p{
+      text-align: center;
+      margin-bottom: 0.625rem ;
+    }
     &-title {
       font-size: 1.5rem;
       margin-bottom: 1.25rem;
       color: var.$text-color;
+      font-weight: 700;
     }
 
-    &-text {
-      padding: 1rem 0;
-    }
     &-img {
     position: relative;
     width: 100%;
@@ -79,6 +85,7 @@
     object-fit: cover;
     margin-top:1rem;
     }
+
     &-btn {
     padding: 0.625rem 1.25rem;
     background-color: var.$primary-button-color;
@@ -101,9 +108,11 @@
   }
   &-title {
   margin: 0;
-  padding-bottom: 1.2rem;
+  padding-bottom: 1.5rem;
   text-align: center;
   color: var.$text-color;
+  font-weight: 700;
+  font-size: 1.3rem;
   }
 
   &-list{
@@ -128,12 +137,54 @@
   
 }
 
+//Partie evenements de la homePage
+
+.events-section{
+  padding: 2.5rem 1.25rem;
+  background-color: white;
+  margin: 0.3125rem auto;
+  border-radius: 0.625rem;
+
+  &-title {
+    font-size: 1.5rem;
+    color: #2e2e2e;
+    font-weight: 700;
+    text-align: center;
+  }
+  &-p{
+        margin:  0.625rem;
+  }
+}
+
+
+.events-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  gap: 1.25rem;
+}
+
+.event-card {
+  background-color: #f1f1f1;
+  padding: 0.9375rem;
+  border-radius: 0.625rem;
+  margin-bottom: 0.7rem;
+
+  &-img {
+    width: 100%;
+    height: 10rem;
+    object-fit: cover;
+    border-radius: 0.625rem;
+  }
+  &-p{
+    text-align: center;
+  } 
+
+}
 
 
 //media queries : tablette
 @media screen and (min-width: 700px) {
-   //centrage du contenu et diminution de la taille avec une largeur a 80%
-  .teaser-main{
+.teaser-main{
   display: flex;
   flex-direction: column;
 
@@ -142,12 +193,16 @@
   }
 
   &-text{
-    width: 80%;
+    width: 91%;
     margin: auto;
+    padding: 0;
+  }
+  &-p{
+    margin-top: 0.5rem;
   }
 
   &-btn{
-    width: 50%;
+    width: 8rem;
     margin: auto;  //bouton plus large pour les tablettes
   }
   &-img{ //modifie la taille de l'image et la centre 
@@ -165,22 +220,56 @@
     width: 80%;
   }
 }
+
 }
 
 //media queries : tablette / mode paysage ipad
 @media screen and (min-width: 960px) {
+.teaser{
+  width: 90%;
+  margin: 1rem auto;
+
+  &-main{
+    flex-direction: row-reverse;
+    gap: 2rem;
+
+    &-img{
+    margin: 4rem auto;
+    width: 80%;
+    aspect-ratio: 2.5;
+    object-fit: cover;
+    object-position: center 13%;
+    }
+    &-p{
+    text-align: left;
+    }
+  }
+  
+  
+}
+
 .presentation{
   display: flex;
-  justify-content: center;
-
+  width: 80%;
+  margin: auto;
+  gap: 2.5rem;
+  margin-bottom: 1rem;
+  &-title{
+    margin-bottom: 1.2rem;
+  }
+  &-left{
+    width: 60%;
+  }
   &-img{
     display: flex;
-    width: 20rem;
+    width: 60%;
     object-fit: cover;
-    object-position: 80%;
-    border-radius: 1rem;
+    object-position: center;
+    border-radius: 0.625rem;
   }
-
+  &-list{
+    width: 100%;
+  }
   &-section{
     width: 77%;
     margin: auto;
@@ -189,8 +278,21 @@
     text-align: start;
   }
   &-text{
-    text-align: justify;
-    padding-right: 2.5rem;
+    text-align: left;
   }
+}
+.events{
+  margin-top: 1rem;
+  &-section-title{
+    margin-bottom: 1.2rem;
+  }
+  &-cards{
+    width: 85%;
+    margin: auto;
+    gap: 0;
+  }
+}
+.event-card{
+  width: 80%;
 }
 }
