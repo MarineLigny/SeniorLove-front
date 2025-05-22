@@ -1,13 +1,16 @@
 import { useState } from "react";
+import type IUsers from "../@types/users";
 
 type NavBarProps = {
   onLoginClick: () => void;
   onLogoutClick: () => void
   isLoggedIn: boolean;
+  currentUser: IUsers | null;
 };
 
-const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn }: NavBarProps ) => {
+const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBarProps ) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const isAdmin = currentUser?.role === 'admin';
 
   return (
     <div className="Navbar container">
@@ -34,9 +37,9 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn }: NavBarProps ) => {
         {isLoggedIn && (
           <a className="Nav-menu" href="/mymessage">Messagerie</a>
         )}  
-        {isLoggedIn && (
+        {isLoggedIn && isAdmin && (
           <a className="Nav-menu" href="/dashboard">Dashboard</a>
-        )}  
+        )}       
 
         {//<a href="/message">Mes Messages</a> 
         /* À faire : créer le bouton dans la messagerie */
