@@ -15,7 +15,7 @@ export default function HomePage({onRegisterSuccess }: Props) {
       <section className="header">
         <div className="header-text">
           <h1 className="header-text-title">
-            Senior Love, Le site de rencontre pour les 60 ans et +
+            Senior Love, Le site de rencontre pour les + 60 ans
           </h1>
           <p className="header-text-intro">
             Ce site vous permet de rencontrer d'autres seniors dans votre
@@ -30,8 +30,8 @@ export default function HomePage({onRegisterSuccess }: Props) {
         />
       </section>
 
-      <section className="teaser">
-        <div className="teaser-main">
+      <section className="teaser content">
+        <div className="teaser-main ">
           <div className="teaser-main-text">
             <h2 className="teaser-main-title">
               Faites des rencontres sérieuses dès aujourd’hui !
@@ -78,7 +78,7 @@ export default function HomePage({onRegisterSuccess }: Props) {
         </div>
       </section>
 
-      <section>
+      <section className="content">
         <h2 className="presentation-title">Comment ça marche ?</h2>
         <div className="presentation">
           <div className="presentation-left">
@@ -113,7 +113,7 @@ export default function HomePage({onRegisterSuccess }: Props) {
         </div>
       </section>
 
-      <section className="events">
+      <section className="events-section content">
         <h2 className="events-section-title">Événements</h2>
         <div className="events-cards">
           <div className="event-card">

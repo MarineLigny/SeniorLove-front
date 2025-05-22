@@ -2,6 +2,11 @@
 
 //style fait en mobile first 
 //header HomePage 
+.content{
+  max-width: 990px;
+  margin: 0 auto;
+}
+
 .header {
 
   display: flex;
@@ -10,7 +15,6 @@
   justify-content: space-between;
   padding: 2.5rem 1.25rem;
   margin: 0.3125rem auto;
-  max-width: 100rem;
   position: relative;
 
   //image du header
@@ -22,7 +26,7 @@
     height: 100%;
     z-index: -1;
     object-fit: cover;
-    object-position: right;
+    object-position: left;
     border-top-left-radius:  0 ;
   }
 
@@ -32,9 +36,9 @@
     padding: 1rem;
     gap: 1rem;
     margin-top: 10rem;
-    background-color: #ffffff70;
+    background-color: #ffffff56;
     backdrop-filter: blur(3px);
-    max-width: 37.5rem;
+    width: 80%;
     border-radius: 1rem;
     flex-direction: column;
 
@@ -43,10 +47,14 @@
       padding: 0;
       font-size: 1.5rem;
       font-weight: bolder;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5137254902);
+      //text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5137254902);
       color: var.$text-color;
     }
-
+    &-intro{
+      text-align: center;
+      width: 80%;
+      margin: auto;
+    }
   }
 }
 
@@ -54,7 +62,6 @@
 .teaser {
   background-color: white;
   margin: 0.3rem auto;
-  max-width: 100%;
   border-radius: 0.625rem;
 
   &-main {   
@@ -114,10 +121,6 @@
   color: var.$text-color;
   font-weight: 700;
   font-size: 1.3rem;
-  }
-
-  &-list{
-    padding-left: 0;
   }
 
   &-division{
@@ -182,7 +185,6 @@
 
 }
 
-
 //media queries : tablette
 @media screen and (min-width: 700px) {
 .teaser-main{
@@ -226,32 +228,31 @@
 
 //media queries : tablette / mode paysage ipad
 @media screen and (min-width: 960px) {
-.teaser{
-  width: 90%;
+
+  .teaser{
   margin: 1rem auto;
 
   &-main{
     flex-direction: row-reverse;
-    gap: 2rem;
+    gap: 3rem;
+    margin: auto;
 
     &-img{
-    margin: 4rem auto;
-    width: 80%;
+          margin: 4rem auto;
     aspect-ratio: 2.5;
     object-fit: cover;
     object-position: center 13%;
     }
+
     &-p{
     text-align: left;
     }
   }
-  
-  
+    
 }
 
 .presentation{
   display: flex;
-  width: 80%;
   margin: auto;
   gap: 2.5rem;
   margin-bottom: 1rem;
@@ -282,7 +283,7 @@
     text-align: left;
   }
 }
-.events{
+.events-section{
   margin-top: 1rem;
   &-section-title{
     margin-bottom: 1.2rem;
@@ -293,7 +294,20 @@
     gap: 0;
   }
 }
-.event-card{
-  width: 80%;
+
 }
+
+@media screen and (min-width: 1400px) {
+.header-image{
+  object-position: center 30%;
+}
+.presentation{
+  align-items: center;
+
+
+  &-img{
+    flex: 1 1 0;
+  }
+}
+
 }
