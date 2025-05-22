@@ -1,4 +1,12 @@
+import { useState } from "react";
+import IEvent from "../@types/events"
+
+
+
 export default function Dashboard(){
+  const [openFormEvent, setOpenFormEvent] = useState(false);
+  const storedToken = localStorage.getItem("token"); // récupération du token
+
 return (
   <div>
     <h1>Dashboard</h1>

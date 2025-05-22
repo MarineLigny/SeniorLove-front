@@ -11,12 +11,14 @@ import ModalLogin from './components/ModalLogin';
 import ModalRegister from "./components/ModalRegister";
 import Confidentiality from "./pages/Confidentiality";
 import NotFoundPage from './pages/404/Page404';
+import Dashboard from './pages/Dashboard';
 //------------------ import de la navbar et du footer sur toutes les pages --------------------------
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 //----------------- import des librairies -----------------
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+
 
 
 function App() {
@@ -71,6 +73,7 @@ function App() {
           <Route path="/mymessage" element={<MyMessagePage />} />
           <Route path="/message/:contactId" element={<ConversationPage />} />
           <Route path="/confidentiality" element={<Confidentiality />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="*" element={<NotFoundPage />} />
           
         </Routes>
