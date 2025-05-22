@@ -23,7 +23,11 @@ export default function HomePage({onRegisterSuccess }: Props) {
             amoureuse en toute sécurité.
           </p>
         </div>
-        <img className="header-image" src="/img/hero1.png" alt="Décor flou" />
+        <img
+          className="header-image"
+          src="/img/old-couple-header.jpg"
+          alt="Décor flou"
+        />
       </section>
 
       <section className="teaser">
@@ -33,14 +37,12 @@ export default function HomePage({onRegisterSuccess }: Props) {
               Faites des rencontres sérieuses dès aujourd’hui !
             </h2>
             <p className="teaser-main-p">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua Lorem
-              ipsum dolor sit amet consectetur adipisicing elit. Perferendis
-              voluptatum nihil consequatur. Labore, amet magni! Fugit itaque
-              aspernatur laborum! Nulla recusandae vitae quo adipisci, minima
-              nostrum dignissimos amet doloribus deserunt dicta aut odio dolor
-              asperiores numquam at, mollitia possimus consequuntur harum. Sed
-              nisi quod unde ad? Ex qui totam eos!
+              Bienvenue sur notre site dédié à toutes les personnes de 60 ans
+              et plus, qui souhaitent partager de nouveaux moments à deux. Ici,
+              pas de jugements ni de pression : simplement des échanges
+              sincères, des liens profonds et la possibilité de vivre ou revivre
+              une belle histoire. Osez tourner une nouvelle page… elle pourrait
+              bien être la plus belle
             </p>
             {token && ( //si je suis connecté je vois 'rencontres'
               <button className="teaser-main-btn" type="button">
@@ -70,7 +72,7 @@ export default function HomePage({onRegisterSuccess }: Props) {
           </div>
           <img
             className="teaser-main-img"
-            src="img/rencontre1.jpg"
+            src="img/old-couple-flowers.jpg"
             alt="Rencontre Senior"
           />
         </div>
@@ -105,7 +107,7 @@ export default function HomePage({onRegisterSuccess }: Props) {
           </div>
           <img
             className="presentation-img"
-            src="img/istockphoto-904172104-2048x2048 (1).jpg"
+            src="img/old-pc.jpg"
             alt="Rencontre Senior"
           />
         </div>
