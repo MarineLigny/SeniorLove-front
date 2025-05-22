@@ -1,0 +1,56 @@
+
+// ___________________________page de contact ___________________________
+.contactsPage {
+    background-color: #f8f8f8;
+    //border: 0.125rem solid #ccc;
+
+    &-title {
+        color:#af4657;
+        text-align: center;
+    }
+    &-card {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+}
+  //------------------ Passage format Tablette  ------------------------
+@media (min-width: 700px) {
+    .contactsPage{
+        &-card {
+        display: flex;
+        flex-direction: row;
+        gap: 15px;
+        }
+    }
+}
+
+// ___________________ My message Card _____________________
+.messageCard {
+    background-color: #F09B7F;
+    border-radius: 10px;
+    max-height: 3rem;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 1rem;
+    cursor: pointer;
+
+
+    &-img {
+        border-radius: 10px;
+        aspect-ratio: 1 / 1;
+        width: 10%;
+        height: 10%;
+    }
+    &-pseudo {
+        font-size: medium;
+        font-weight: bold;
+    }
+    
+    &-content {
+        display: none;
+    }
+}

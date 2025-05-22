@@ -1,0 +1,196 @@
+@use "../scss/base/variable.scss" as var;
+
+//style fait en mobile first 
+//header HomePage 
+.header {
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 2.5rem 1.25rem;
+  margin: 0.3125rem auto;
+  max-width: 100rem;
+  position: relative;
+
+  //image du header
+  &-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    object-fit: cover;
+    object-position: right;
+    border-radius: 0.625rem;
+  }
+
+  //text du header
+  &-text {
+    display: flex;
+    padding: 1rem;
+    gap: 1rem;
+    margin-top: 10rem;
+    background-color: #ffffff70;
+    backdrop-filter: blur(3px);
+    max-width: 37.5rem;
+    border-radius: 1rem;
+    flex-direction: column;
+
+    &-title {
+      margin: 0;
+      padding: 0;
+      font-size: 1.5rem;
+      font-weight: bolder;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5137254902);
+      color: var.$text-color;
+    }
+
+  }
+}
+
+//Partie de présentation/d'accroche de l'accueil du site 
+.teaser {
+  //padding: 2.5rem 1.25rem;
+  background-color: white;
+  margin: 0.3rem auto;
+  max-width: 100%;
+  border-radius: 0.625rem;
+
+  &-main {
+    padding: 1.25rem;
+    border-radius: 0.625rem;
+    background-color: white;
+
+    &-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.25rem;
+      color: var.$text-color;
+    }
+
+    &-text {
+      padding: 1rem 0;
+    }
+    &-img {
+    position: relative;
+    width: 100%;
+    border-radius: 0.9375rem;
+    object-fit: cover;
+    margin-top:1rem;
+    }
+    &-btn {
+    padding: 0.625rem 1.25rem;
+    background-color: var.$primary-button-color;
+    color: white;
+    border: none;
+    border-radius: 0.8125rem;
+    cursor: pointer;
+    font-weight: bold;
+    }
+  }
+  
+}
+
+//Partie d'explication du site 
+.presentation{
+  padding-bottom: 0.5rem;
+  &-section{
+    display: flex;
+    justify-content: center;
+  }
+  &-title {
+  margin: 0;
+  padding-bottom: 1.2rem;
+  text-align: center;
+  color: var.$text-color;
+  }
+
+  &-list{
+    padding-left: 0;
+  }
+
+  &-division{
+    color: var.$primary-button-color;
+    list-style-type: none;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
+
+  &-text{
+    text-align: center;
+    padding: 0.5rem 0;
+  }
+  &-img{
+    display: none;
+  }
+  
+}
+
+
+
+//media queries : tablette
+@media screen and (min-width: 700px) {
+   //centrage du contenu et diminution de la taille avec une largeur a 80%
+  .teaser-main{
+  display: flex;
+  flex-direction: column;
+
+  &-title{
+    margin: auto;
+  }
+
+  &-text{
+    width: 80%;
+    margin: auto;
+  }
+
+  &-btn{
+    width: 50%;
+    margin: auto;  //bouton plus large pour les tablettes
+  }
+  &-img{ //modifie la taille de l'image et la centre 
+    margin: 2rem auto 1rem;
+    width: 80%;
+    aspect-ratio: 2.5;
+    object-fit: cover;
+    object-position: center 13%;
+  }
+}
+
+.presentation{
+  &-list{
+    margin: auto;
+    width: 80%;
+  }
+}
+}
+
+//media queries : tablette / mode paysage ipad
+@media screen and (min-width: 960px) {
+.presentation{
+  display: flex;
+  justify-content: center;
+
+  &-img{
+    display: flex;
+    width: 20rem;
+    object-fit: cover;
+    object-position: 80%;
+    border-radius: 1rem;
+  }
+
+  &-section{
+    width: 77%;
+    margin: auto;
+  }
+  &-division{
+    text-align: start;
+  }
+  &-text{
+    text-align: justify;
+    padding-right: 2.5rem;
+  }
+}
+}

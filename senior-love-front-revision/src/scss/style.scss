@@ -1,0 +1,14 @@
+@use "./base/variable";
+@use "./base/reset";
+
+@use "./elements/navbar";
+@use "./elements/btn";
+
+//ici les fichiers scss à modifier + penser à index qui doit disparaitre
+@use '../pages/HomePage';
+@use '../pages/AllEvent/EventsPage';
+@use '../pages/ProfilPage';
+@use '../pages/ProfilPageViewer';
+@use '../pages/Meet/MeetPage';
+@use '../pages/Conversation/ConversationPage';
+@use '../pages/Event/EventPage';

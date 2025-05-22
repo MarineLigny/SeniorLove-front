@@ -1,0 +1,22 @@
+@use "../base/variable.scss" as var;
+
+ // --------------- btn connexion / deconnexion  -----------------------
+.btn-connexion, .btn-disconnect {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: bold;
+    color: var.$text-button-color;
+    background-color: var.$primary-button-color;
+    border: 1px solid var.$primary-button-color;
+    padding: 0.40rem 0.75rem;
+    border-radius: 2rem;
+    transition: 0.1s;
+    width: max-content;
+
+        &:hover {
+            background-color: var.$hoover-button-color;
+            border: 1px solid var.$primary-button-color;
+        }
+}
+

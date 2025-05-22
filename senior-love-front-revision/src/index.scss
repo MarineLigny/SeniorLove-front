@@ -1,0 +1,536 @@
+body {
+  font-family:"Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    height: 40px;
+  }
+}
+.loader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 80%;
+  justify-content: center;
+  color:#af4657;
+  margin-top: 1rem;
+  animation: pulse 1.5s infinite;
+
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+}
+// _____________________ Bouton connexion et deconnexion _________________________
+
+.btn-connexion {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.6rem;
+    font-weight: 600;
+    color: #fff;
+    background-color: #af4657;
+    border: none;
+    padding: 0.40rem 0.75rem;
+    border-radius: 2rem;
+    transition: 0.1s;
+    width: max-content;
+
+        &:hover {
+            background-color: #F09B7F;
+        }
+}
+
+// _______________________________ NAVBAR _______________________________
+
+// --------- Navbar la ligne -----------------------
+.Navbar {
+	background-color: #fff;
+	padding: 5px;
+	border-bottom: 1px solid #ddd;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-wrap: wrap;
+
+	&-logo--desktop {
+		display: block;
+		height: 45px;
+	}
+
+	&-burger {
+		display: block;
+		font-size: 1.5rem;
+		font-weight: bold;
+		background: none;
+		border: none;
+		cursor: pointer;
+		&:hover {
+			opacity: 0.3;
+		}
+	}
+}
+// --------- Menu (soit onclick soit en ligne) -----------------------
+nav {
+	display: none;
+	position: absolute;
+	top: 3.5rem;
+	left: 0;
+	width: 30%;
+	//height: 40vh;
+	margin: 10px 0;
+	padding: 10px 20px;
+	background-color: #fff;
+	border-top-right-radius: 0.5rem;
+	border-bottom-right-radius: 0.5rem;
+
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 5px;
+
+	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+	z-index: 1;
+
+	  &.menu-open {
+		  display: flex;
+	  }
+
+	.Nav-menu {
+		color: #AF4657;
+		font-weight: 600;
+		&:hover {
+			border-left: 5px solid #F09B7F;
+		}
+	}
+}
+
+  
+   //------------------ Passage format Tablette  ------------------------
+
+@media (min-width: 700px) {
+	.Navbar {
+		flex-wrap: nowrap;
+		
+
+		&-burger {
+			display: none;
+		}
+	}
+
+	nav {
+		position: static;
+		display: flex;
+		flex-direction: row;
+		gap:15px;
+		align-items: center;
+
+		height: auto;
+		width: auto;
+		background: none;
+		padding: 0;
+		box-shadow: none;
+		
+		.Nav-menu {
+			&:hover {
+			border-left: none;
+			color: #F09B7F;
+		}
+		}
+	}
+}
+ //------------------ Passage format Ordinateur  ------------------------
+
+@media (min-width: 950px) {
+	
+	nav {
+    //padding-inline: 30px;
+		gap: 4.5rem;
+	}
+}
+
+//_________________________________ FOOTER ________________________________
+footer {
+  background-color: #ffffff;
+  color: rgb(0, 0, 0);
+  padding: 30px 20px;
+
+  .footer_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+
+    .footer_left {
+      flex: 0 0 auto;
+    }
+
+    .footer_right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+      text-align: right;
+    }
+
+    a {
+      color: #af4657;
+      text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .footer_right {
+        align-items: center;
+        text-align: center;
+        margin-top: 20px;
+      }
+    }
+  }
+}
+
+.logo_desktop {
+  display: block;
+}
+
+.logo_mobile {
+  display: none;
+}
+
+.logo_footer {
+  max-height: 150px;
+  width: auto;
+  height: 120px;
+}
+.searchEvent {
+  background-color: #E8EBED;
+  border-radius: 13px;
+  padding: 1em;
+  margin-top: 0.3em;
+
+  @media (min-width: 1024px) {
+    margin-left: 2em;
+    margin-right: 2em;
+  }
+}
+//form {
+  //display: flex;
+ // flex-direction: column;
+  //gap: 10px;
+  
+
+  //@media (min-width: 1024px) {
+    //display: flex;
+   // align-items: center;
+    //flex-direction: row;
+    //justify-content: space-around;
+  //}
+//}
+.search {
+  border-radius: 25px;
+  padding: 0.7em;
+  border: none;
+
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
+}
+
+.category, .localisation {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  background-color: white;
+  color: rgb(153, 151, 151);
+
+  @media (min-width: 1024px) {
+    width: 15%;
+  }
+}
+
+//___________Cartes des profils utilisateur (page rencontre)____________________________
+
+.messageBtn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  cursor: pointer;
+
+  &-icone{ 
+    color: #AF4657;
+  }
+}
+
+.meets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.meetCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: center;
+  padding: 1em;
+  padding-bottom: 2em;
+  border-radius: 13px;
+  background-color: white;
+  margin-bottom: 1rem;
+  position: relative;
+  
+}
+.particle {
+  color: rgb(150, 147, 147);
+}
+.btnArticleMeet{
+  background-color: #AF4657;
+  border-radius: 5px;
+  border: #ffffff;
+  color: #fff;
+  padding: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: pointer;
+  margin-top: 3em;
+}
+
+.articlePictMeet {
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+  height: 10rem;
+  object-fit: cover;
+  object-position: center 40%;
+
+}
+.avatar{
+  color: gray;
+}
+//----        Debut media queries (page rencontres)     ----//
+
+@media (min-width : 600px){
+
+  .meetCard{
+    width: 40%;
+  }
+}
+
+@media (min-width : 940px){
+  .meetCard{
+    width: 28%;
+  }
+}
+
+@media (min-width: 1024px) {
+
+  .meets{
+    gap: 1.8rem;
+  } 
+
+  .meetCard {
+    overflow: hidden;
+    width: 30%;
+    box-sizing: border-box;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .btnArticleMeet{
+    margin-top: 3.5em;
+  }
+  
+}
+@media (min-width : 1280px){
+
+  .meetCard{
+    width: 20%;
+  }
+}
+
+// ------------------------------------ Fin Media Queries -------------------------------//
+
+//-______________________carte mes events_______________________//
+.particle-event{
+  color: rgb(150, 147, 147);
+  padding-bottom: 1rem;
+}
+.event {
+  width: 70%;
+  margin: auto;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.articlepict {
+  width: 100%;
+  object-fit: cover;
+  height: 16rem;
+  object-position: center 15%;
+  border-top-left-radius: 13px;
+  border-top-right-radius: 13px;
+}
+
+.btnarticle {
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: #AF4657;
+  border-radius: 5px;
+  border: #ffffff;
+  color: #fff;
+  padding: 1em;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+  cursor: pointer;
+}
+
+@media (min-width: 1024px) {
+  
+  
+  .event {
+    height: 30rem;
+    margin: 0;
+    width: 30%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+
+  .articlepict {
+    height: 10rem;
+  }
+  .btnarticle{
+    margin-top: 2em;
+    height: 2rem;
+  }
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+  
+}
+
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+/* Contenu des modal login et register*/
+.modal {
+  background-color: #0D2230;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  animation: fadeIn 0.3s ease;
+  &-title {
+    margin-top: 0;
+    font-size: 1.5rem;
+    color: white;
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+  }
+  &-input {
+    margin-bottom: 1rem;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+
+    &-consent {
+      background-color: #ccc;
+      text-align: justify;
+      padding-inline: 0.5rem;
+    }
+
+    &-link {
+      text-decoration: underline;
+      color: blue;
+    }
+  }
+
+  &-btn {
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    background-color: #F09B7F;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+
+      &-register {
+        background-color: #AF4657;
+      }
+      &-close {
+        background-color:#0D2230;
+        color: white;
+        border: none;
+        
+      }
+  }
+
+  &-login-link {
+    
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+  }
+  &-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+}
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

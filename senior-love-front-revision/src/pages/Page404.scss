@@ -1,0 +1,74 @@
+.not-found{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff0f3;
+  text-align: center;
+  padding: 0.5rem;
+  padding-bottom: 4rem;
+
+  &-404{
+    font-size: 7.3rem;
+    color: #af4657;
+    margin: 0;
+  }
+
+  &-icon {
+    width: 64px;
+    height: 64px;
+    color:#af4657;
+    margin-bottom: 0.6rem;
+    animation: pulse 1.5s infinite;
+    stroke-width: 0.19rem;
+
+  }
+
+  &-title{
+    font-size: 2.5rem;
+    color: #af4657;
+    margin: 0 0 2rem 0;
+  }
+
+  &-message{
+    width: 50%;
+    font-size: 1.15rem;
+    padding-bottom: 2.5rem;
+
+    &-heart{
+      stroke: none;
+      fill: #af4657;
+    }
+  }
+
+  &-btn{
+    display: flex;
+    align-items: center;
+    background-color: #af4657;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 0.4rem;
+    padding: 1rem;
+    gap: 1rem;
+    transition: background-color 0.2s ease-in-out;
+
+    &:hover {
+      background-color:#F09B7F;
+    }
+
+    &-icon {
+      width: 1.5rem;
+      height: 1.5rem;
+    }
+  }
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.4);
+  }
+}
