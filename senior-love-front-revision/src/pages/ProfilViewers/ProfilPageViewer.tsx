@@ -3,12 +3,12 @@ import axios from "axios";
 
 import type { AxiosError } from "axios";
 
-import type IUsers from "../@types/users";
+import type IUsers from "../../@types/users";
 import { useNavigate, useParams } from "react-router-dom";
-import calculateAge from "../utils/calculateAge";
+import calculateAge from "../../utils/calculateAge";
 import { ArrowLeft } from "lucide-react";
 
-export default function ProfilePage() {
+export default function ProfilPageViewer() {
 	const { pseudo } = useParams<{ pseudo: string }>(); // Récupérer le pseudo depuis l'URL
 	const [profile, setProfile] = useState<IUsers | null>(null); // import des données du profil utilisateur
 	const [loading, setLoading] = useState(true);

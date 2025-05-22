@@ -5,10 +5,10 @@
 @use "./elements/btn";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
-@use '../pages/HomePage';
+@use '../pages/HomePage/Homepage';
 @use '../pages/AllEvent/EventsPage';
-@use '../pages/ProfilPage';
-@use '../pages/ProfilPageViewer';
+@use '../pages/MyProfile/ProfilPage';
+@use '../pages/ProfilViewers/ProfilPageViewer';
 @use '../pages/Meet/MeetPage';
 @use '../pages/Conversation/ConversationPage';
 @use '../pages/Event/EventPage';

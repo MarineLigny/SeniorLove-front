@@ -1,16 +1,16 @@
 // ------------------ import des pages ---------------------
-import HomePage from './pages/HomePage';
+import HomePage from './pages/HomePage/HomePage';
 import EventsPage from './pages/AllEvent/EventsPage';
-import ProfilePage from './pages/ProfilPage';
+import ProfilePage from './pages/MyProfile/ProfilPage';
 import MeetPage from './pages/Meet/MeetPage';
-import ProfilPageViewer from './pages/ProfilPageViewer';
+import ProfilPageViewer from './pages/ProfilViewers/ProfilPageViewer';
 import ConversationPage from './pages/Conversation/ConversationPage';
 import EventPage from './pages/Event/EventPage';
 import MyMessagePage from './pages/Meet-Profils/MyMessagePage';
 import ModalLogin from './components/ModalLogin';
 import ModalRegister from "./components/ModalRegister";
 import Confidentiality from "./pages/Confidentiality";
-import NotFoundPage from './pages/Page404';
+import NotFoundPage from './pages/404/Page404';
 //------------------ import de la navbar et du footer sur toutes les pages --------------------------
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';

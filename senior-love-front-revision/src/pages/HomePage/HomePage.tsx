@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalRegister from "../components/ModalRegister";
+import ModalRegister from "../../components/ModalRegister";
 
 type Props = {
   //onClose: () => void;

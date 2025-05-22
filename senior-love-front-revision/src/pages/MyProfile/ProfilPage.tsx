@@ -1,7 +1,7 @@
-import Loader from '../components/Loader';
+import Loader from '../../components/Loader';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import type IUsers from "../@types/users";
+import type IUsers from '../../@types/users';
 import { SquarePen } from 'lucide-react';
 import { useRef } from 'react';
 
