@@ -5,6 +5,8 @@ import IEvent from "../@types/events"
 
 export default function Dashboard(){
   const [openFormEvent, setOpenFormEvent] = useState(false);
+  const [openUpdateEvent, setOpenUpdateEvent] = useState(false);
+  
   const storedToken = localStorage.getItem("token"); // récupération du token
 
 return (

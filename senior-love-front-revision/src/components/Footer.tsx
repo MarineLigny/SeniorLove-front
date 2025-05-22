@@ -9,8 +9,7 @@ const Footer = () => {
             <div className="footer_right">
                 <a href="#">Facebook</a>
                 <a href="#">Instagram</a>
-                <a href="#">CGU</a>
-                <a href="/confidentiality">Confidentialité</a>
+                <a href="/confidentiality">CGU</a>
                 <p>&copy; 2025 Senior Love. Tous droits réservés.</p>
             </div>
         </div>

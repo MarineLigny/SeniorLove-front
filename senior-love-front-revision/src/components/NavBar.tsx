@@ -33,7 +33,10 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn }: NavBarProps ) => {
         )}
         {isLoggedIn && (
           <a className="Nav-menu" href="/mymessage">Messagerie</a>
-        )}       
+        )}  
+        {isLoggedIn && (
+          <a className="Nav-menu" href="/dashboard">Dashboard</a>
+        )}  
 
         {//<a href="/message">Mes Messages</a> 
         /* À faire : créer le bouton dans la messagerie */
