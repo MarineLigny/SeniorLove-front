@@ -1,20 +1,32 @@
 const Footer = () => {
-
-    return (
-        <footer>
-        <div className="footer_container">
-            <div className="footer_left">
-                <img src="/img/LOGO2.png" alt="Senior Love Logo" className="logo_footer" />
-            </div>
-            <div className="footer_right">
-                <a href="#">Facebook</a>
-                <a href="#">Instagram</a>
-                <a href="/confidentiality">CGU</a>
-                <p>&copy; 2025 Senior Love. Tous droits réservés.</p>
-            </div>
+  return (
+    <div>
+      <footer className="footer content">
+        <div className="footer-left">
+          <img
+            src="/img/LOGO2.png"
+            alt="Senior Love Logo"
+            className="footer-logo"
+          />
         </div>
-        </footer>
-    );
+        <div className="footer-right">
+          <a className="footer-link" href="#">
+            Contact
+          </a>
+
+          <a className="footer-link" href="/confidentiality">
+            Politique de confidentialité
+          </a>
+          <a className="footer-link" href="#">
+            Mentions Légales
+          </a>
+        </div>
+      </footer>
+      <p className="footer-copyright">
+        &copy; 2025 Senior Love. Tous droits réservés.
+      </p>
+    </div>
+  );
 };
 
 export default Footer;
