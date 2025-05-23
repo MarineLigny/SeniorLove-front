@@ -78,30 +78,28 @@ export default function HomePage({onRegisterSuccess }: Props) {
         </div>
       </section>
 
-      <section className="content">
+      <section className="presentation-section content">
         <h2 className="presentation-title">Comment ça marche ?</h2>
         <div className="presentation">
           <div className="presentation-left">
             <ul className="presentation-list">
               <li className="presentation-division">Inscription</li>
               <p className="presentation-text">
-                Body text for whatever you’d like to expand on the main point.{" "}
+                Créer un compte ne prend que quelques minutes.Aucun engagement, aucune pression : vous êtes ici pour explorer à votre rythme. 
               </p>
               <li className="presentation-division">Remplir son profil </li>
               <p className="presentation-text">
-                Body text for whatever you’d like to say. Add main takeaway
-                points, quotes, anecdotes.
+                Plus votre profil est complet, plus il sera facile de créer des échanges vrais et sincères. Nul besoin d’en faire trop, l’essentiel est d’être vous-même.
               </p>
               <li className="presentation-division">
                 Trouver un profil qui vous correspond
               </li>
               <p className="presentation-text">
-                Body text for whatever you’d like to add more to the main point.
-                It provides details, explanations, and context.
+                 Que vous cherchiez une belle amitié, une complicité naissante ou une véritable histoire d’amour, vous êtes au bon endroit. Prenez le temps de lire, de ressentir, d’imaginer.
               </p>
               <li className="presentation-division">Envoyer un message</li>
               <p className="presentation-text">
-                Body text for whatever you’d like to add more to the main point.
+                Un simple bonjour peut tout changer. Lancez la conversation, le reste se fera naturellement.
               </p>
             </ul>
           </div>

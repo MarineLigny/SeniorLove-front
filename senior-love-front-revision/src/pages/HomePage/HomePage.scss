@@ -3,7 +3,7 @@
 //style fait en mobile first 
 //header HomePage 
 .content{
-  max-width: 990px;
+  max-width: 1200px;
   margin: 0 auto;
 }
 
@@ -36,7 +36,7 @@
     padding: 1rem;
     gap: 1rem;
     margin-top: 10rem;
-    background-color: #ffffff56;
+    background-color: rgba(255, 255, 255, 0.46);
     backdrop-filter: blur(3px);
     width: 80%;
     border-radius: 1rem;
@@ -70,7 +70,7 @@
     background-color: white;
 
     &-text {  
-      padding: 1rem 0;
+      padding: 2rem 0;
       display: flex;
       flex-direction: column;
     }
@@ -110,17 +110,22 @@
 //Partie d'explication du site 
 .presentation{
   padding-bottom: 0.5rem;
+
   &-section{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 0 1.25rem;
   }
+
   &-title {
-  margin: 0;
-  padding-bottom: 1.5rem;
-  text-align: center;
-  color: var.$text-color;
-  font-weight: 700;
-  font-size: 1.3rem;
+    margin: 0;
+    padding-bottom: 1.5rem;
+    text-align: center;
+    color: var.$text-color;
+    font-weight: 700;
+    font-size: 1.5rem;
   }
 
   &-division{
@@ -235,13 +240,13 @@
   &-main{
     flex-direction: row-reverse;
     gap: 3rem;
-    margin: auto;
+    margin: 2rem auto;
 
     &-img{
-          margin: 4rem auto;
-    aspect-ratio: 2.5;
-    object-fit: cover;
-    object-position: center 13%;
+      margin: 0;
+      aspect-ratio: 2.5;
+      object-fit: cover;
+      object-position: center 13%;
     }
 
     &-p{
@@ -256,15 +261,18 @@
   margin: auto;
   gap: 2.5rem;
   margin-bottom: 1rem;
+  padding: 1.25rem;
+
   &-title{
-    margin-bottom: 1.2rem;
+    text-align: left;
+    padding: 0 0 0 1.25rem;
   }
   &-left{
-    width: 60%;
+    width: 50%;
   }
   &-img{
     display: flex;
-    width: 60%;
+    width: 50%;
     object-fit: cover;
     object-position: center;
     border-radius: 0.625rem;
@@ -273,8 +281,7 @@
     width: 100%;
   }
   &-section{
-    width: 77%;
-    margin: auto;
+    padding-top: 2rem;
   }
   &-division{
     text-align: start;
@@ -296,6 +303,11 @@
 }
 
 }
+@media screen and (min-width: 1200px) {
+  .presentation-img{
+    height: 31rem;
+  }
+}
 
 @media screen and (min-width: 1400px) {
 .header-image{
@@ -304,10 +316,13 @@
 .presentation{
   align-items: center;
 
-
   &-img{
     flex: 1 1 0;
   }
+ }
 }
-
+@media screen and (min-width: 2400px) {
+.header-text{
+  width: 50%;
+}
 }
