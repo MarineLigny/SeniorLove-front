@@ -1,3 +1,4 @@
+@use "/src/scss/base/variable.scss" as var;
 
 //_________________________________ FOOTER ________________________________
 
@@ -33,7 +34,7 @@
     }
 
     &-link {
-      color: #af4657;
+      color: var.$primary-button-color;
       text-decoration: none;
       padding: 0.3rem;
     }

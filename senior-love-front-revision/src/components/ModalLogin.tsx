@@ -34,8 +34,9 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
     <div className="modal-backdrop">
       <div className="modal">
         <button type="button" className="modal-btn-close" onClick={onClose}><X /></button>
-          <h2 className="modal-title">Connexion</h2>
+          <img className="modal-login-logo" src="./img/logo-connexion.png" />
             <form className="modal-form" onSubmit={handleLogin}>
+            <p className="modal-p">Email</p>
             <input
               className="modal-input"
               type="email"
@@ -44,6 +45,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            <p className="modal-p">Mot de passe</p>
             <input
             className="modal-input"
               type="password"
@@ -54,9 +56,9 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
             />
           {/*<a className="modal-login-link" href="/#">mot de passe oublié ?</a>*/}
           {error && <p className="modal-error">{error}</p>}
-          <button className="modal-btn" type="submit">Se connecter</button>
+          <button className="modal-btn connection" type="submit">Se connecter</button>
+          <button type="button" className="modal-btn register" onClick={onRegisterClick}> Créer un compte </button>
         </form>
-          <button type="button" className="modal-btn" onClick={onRegisterClick}>S'inscrire</button>
       </div>
     </div>
   );

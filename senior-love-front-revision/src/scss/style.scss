@@ -1,11 +1,11 @@
-@use "./base/variable";
+@use "./base/variable" as var;
 @use "./base/reset";
 
 @use "./elements/navbar";
 @use "./elements/btn";
-@use "./elements/footer.scss";
-@use "./elements/loader.scss";
-@use "./elements/modals.scss";
+@use "./elements/footer";
+@use "./elements/loader";
+@use "./elements/modals";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
 @use '../pages/HomePage/Homepage'; // -> fait

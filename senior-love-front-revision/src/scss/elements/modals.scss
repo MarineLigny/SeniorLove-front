@@ -1,20 +1,61 @@
+@use "/src/scss/base/variable.scss" as var;
+
 /* Contenu des modal login et register*/
+.modal-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
 .modal {
   background-color: #0D2230;
-  padding: 2rem;
+  padding: 0.5rem 2rem 2rem;
   border-radius: 10px;
   width: 90%;
   max-width: 400px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   animation: fadeIn 0.3s ease;
+  position: absolute;
+  top: 4rem;
+
+  &-p{
+    color: white;
+    font-weight: 600;
+    padding-bottom: 0.625rem;
+    padding-left: 0.45rem;
+  }
   &-title {
     margin-top: 0;
     font-size: 1.5rem;
     color: white;
   }
+
   &-form {
     display: flex;
     flex-direction: column;
+  }
+
+  &-login-link {
+    text-align: center;
+    color: white;
+    text-decoration: underline;
+  }
+  &-login-logo{
+    width: 60%;
+    display: block;
+    margin: 0 auto 2rem;
+  }
+
+  &-error {
+    color: red;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
   }
   &-input {
     margin-bottom: 1rem;
@@ -36,35 +77,42 @@
   }
 
   &-btn {
-    padding: 0.75rem;
-    margin-top: 0.5rem;
+    padding: 0.625rem;
     background-color: #F09B7F;
     color: white;
     font-weight: bold;
     border: none;
     border-radius: 18px;
     cursor: pointer; 
-
-      &-register {
-        background-color: #AF4657;
-      }
-      &-close {
-        background-color:#0D2230;
-        color: white;
-        border: none;        
-      }
-  }
-
-  &-login-link {
     
-    text-align: center;
-    color: white;
-    text-decoration: underline;
+    &:hover{
+       background-color: var.$primary-button-color;
+    }
+      &-close {
+        background-color: #0D2230;
+        color: white;
+        border: none;
+        position: absolute;
+        right: 1rem;
+        top: 1rem;       
+      }
   }
-  &-error {
-    color: red;
-    font-size: 0.9rem;
-    margin-bottom: 1rem;
+  .register{
+    margin: 1rem auto;
+    width: 50%;
+    background-color: #AF4657;
   }
+  .connection{
+    margin-top: 2rem;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
 
+@media screen and (min-width: 940px) {
+  .modal{
+    top: auto;
+  }
 }
