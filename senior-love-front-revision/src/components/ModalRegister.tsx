@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import calculateAge from "../utils/calculateAge";
+import { X } from "lucide-react";
 
 type Props = {
   onClose: () => void;
@@ -56,7 +57,8 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
   return (
     <div className="modal-backdrop">
       <div className="modal">
-        <h2 className="modal-title">Inscription</h2>
+        <button type="button" className="modal-btn-close" onClick={onClose}><X /></button>
+          <img className="modal-login-logo" src="./img/logo-inscription.png" />
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
             className="modal-input"
@@ -113,10 +115,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
           </label>
 
           {error && <p className="modal-error">{error}</p>}
-          <button className="modal-btn modal-btn-register" type="submit">S'inscrire</button>
-          <button className="modal-btn" type="button" onClick={onClose}>
-            Annuler
-          </button>
+          <button className="modal-btn register" type="submit">S'inscrire</button>
         </form>
       </div>
     </div>
