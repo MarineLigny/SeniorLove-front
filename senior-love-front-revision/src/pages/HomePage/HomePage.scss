@@ -3,7 +3,7 @@
 //style fait en mobile first 
 //header HomePage 
 .content{
-  max-width: 1200px;
+  max-width: 1250px;
   margin: 0 auto;
 }
 
@@ -38,7 +38,7 @@
     margin-top: 10rem;
     background-color: rgba(255, 255, 255, 0.46);
     backdrop-filter: blur(3px);
-    width: 80%;
+    max-width: 1185px;
     border-radius: 1rem;
     flex-direction: column;
 
@@ -201,9 +201,9 @@
   }
 
   &-text{
-    width: 91%;
     margin: auto;
     padding: 0;
+    width: 100%;
   }
   &-p{
     margin-top: 0.5rem;
@@ -215,10 +215,8 @@
   }
   &-img{ //modifie la taille de l'image et la centre 
     margin: 2rem auto 1rem;
-    width: 80%;
-    aspect-ratio: 2.5;
+    aspect-ratio: 2;
     object-fit: cover;
-    object-position: center 13%;
   }
 }
 
@@ -318,11 +316,7 @@
 
   &-img{
     flex: 1 1 0;
+    height: 27rem;
   }
  }
-}
-@media screen and (min-width: 2400px) {
-.header-text{
-  width: 50%;
-}
 }
