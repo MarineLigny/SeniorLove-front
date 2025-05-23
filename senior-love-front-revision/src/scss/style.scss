@@ -4,6 +4,8 @@
 @use "./elements/navbar";
 @use "./elements/btn";
 @use "./elements/footer.scss";
+@use "./elements/loader.scss";
+@use "./elements/modals.scss";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
 @use '../pages/HomePage/Homepage'; // -> fait
