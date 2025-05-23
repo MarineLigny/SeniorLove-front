@@ -2,6 +2,11 @@
 
 //style fait en mobile first 
 //header HomePage 
+.content{
+  max-width: 1250px;
+  margin: 0 auto;
+}
+
 .header {
 
   display: flex;
@@ -10,7 +15,6 @@
   justify-content: space-between;
   padding: 2.5rem 1.25rem;
   margin: 0.3125rem auto;
-  max-width: 100rem;
   position: relative;
 
   //image du header
@@ -22,8 +26,8 @@
     height: 100%;
     z-index: -1;
     object-fit: cover;
-    object-position: right;
-    border-radius: 0.625rem;
+    object-position: left;
+    border-top-left-radius:  0 ;
   }
 
   //text du header
@@ -32,9 +36,9 @@
     padding: 1rem;
     gap: 1rem;
     margin-top: 10rem;
-    background-color: #ffffff70;
+    background-color: rgba(255, 255, 255, 0.46);
     backdrop-filter: blur(3px);
-    max-width: 37.5rem;
+    max-width: 1185px;
     border-radius: 1rem;
     flex-direction: column;
 
@@ -43,42 +47,54 @@
       padding: 0;
       font-size: 1.5rem;
       font-weight: bolder;
-      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5137254902);
+      //text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5137254902);
       color: var.$text-color;
     }
-
+    &-intro{
+      text-align: center;
+      width: 80%;
+      margin: auto;
+    }
   }
 }
 
 //Partie de présentation/d'accroche de l'accueil du site 
 .teaser {
-  //padding: 2.5rem 1.25rem;
   background-color: white;
   margin: 0.3rem auto;
-  max-width: 100%;
   border-radius: 0.625rem;
 
-  &-main {
+  &-main {   
     padding: 1.25rem;
     border-radius: 0.625rem;
     background-color: white;
 
+    &-text {  
+      padding: 2rem 0;
+      display: flex;
+      flex-direction: column;
+    }
+    &-p{
+      text-align: center;
+      margin-bottom: 0.625rem ;
+    }
     &-title {
       font-size: 1.5rem;
       margin-bottom: 1.25rem;
       color: var.$text-color;
+      font-weight: 700;
+      text-align: center;
     }
 
-    &-text {
-      padding: 1rem 0;
-    }
     &-img {
     position: relative;
     width: 100%;
     border-radius: 0.9375rem;
     object-fit: cover;
     margin-top:1rem;
+    transform: scaleX(-1);
     }
+
     &-btn {
     padding: 0.625rem 1.25rem;
     background-color: var.$primary-button-color;
@@ -95,32 +111,35 @@
 //Partie d'explication du site 
 .presentation{
   padding-bottom: 0.5rem;
+
   &-section{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    margin-top: 2rem;
+    padding: 0 1.25rem;
   }
+
   &-title {
-  margin: 0;
-  padding-bottom: 1.2rem;
-  text-align: center;
-  color: var.$text-color;
-  }
-
-  &-list{
-    padding-left: 0;
-  }
-
-  &-division{
-    color: var.$primary-button-color;
-    list-style-type: none;
+    margin: 0;
+    padding-bottom: 1.5rem;
     text-align: center;
-    font-weight: 600;
-    font-size: 1.2rem;
+    color: var.$text-color;
+    font-weight: 700;
+    font-size: 1.5rem;
   }
 
   &-text{
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0;  
+
+    &-title{
+      color: var.$primary-button-color;
+      list-style-type: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+  }
   }
   &-img{
     display: none;
@@ -128,34 +147,81 @@
   
 }
 
+//Partie evenements de la homePage
 
+.events-section{
+  margin: 2.5rem 1.25rem;
+  background-color: var.$background-lightGrey;
+  margin: 0.3125rem auto;
+  border-radius: 0.625rem;
+
+  &-title {
+    padding: 0.625rem;
+    font-size: 1.5rem;
+    color: #2e2e2e;
+    font-weight: 700;
+    text-align: center;
+  }
+  &-p{
+    margin:  0.625rem;
+    text-align: center;
+    padding-bottom: 1.5rem;
+  }
+}
+
+
+.events-cards {
+  display: flex;
+  gap: 1.25rem;
+  justify-content: space-around;
+  flex-direction: column;
+}
+
+.event-card {
+  padding: 0.9375rem;
+  border-radius: 0.625rem;
+  margin-bottom: 0.7rem;
+
+  &-img {
+    width: 100%;
+    height: 13rem;
+    object-fit: cover;
+    border-radius: 0.625rem;
+  }
+  &-p{
+    text-align: center;
+  } 
+
+}
 
 //media queries : tablette
 @media screen and (min-width: 700px) {
-   //centrage du contenu et diminution de la taille avec une largeur a 80%
-  .teaser-main{
+.teaser-main{
   display: flex;
   flex-direction: column;
 
   &-title{
     margin: auto;
+    text-align: left;
   }
 
   &-text{
-    width: 80%;
     margin: auto;
+    padding: 0;
+    width: 100%;
+  }
+  &-p{
+    margin-top: 0.5rem;
   }
 
   &-btn{
-    width: 50%;
+    width: 8rem;
     margin: auto;  //bouton plus large pour les tablettes
   }
   &-img{ //modifie la taille de l'image et la centre 
     margin: 2rem auto 1rem;
-    width: 80%;
-    aspect-ratio: 2.5;
+    aspect-ratio: 2;
     object-fit: cover;
-    object-position: center 13%;
   }
 }
 
@@ -165,32 +231,117 @@
     width: 80%;
   }
 }
+.events-cards{
+  flex-direction: row;
+
+  
+}
+.events-section{
+    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+  }
 }
 
 //media queries : tablette / mode paysage ipad
 @media screen and (min-width: 960px) {
+
+  .teaser{
+  margin: 1rem auto;
+
+  &-main{
+    flex-direction: row-reverse;
+    gap: 3rem;
+    margin: 2rem auto;
+
+    &-img{
+      margin: 0;
+      aspect-ratio: 2.5;
+      object-fit: cover;
+      object-position: center 13%;
+    }
+
+    &-p{
+    text-align: left;
+    }
+  }
+    
+}
+
 .presentation{
   display: flex;
-  justify-content: center;
+  margin: auto;
+  gap: 2.5rem;
+  margin-bottom: 1rem;
+  padding: 1.25rem 0 1.25rem 1.25rem;
 
+  &-title{
+    text-align: left;
+    padding: 0 0 0 1.25rem;
+  }
+  &-left{
+    width: 50%;
+  }
   &-img{
     display: flex;
-    width: 20rem;
+    width: 50%;
     object-fit: cover;
-    object-position: 80%;
-    border-radius: 1rem;
+    object-position: center;
+    border-radius: 0.625rem;
   }
-
+  &-list{
+    width: 100%;
+  }
   &-section{
-    width: 77%;
-    margin: auto;
-  }
-  &-division{
-    text-align: start;
+    padding-top: 2rem;
   }
   &-text{
-    text-align: justify;
-    padding-right: 2.5rem;
+    text-align: left;
+      
+    &-title{
+      text-align: left;
+    }
   }
 }
+.events-section{
+  margin-top: 3.5rem;
+
+  &-section-title{
+    margin-bottom: 1.2rem;
+  }
+  &-cards{
+    width: 85%;
+    margin: auto;
+    gap: 0;
+  }
+}
+.event-card{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  &-img {
+    height: 16rem;
+  }
+}
+
+
+}
+@media screen and (min-width: 1200px) {
+  .presentation-img{
+    height: 31rem;
+  }
+}
+
+@media screen and (min-width: 1400px) {
+.header-image{
+  object-position: center 30%;
+}
+.presentation{
+  align-items: center;
+
+  &-img{
+    flex: 1 1 0;
+    height: 27rem;
+  }
+ }
 }
