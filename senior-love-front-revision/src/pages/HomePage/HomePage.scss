@@ -151,7 +151,7 @@
 
 .events-section{
   margin: 2.5rem 1.25rem;
-  background-color: #e8ebed; ;
+  background-color: var.$background-lightGrey;
   margin: 0.3125rem auto;
   border-radius: 0.625rem;
 
@@ -163,8 +163,9 @@
     text-align: center;
   }
   &-p{
-        margin:  0.625rem;
-        text-align: center;
+    margin:  0.625rem;
+    text-align: center;
+    padding-bottom: 1.5rem;
   }
 }
 
@@ -232,8 +233,12 @@
 }
 .events-cards{
   flex-direction: row;
-}
 
+  
+}
+.events-section{
+    box-shadow: 2px 2px 4px rgb(204, 204, 204);
+  }
 }
 
 //media queries : tablette / mode paysage ipad
@@ -266,7 +271,7 @@
   margin: auto;
   gap: 2.5rem;
   margin-bottom: 1rem;
-  padding: 1.25rem;
+  padding: 1.25rem 0 1.25rem 1.25rem;
 
   &-title{
     text-align: left;
@@ -298,6 +303,7 @@
 }
 .events-section{
   margin-top: 1rem;
+
   &-section-title{
     margin-bottom: 1.2rem;
   }
@@ -306,10 +312,18 @@
     margin: auto;
     gap: 0;
   }
+}
 .event-card{
-  width: 35%;
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  &-img {
+    height: 16rem;
+  }
 }
-}
+
 
 }
 @media screen and (min-width: 1200px) {
