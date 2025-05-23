@@ -83,6 +83,7 @@
       margin-bottom: 1.25rem;
       color: var.$text-color;
       font-weight: 700;
+      text-align: center;
     }
 
     &-img {
@@ -128,17 +129,17 @@
     font-size: 1.5rem;
   }
 
-  &-division{
-    color: var.$primary-button-color;
-    list-style-type: none;
-    text-align: center;
-    font-weight: 600;
-    font-size: 1.2rem;
-  }
-
   &-text{
     text-align: center;
-    padding: 0.5rem 0;
+    padding: 0.5rem 0;  
+
+    &-title{
+      color: var.$primary-button-color;
+      list-style-type: none;
+      text-align: center;
+      font-weight: 600;
+      font-size: 1.2rem;
+  }
   }
   &-img{
     display: none;
@@ -149,12 +150,13 @@
 //Partie evenements de la homePage
 
 .events-section{
-  padding: 2.5rem 1.25rem;
-  background-color: white;
+  margin: 2.5rem 1.25rem;
+  background-color: #e8ebed; ;
   margin: 0.3125rem auto;
   border-radius: 0.625rem;
 
   &-title {
+    padding: 0.625rem;
     font-size: 1.5rem;
     color: #2e2e2e;
     font-weight: 700;
@@ -162,25 +164,26 @@
   }
   &-p{
         margin:  0.625rem;
+        text-align: center;
   }
 }
 
 
 .events-cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(15.625rem, 1fr));
+  display: flex;
   gap: 1.25rem;
+  justify-content: space-around;
+  flex-direction: column;
 }
 
 .event-card {
-  background-color: #f1f1f1;
   padding: 0.9375rem;
   border-radius: 0.625rem;
   margin-bottom: 0.7rem;
 
   &-img {
     width: 100%;
-    height: 10rem;
+    height: 13rem;
     object-fit: cover;
     border-radius: 0.625rem;
   }
@@ -198,6 +201,7 @@
 
   &-title{
     margin: auto;
+    text-align: left;
   }
 
   &-text{
@@ -225,6 +229,9 @@
     margin: auto;
     width: 80%;
   }
+}
+.events-cards{
+  flex-direction: row;
 }
 
 }
@@ -281,11 +288,12 @@
   &-section{
     padding-top: 2rem;
   }
-  &-division{
-    text-align: start;
-  }
   &-text{
     text-align: left;
+      
+    &-title{
+      text-align: left;
+    }
   }
 }
 .events-section{
@@ -298,6 +306,9 @@
     margin: auto;
     gap: 0;
   }
+.event-card{
+  width: 35%;
+}
 }
 
 }

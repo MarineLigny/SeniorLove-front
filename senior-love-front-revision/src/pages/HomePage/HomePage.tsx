@@ -37,12 +37,12 @@ export default function HomePage({onRegisterSuccess }: Props) {
               Faites des rencontres sérieuses dès aujourd’hui !
             </h2>
             <p className="teaser-main-p">
-              Bienvenue sur notre site dédié à toutes les personnes de 60 ans
-              et plus, qui souhaitent partager de nouveaux moments à deux. Ici,
-              pas de jugements ni de pression : simplement des échanges
-              sincères, des liens profonds et la possibilité de vivre ou revivre
-              une belle histoire. Osez tourner une nouvelle page… elle pourrait
-              bien être la plus belle
+              Bienvenue sur notre site dédié à toutes les personnes de 60 ans et
+              plus, qui souhaitent partager de nouveaux moments à deux. Ici, pas
+              de jugements ni de pression : simplement des échanges sincères,
+              des liens profonds et la possibilité de vivre ou revivre une belle
+              histoire. Osez tourner une nouvelle page… elle pourrait bien être
+              la plus belle
             </p>
             {token && ( //si je suis connecté je vois 'rencontres'
               <button className="teaser-main-btn" type="button">
@@ -83,24 +83,42 @@ export default function HomePage({onRegisterSuccess }: Props) {
         <div className="presentation">
           <div className="presentation-left">
             <ul className="presentation-list">
-              <li className="presentation-division">Inscription</li>
-              <p className="presentation-text">
-                Créer un compte ne prend que quelques minutes.Aucun engagement, aucune pression : vous êtes ici pour explorer à votre rythme. 
-              </p>
-              <li className="presentation-division">Remplir son profil </li>
-              <p className="presentation-text">
-                Plus votre profil est complet, plus il sera facile de créer des échanges vrais et sincères. Nul besoin d’en faire trop, l’essentiel est d’être vous-même.
-              </p>
-              <li className="presentation-division">
-                Trouver un profil qui vous correspond
+              <li>
+                <p className="presentation-text-title">Inscription</p>
+                <p className="presentation-text">
+                  Créer un compte ne prend que quelques minutes. Aucun
+                  engagement, aucune pression : vous êtes ici pour explorer à
+                  votre rythme.
+                </p>
               </li>
-              <p className="presentation-text">
-                 Que vous cherchiez une belle amitié, une complicité naissante ou une véritable histoire d’amour, vous êtes au bon endroit. Prenez le temps de lire, de ressentir, d’imaginer.
-              </p>
-              <li className="presentation-division">Envoyer un message</li>
-              <p className="presentation-text">
-                Un simple bonjour peut tout changer. Lancez la conversation, le reste se fera naturellement.
-              </p>
+
+              <li>
+                <p className="presentation-text-title">Remplir son profil</p>
+                <p className="presentation-text">
+                  Plus votre profil est complet, plus il sera facile de créer
+                  des échanges vrais et sincères. Nul besoin d’en faire trop,
+                  l’essentiel est d’être vous-même.
+                </p>
+              </li>
+
+              <li>
+                <p className="presentation-text-title">
+                  Trouver un profil qui vous correspond
+                </p>
+                <p className="presentation-text">
+                  Que vous cherchiez une belle amitié, une complicité naissante
+                  ou une véritable histoire d’amour, vous êtes au bon endroit.
+                  Prenez le temps de lire, de ressentir, d’imaginer.
+                </p>
+              </li>
+
+              <li>
+                <p className="presentation-text-title">Envoyer un message</p>
+                <p className="presentation-text">
+                  Un simple bonjour peut tout changer. Lancez la conversation,
+                  le reste se fera naturellement.
+                </p>
+              </li>
             </ul>
           </div>
           <img
