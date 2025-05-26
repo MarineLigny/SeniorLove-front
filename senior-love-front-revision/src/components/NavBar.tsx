@@ -24,7 +24,9 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBar
       </a>
 
       <nav className={menuOpen ? 'menu-open' : ''}>
+        {isLoggedIn && (
         <a className="Nav-menu" href="/">Accueil</a>
+        )}
         {isLoggedIn && (
           <a className="Nav-menu" href="/meet">Rencontres</a>
         )}

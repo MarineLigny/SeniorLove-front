@@ -1,6 +1,6 @@
 // ------------------ import des pages ---------------------
 import HomePage from './pages/HomePage/HomePage';
-import EventsPage from './pages/AllEvent/EventsPage';
+import EventsPage from './pages/Events/EventsPage';
 import ProfilePage from './pages/MyProfile/ProfilPage';
 import MeetPage from './pages/Meet/MeetPage';
 import ProfilPageViewer from './pages/ProfilViewers/ProfilPageViewer';
@@ -16,7 +16,7 @@ import Dashboard from './pages/Dashboard';
 import NavBar from './components/NavBar';
 import Footer from './components/Footer';
 //----------------- import des librairies -----------------
-import { Routes, Route, useNavigate, Navigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import type IUsers from './@types/users';
 import axios from 'axios';

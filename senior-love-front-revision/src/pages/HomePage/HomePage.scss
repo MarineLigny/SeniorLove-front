@@ -98,10 +98,8 @@
     &-btn {
     padding: 0.625rem 1.25rem;
     background-color: var.$primary-button-color;
-    color: white;
-    border: none;
+    color: var.$text-button-color;
     border-radius: 0.8125rem;
-    cursor: pointer;
     font-weight: bold;
     }
   }

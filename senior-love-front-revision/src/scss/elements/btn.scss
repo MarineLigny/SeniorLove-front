@@ -8,13 +8,70 @@
     font-weight: bold;
     color: var.$text-button-color;
     background-color: var.$primary-button-color;
-    padding: 0.40rem 0.75rem;
-    border-radius: 2rem;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.8125rem;
     transition: 0.1s;
     width: max-content;
+    transition: ease-in-out 0.2s;
 
         &:hover {
-            background-color: var.$hoover-button-color;
+            transform: scale(1.08);
+		    transform-origin: left;
+        }
+}
+ // --------------- btn retour à la page précédente  -----------------------
+.btn-back {
+	// --reset btn back--
+	font: inherit;
+	outline: inherit;
+
+	// --- css ----
+	margin-top: 10px;
+	font-weight: bold;
+	font-size: 18px;
+		svg {
+			stroke-width: 2.5;
+		}
+
+	display: flex;
+	align-items: center;
+	align-self: flex-start;
+	gap: 5px;
+	transition: ease-in-out 0.2s;
+
+	&:hover{
+		transform: scale(1.1);
+		transform-origin: left;
+	}
+}
+
+// --------------- btn envoyer un message  -----------------------
+
+.btn-message {
+	align-items: center;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #af4657;
+    border: none;
+    padding: 0.40rem 0.75rem;
+    border-radius: 10px;
+    transition: 0.1s;
+    //width: max-content;
+
+        &:hover {
+            background-color: #F09B7F;
         }
 }
 
+// --------------- btn s'inscrire  -----------------------
+.modal-btn-register {
+    padding: 0.75rem;
+    margin-top: 0.5rem;
+    background-color: #AF4657;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 18px;
+    cursor: pointer; 
+}

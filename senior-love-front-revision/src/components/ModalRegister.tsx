@@ -113,7 +113,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
           </label>
 
           {error && <p className="modal-error">{error}</p>}
-          <button className="modal-btn modal-btn-register" type="submit">S'inscrire</button>
+          <button className="modal-btn-register" type="submit">S'inscrire</button>
           <button className="modal-btn" type="button" onClick={onClose}>
             Annuler
           </button>
