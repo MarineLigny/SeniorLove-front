@@ -1,0 +1,45 @@
+.contactsPage {
+  background-color: #f8f8f8;
+}
+.contactsPage-title {
+  color: #af4657;
+  text-align: center;
+}
+.contactsPage-card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+@media (min-width: 700px) {
+  .contactsPage-card {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+}
+.messageCard {
+  background-color: #F09B7F;
+  border-radius: 10px;
+  max-height: 3rem;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1rem;
+  cursor: pointer;
+}
+.messageCard-img {
+  border-radius: 10px;
+  aspect-ratio: 1/1;
+  width: 10%;
+  height: 10%;
+}
+.messageCard-pseudo {
+  font-size: medium;
+  font-weight: bold;
+}
+.messageCard-content {
+  display: none;
+}/*# sourceMappingURL=MyMessagePage.css.map */

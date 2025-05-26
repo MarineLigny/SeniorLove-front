@@ -1,0 +1,40 @@
+.eventPage {
+  background-color: #E8EBED;
+  border-radius: 13px;
+  margin: 1em 0;
+  padding: 1em;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+@media (min-width: 1024px) {
+  .eventPage {
+    margin: 0 8rem;
+  }
+}
+
+.event-card {
+  margin-top: 1rem;
+}
+
+.btnEventPage {
+  margin-left: 2em;
+}
+
+.closeForm {
+  display: none;
+}
+
+.openForm {
+  display: block;
+}
+
+.middleOfPage {
+  margin: 1rem auto;
+  padding: 1rem 0;
+}
+
+@media (min-width: 1024px) {
+  .middleOfPage {
+    width: 50%;
+  }
+}/*# sourceMappingURL=EventPage.css.map */
