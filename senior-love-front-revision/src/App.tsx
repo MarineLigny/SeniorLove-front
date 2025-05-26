@@ -38,7 +38,7 @@ function App() {
 
   setIsLoggedIn(true);
 
-  // récupération de l'utilisateur connecté
+  // récupération des infos de l'utilisateur connecté
   const fetchUser = async () => {
     try {
       const response = await axios.get("http://marineligny-server.eddi.cloud/myprofile", {
