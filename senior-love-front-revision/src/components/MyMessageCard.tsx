@@ -17,7 +17,7 @@ export default function MyMessageCard({user}: UserMessageCardProps){
             </Link>
             <img className="articlePictMeet" src={
                     user.profile_picture
-                    ? `http://marineligny-server.eddi.cloud${user.profile_picture}` //soit image fournit
+                    ? `https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}` //soit image fournit
                     : "/img/hero1.jpg" // soit image d'un avatar en dur
                     } alt={`${user.pseudo}`} />
             <h2>{user.pseudo}</h2>

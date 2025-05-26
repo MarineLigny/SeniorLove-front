@@ -16,7 +16,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://marineligny-server.eddi.cloud/login", {
+      const response = await axios.post("https://emmanuelleeisele-server.eddi.cloud/login", {
         email,
         password,
       });

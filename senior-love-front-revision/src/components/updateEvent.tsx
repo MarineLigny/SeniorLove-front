@@ -103,7 +103,7 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
 			console.log("Payload envoyé :", updatedFormData);
       console.log("id recupéré", {id});
       const response = await axios.patch(
-        `http://marineligny-server.eddi.cloud/events/${id}`,
+        `https://emmanuelleeisele-server.eddi.cloud/events/${id}`,
         updatedFormData,
         {
           headers: {

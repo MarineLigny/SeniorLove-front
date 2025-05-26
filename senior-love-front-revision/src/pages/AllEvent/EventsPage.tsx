@@ -17,7 +17,7 @@ export default function EventsPage() {
     //On fetch tous les evenements 
 	useEffect(() => {
 		axios
-			.get("http://marineligny-server.eddi.cloud/events", {
+			.get("https://emmanuelleeisele-server.eddi.cloud/events", {
 				headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
 			})
 			.then((response) => {
@@ -36,7 +36,7 @@ export default function EventsPage() {
         if (!storedToken) return;
     
         axios
-            .get("http://marineligny-server.eddi.cloud/myprofile", {
+            .get("https://emmanuelleeisele-server.eddi.cloud/myprofile", {
                 headers: { Authorization: `Bearer ${storedToken}` },
             })
             .then((response) => {

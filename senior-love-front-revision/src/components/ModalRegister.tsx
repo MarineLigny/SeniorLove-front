@@ -39,7 +39,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
     }
 
     try {
-      await axios.post("http://marineligny-server.eddi.cloud/register", {
+      await axios.post("https://emmanuelleeisele-server.eddi.cloud/register", {
         pseudo: formData.pseudo,
         birth_date: formData.birth_date,
         email: formData.email,

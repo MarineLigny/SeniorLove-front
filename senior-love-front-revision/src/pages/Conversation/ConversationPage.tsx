@@ -35,7 +35,7 @@ export default function ConversationPage(){
 //---------------ici la fonction pour recuperer l'historique de messagerie------------
             async function fetchData() {
                 try {
-                    const response = await axios.get(`http://marineligny-server.eddi.cloud/message/${contactIdNumber}`,{
+                    const response = await axios.get(`https://emmanuelleeisele-server.eddi.cloud/message/${contactIdNumber}`,{
                             headers: {
                             Authorization: `Bearer ${storedToken}`, // Utilisation du token pour l'authentification
                     }});
@@ -71,7 +71,7 @@ export default function ConversationPage(){
                 // on récupère les données grace à la méthode "get" du formdata et au "name" de l'input
                 const messages = formData.get('content') as string;
 
-                const response = await axios.post(`http://marineligny-server.eddi.cloud/message/${contactIdNumber}`,
+                const response = await axios.post(`https://emmanuelleeisele-server.eddi.cloud/message/${contactIdNumber}`,
                     { content: messages,
                     },
 

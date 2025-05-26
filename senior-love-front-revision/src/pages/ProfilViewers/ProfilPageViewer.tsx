@@ -24,7 +24,7 @@ export default function ProfilPageViewer() {
 			async function fetchData() {
 				try {
 					const response = await axios.get(
-						`http://marineligny-server.eddi.cloud/profile/${pseudo}`,
+						`https://emmanuelleeisele-server.eddi.cloud/profile/${pseudo}`,
 						{
 							headers: {
 								Authorization: `Bearer ${storedToken}`, // Utilisation du token pour l'authentification
@@ -108,7 +108,7 @@ export default function ProfilPageViewer() {
 						<img
 							src={
 								profile.profile_picture
-									? `http://marineligny-server.eddi.cloud${profile.profile_picture}` //soit image fournit
+									? `https://emmanuelleeisele-server.eddi.cloud${profile.profile_picture}` //soit image fournit
 									: "/img/avatar3.png" // soit image d'un avatar en dur
 							}
 							alt={`${profile.pseudo}`}

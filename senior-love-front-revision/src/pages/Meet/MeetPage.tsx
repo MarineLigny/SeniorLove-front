@@ -14,7 +14,7 @@ export default function MeetPage() {
 			try {
 				//const storedToken = localStorage.getItem("token");
 				const response = await axios.get(
-					"http://marineligny-server.eddi.cloud/meet",
+					"https://emmanuelleeisele-server.eddi.cloud/meet",
 					{
 						headers: {
 							Authorization: `Bearer ${storedToken}`,
