@@ -11,14 +11,14 @@ export default function UserCard({user}: UserCardProps){
     //console.log(user);
     //console.log(user.profile_picture);
     return (
-        <article className="meetCard"> 
+        <article className="user-card"> 
                 <Link className="messageBtn" to={`/message/${user.id}`}>
                     <MessageCircle className="messageBtn-icone"/>
                 </Link>
 
                 {user.profile_picture ? 
-                <img className="articlePictMeet" src={`https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
-                : <img className="articlePictMeet avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
+                <img className="user-card-img" src={`https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
+                : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
                 
                 
                 
@@ -29,12 +29,12 @@ export default function UserCard({user}: UserCardProps){
                     //} alt={`${user.pseudo}`} />
                 }
 
-                <div className="articlePictMeet-text"> 
-                    <h2>{user.pseudo}</h2>
-                    <p className="particle">{calculateAge(user.birth_date)} ans</p>
-                    <p className="particle" >{user.localisation?.city || "ville inconnue"}</p>
+                <div className="user-card-text"> 
+                    <h2 className="user-card-title">{user.pseudo}</h2>
+                    <p className="user-card-p">{calculateAge(user.birth_date)} ans</p>
+                    <p className="user-card-p" >{user.localisation?.city || "ville inconnue"}</p>
 
-                    <a href={`/profile/${user.pseudo}`}  className="btnArticleMeet" >Voir Plus</a>                
+                    <a href={`/profile/${user.pseudo}`}  className="btn-see-more" >Voir Plus</a>                
 
                 </div> 
         </article>

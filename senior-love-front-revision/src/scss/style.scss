@@ -6,6 +6,7 @@
 @use "./elements/footer";
 @use "./elements/loader";
 @use "./elements/modals";
+@use "./elements/userCard";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
 @use '../pages/HomePage/Homepage'; // -> fait
