@@ -3,9 +3,12 @@
 
 @use "./elements/navbar";
 @use "./elements/btn";
+@use "./elements/footer.scss";
+@use "./elements/loader.scss";
+@use "./elements/modals.scss";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
-@use '../pages/HomePage/Homepage';
+@use '../pages/HomePage/Homepage'; // -> fait
 @use '../pages/AllEvent/EventsPage';
 @use '../pages/MyProfile/ProfilPage';
 @use '../pages/ProfilViewers/ProfilPageViewer';
