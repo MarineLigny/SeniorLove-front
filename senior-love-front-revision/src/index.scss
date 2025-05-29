@@ -1,43 +1,9 @@
-.searchEvent {
-  background-color: #E8EBED;
-  border-radius: 13px;
-  padding: 1em;
-  margin-top: 0.3em;
-
-  @media (min-width: 1024px) {
-    margin-left: 2em;
-    margin-right: 2em;
-  }
-}
-.search {
-  border-radius: 25px;
-  padding: 0.7em;
-  border: none;
-
-  @media (min-width: 1024px) {
-    width: 40%;
-  }
-}
-
-.category, .localisation {
-  border: none;
-  border-radius: 10px;
-  padding: 0.5em;
-  background-color: white;
-  color: rgb(153, 151, 151);
-
-  @media (min-width: 1024px) {
-    width: 15%;
-  }
-}
-
-
-
 //-______________________carte mes events_______________________//
-.particle-event{
+.particle-event {
   color: rgb(150, 147, 147);
   padding-bottom: 1rem;
 }
+
 .event {
   width: 70%;
   margin: auto;
@@ -68,8 +34,8 @@
 }
 
 @media (min-width: 1024px) {
-  
-  
+
+
   .event {
     height: 30rem;
     margin: 0;
@@ -81,16 +47,17 @@
   .articlepict {
     height: 10rem;
   }
-  .btnarticle{
+
+  .btnarticle {
     margin-top: 2em;
     height: 2rem;
   }
 }
 
-a{
+a {
   text-decoration: none;
   color: inherit;
-  
+
 }
 
 .modal-backdrop {
@@ -105,5 +72,3 @@ a{
   justify-content: center;
   z-index: 1000;
 }
-
-
