@@ -17,19 +17,12 @@ export default function UserCard({user}: UserCardProps){
                 </Link>
 
                 {user.profile_picture ? 
-                <img className="articlePictMeet" src={`http://marineligny-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
-                : <img className="articlePictMeet avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
+                <img className="meetCard-avatar" src={`http://marineligny-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
+                : <img className="meetCard-avatar-color" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
                 
                 
-                
-                {//<img className="articlePictMeet" src={
-                    //user.profile_picture
-                    //? `http://marineligny-server.eddi.cloud${user.profile_picture}` //soit image fournit
-                    //: "/img/avatar-SVG.png" // soit image d'un avatar en dur
-                    //} alt={`${user.pseudo}`} />
-                }
 
-                <div className="articlePictMeet-text"> 
+                <div className="meetCard-text"> 
                     <h2>{user.pseudo}</h2>
                     <p className="particle">{calculateAge(user.birth_date)} ans</p>
                     <p className="particle" >{user.localisation?.city || "ville inconnue"}</p>

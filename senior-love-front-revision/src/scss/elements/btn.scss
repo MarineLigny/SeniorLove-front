@@ -47,7 +47,9 @@
 
 // --------------- btn envoyer un message  -----------------------
 
-.btn-message {
+.btn-message { //<-- bouton de la page ProfilPageViewer - bouton avec le texte "Envoyer un message"
+    display: flex;
+    justify-content: center;
 	align-items: center;
     font-size: 1rem;
     font-weight: bold;
@@ -62,6 +64,24 @@
         &:hover {
             background-color: #F09B7F;
         }
+}
+
+.messageBtn{ //<-- se trouve sur le composant UserCard - bouton avec l'icon
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  cursor: pointer;
+
+  &-icone{ 
+    color: #AF4657;
+  }
 }
 
 // --------------- btn s'inscrire  -----------------------

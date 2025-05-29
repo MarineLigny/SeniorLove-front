@@ -7,6 +7,14 @@
   padding-bottom: 0;
 }
 
+.meets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: center;
+  padding: 1rem;
+}
+
 
 
 @media (min-width: 1024px) {
@@ -14,5 +22,9 @@
     margin-left: 8em;
     margin-right: 8em;
   }
+
+  .meets{
+    gap: 1.8rem;
+  } 
   
 }
