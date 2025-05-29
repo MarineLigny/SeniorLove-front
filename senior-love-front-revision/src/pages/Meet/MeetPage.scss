@@ -5,13 +5,15 @@
   padding: 1em;
   padding-top: 0;
   padding-bottom: 0;
+  margin-inline: 1rem;
+  margin-top: 1rem;
 }
 
 .meets {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  justify-content: space-between;
   padding: 1rem;
 }
 
@@ -19,8 +21,8 @@
 
 @media (min-width: 1024px) {
   .allMeet{
-    margin-left: 8em;
-    margin-right: 8em;
+    margin-inline: 10rem ;
+    margin-top: 3rem;
   }
 
   .meets{
