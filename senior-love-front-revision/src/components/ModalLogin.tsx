@@ -45,15 +45,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-            <p className="modal-p">Mot de passe</p>
-            <input
-            className="modal-input"
-            type="email"
-            value={email}
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+           
           <input
             className="modal-input"
             type="password"

@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-@use "/src/scss/base/variable.scss" as var;
+
 
 .messageBtn{
   display: flex;
@@ -19,16 +18,10 @@
   }
 }
 .user-card {
-=======
-//___________Cartes des profils utilisateur (page rencontre)____________________________
-
-.meetCard {
->>>>>>> master
   display: flex;
   flex-direction: column;
   width: 100%;
   text-align: center;
-<<<<<<< HEAD
   padding-bottom: 1rem;
   border-radius: 13px;
   background-color: white;
@@ -80,70 +73,16 @@
 @media screen and (min-width : 600px){
 
   .user-card{
-=======
-  border-radius: 13px;
-  background-color: white;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  position: relative;
-
-  &-avatar {
-    width: 100%;
-    height: 10rem;
-    border-radius: 13px;
-    object-fit: cover;
-    object-position: center 40%;
-    margin-bottom: 1rem;
-    &-color {
-      color: gray;
-    }
-  }
-  &-text {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 1rem;
-    
-    }
-  }
-  
-.particle {
-  color: rgb(150, 147, 147);
-}
-
-.btnArticleMeet{ //<-- bouton 'voir plus'
-  background-color: #AF4657;
-  border-radius: 5px;
-  border: #ffffff;
-  color: #fff;
-  padding-inline: 3rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  cursor: pointer;
-}
-
-//----        Debut media queries (page rencontres)     ----//
-
-@media (min-width : 600px){
-  .meetCard{
->>>>>>> master
     width: 40%;
   }
 }
 
-<<<<<<< HEAD
 @media screen and (min-width : 940px){
   .user-card{
-=======
-@media (min-width : 940px){
-  .meetCard{
->>>>>>> master
     width: 28%;
   }
 }
 
-<<<<<<< HEAD
 @media screen and (min-width: 1024px) {
   .user-card {
     width: 25%;
@@ -156,24 +95,8 @@
 }
 @media (min-width : 1280px){
   .user-card{
-=======
-@media (min-width: 1024px) {
-  .meetCard {
-    overflow: hidden;
-    width: 30%;
-    box-sizing: border-box;
-    text-align: center;
-  }  
-}
-@media (min-width : 1280px){
-  .meetCard{
->>>>>>> master
     width: 20%;
   }
 }
 
-<<<<<<< HEAD
 // --------------- Fin Media Queries --------------//
-=======
-// ------------------------------------ Fin Media Queries -------------------------------//
->>>>>>> master
