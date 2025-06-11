@@ -41,7 +41,7 @@ function App() {
   // récupération des infos de l'utilisateur connecté
   const fetchUser = async () => {
     try {
-      const response = await axios.get("http://marineligny-server.eddi.cloud/myprofile", {
+      const response = await axios.get("https://emmanuelleeisele-server.eddi.cloud/myprofile", {
         headers: {
           Authorization: `Bearer ${token}`,
         }

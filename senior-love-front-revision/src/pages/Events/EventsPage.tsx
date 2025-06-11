@@ -52,7 +52,6 @@ export default function EventsPage() {
 
 	return (
 		<div>
-			<FilterBar />
 
 			<div className="allevents">
 				<section className="title">

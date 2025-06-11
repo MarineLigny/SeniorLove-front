@@ -15,7 +15,7 @@ export default function FilterBar() {
     const inputData = async (localisation: string) => {
         try {
             const response = await axios.get(
-                "http://marineligny-server.eddi.cloud/meet",
+                "https://emmanuelleeisele-server.eddi.cloud/meet",
                 {
                     headers: {
                         Authorization: `Bearer ${storedToken}`,
