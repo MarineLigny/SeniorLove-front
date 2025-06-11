@@ -68,7 +68,7 @@ export default function EventPage() {
     }
 
     try {
-      await axios.post("http://marineligny-server.eddi.cloud/event/form", formData, {
+      await axios.post("https://emmanuelleeisele-server.eddi.cloud/event/form", formData, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
@@ -92,7 +92,7 @@ export default function EventPage() {
 //----------------------------Fonction pour rafraichir les données modifiées ---------------------//
   const refreshEvent = async () => {
     try {
-      const response = await axios.get(`http://marineligny-server.eddi.cloud/events/${id}`, {
+      const response = await axios.get(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
         headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
       });
       setEvent(response.data);
@@ -114,7 +114,7 @@ export default function EventPage() {
     }
   
     try {
-      await axios.post(`http://marineligny-server.eddi.cloud/events/${id}`, {
+      await axios.post(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
          user_id:userId}, //envoi de l'id 
         {
         headers: {
@@ -138,7 +138,7 @@ export default function EventPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`http://marineligny-server.eddi.cloud/events/${id}`, {
+      await axios.delete(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
@@ -152,7 +152,7 @@ export default function EventPage() {
   };
 
   useEffect(() => {
-    axios.get(`http://marineligny-server.eddi.cloud/events/${id}`, {
+    axios.get(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
       headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
     })
       .then(response => {
