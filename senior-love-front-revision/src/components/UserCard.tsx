@@ -17,14 +17,8 @@ export default function UserCard({user}: UserCardProps){
                 </Link>
 
                 {user.profile_picture ? 
-<<<<<<< Updated upstream
                 <img className="user-card-img" src={`https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
                 : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
-=======
-                <img className="meetCard-avatar" src={`https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
-                : <img className="meetCard-avatar-color" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
-                
->>>>>>> Stashed changes
                 
                 <div className="user-card-text"> 
                     <h2 className="user-card-title">{user.pseudo}</h2>
