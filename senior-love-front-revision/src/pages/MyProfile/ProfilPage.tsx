@@ -201,22 +201,22 @@ export default function ProfilePage() {
           />
           <div className='profile-buttons'>
             <input
-                type="file"
-                accept="image/jpg, image/jpeg, image/png"
-                onChange={handleFileChange}
-                disabled={isSaving}
-                ref={fileInputRef}
-                className="hidden"
-              />
+              type="file"
+              accept="image/jpg, image/jpeg, image/png"
+              onChange={handleFileChange}
+              disabled={isSaving}
+              ref={fileInputRef}
+              className="hidden"
+            />
 
             <button
-                type="button"
-                onClick={handleCustomFileClick}
-                className="btn-submit-img"
-                disabled={isSaving}
-              >
-                <SquarePen size={16} /> 
-                Changer ma photo
+              type="button"
+              onClick={handleCustomFileClick}
+              className="btn-submit-img"
+              disabled={isSaving}
+            >
+              <SquarePen size={16} />
+              Changer ma photo
             </button>
             <button className="btn-submit-img" type="submit" onClick={handleUploadPhoto} disabled={!selectedFile || isSaving}>
               Valider
@@ -255,7 +255,7 @@ export default function ProfilePage() {
               disabled={isSaving}
               placeholder="Cette description sera vue par les utilisateurs"
             />
-        </label>
+          </label>
 
         </div>
 

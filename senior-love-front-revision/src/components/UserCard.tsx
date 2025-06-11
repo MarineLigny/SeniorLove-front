@@ -20,15 +20,6 @@ export default function UserCard({user}: UserCardProps){
                 <img className="user-card-img" src={`https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}`} alt={`${user.pseudo}'s profile`} /> 
                 : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} /> }
                 
-                
-                
-                {//<img className="articlePictMeet" src={
-                    //user.profile_picture
-                    //? `https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}` //soit image fournit
-                    //: "/img/avatar-SVG.png" // soit image d'un avatar en dur
-                    //} alt={`${user.pseudo}`} />
-                }
-
                 <div className="user-card-text"> 
                     <h2 className="user-card-title">{user.pseudo}</h2>
                     <p className="user-card-p">{calculateAge(user.birth_date)} ans</p>

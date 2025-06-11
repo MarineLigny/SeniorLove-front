@@ -13,6 +13,7 @@ export default interface IUsers {
   gender: string;
   description: string;
   birth_date: Date;
+  role: string;
   localisation: {
     id: number;
     city: string;

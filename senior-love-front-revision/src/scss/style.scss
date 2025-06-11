@@ -10,9 +10,28 @@
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
 @use '../pages/HomePage/Homepage'; // -> fait
-@use '../pages/AllEvent/EventsPage';
+@use '../pages/Events/EventsPage';
 @use '../pages/MyProfile/ProfilPage';
 @use '../pages/ProfilViewers/ProfilPageViewer';
-@use '../pages/Meet/MeetPage';
+@use '../pages/Meet/MeetPage'; // -> fait
 @use '../pages/Conversation/ConversationPage';
 @use '../pages/Event/EventPage';
+
+
+header {
+  background-color: #fff;
+  padding: 20px;
+  border-bottom: 1px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  img {
+    height: 40px;
+  }
+}
+
+h1 {
+  font-weight: bold;
+  font-size: 2rem;
+}

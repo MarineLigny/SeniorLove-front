@@ -48,12 +48,20 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
             <p className="modal-p">Mot de passe</p>
             <input
             className="modal-input"
-              type="password"
-              value={password}
-              placeholder="Mot de passe"
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            className="modal-input"
+            type="password"
+            value={password}
+            placeholder="Mot de passe"
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
           {/*<a className="modal-login-link" href="/#">mot de passe oublié ?</a>*/}
           {error && <p className="modal-error">{error}</p>}
           <button className="modal-btn connection" type="submit">Se connecter</button>

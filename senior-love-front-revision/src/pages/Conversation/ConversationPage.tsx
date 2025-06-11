@@ -97,7 +97,7 @@ export default function ConversationPage(){
         
         return (
         <div>
-            <button // le css se retrouve sur ProfilPageViwer.scss
+            <button // le css se retrouve sur ProfilPageViewer.scss
                 onClick={() => navigate(-1)}
                 type="button"
                 className="btn-back">
