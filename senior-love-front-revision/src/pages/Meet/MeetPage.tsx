@@ -14,7 +14,7 @@ export default function MeetPage() {
 			try {
 				//const storedToken = localStorage.getItem("token");
 				const response = await axios.get(
-					"http://marineligny-server.eddi.cloud/meet",
+					"https://emmanuelleeisele-server.eddi.cloud/meet",
 					{
 						headers: {
 							Authorization: `Bearer ${storedToken}`,
@@ -34,11 +34,8 @@ export default function MeetPage() {
 		<div>
 			<FilterBar />
 
-			<div className="allMeet">
-				<section className="title">
-					<h1>Rencontres</h1>
-				</section>
-
+			<div className="meet-container content">
+					<h1 className="meet-container-title">Rencontres</h1>
 				<section className="meets">
                     {usersList.map(user => (
                         <UserCard key={user.id} user={user}/>

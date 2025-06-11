@@ -88,7 +88,7 @@ export default function ProfilePage() {
   useEffect(() => {
     const getUser = async () => {
       try {
-        const response = await axios.get("http://marineligny-server.eddi.cloud/myprofile", {
+        const response = await axios.get("https://emmanuelleeisele-server.eddi.cloud/myprofile", {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           }
@@ -130,7 +130,7 @@ export default function ProfilePage() {
         interest: interets
       };
 
-      const response = await axios.patch("http://marineligny-server.eddi.cloud/myprofile", updatedData, {
+      const response = await axios.patch("https://emmanuelleeisele-server.eddi.cloud/myprofile", updatedData, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
           'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ export default function ProfilePage() {
 
     try {
       const response = await axios.patch(
-        "http://marineligny-server.eddi.cloud/myprofile",
+        "https://emmanuelleeisele-server.eddi.cloud/myprofile",
         formData,
         {
           headers: {
@@ -196,7 +196,7 @@ export default function ProfilePage() {
         <div className="profile_photo">
           <img
             className="articlePictMeet"
-            src={previewImage || `http://marineligny-server.eddi.cloud${profile_picture}`} //<--- il manque pas un / apress cloud???
+            src={previewImage || `https://emmanuelleeisele-server.eddi.cloud${profile_picture}`} //<--- il manque pas un / apress cloud???
             alt={pseudo}
           />
           <div className='profile-buttons'>

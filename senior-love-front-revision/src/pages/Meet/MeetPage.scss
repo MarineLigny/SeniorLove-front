@@ -1,32 +1,40 @@
-.allMeet {
-  background-color: #E8EBED;
+@use "/src/scss/base/variable.scss" as var;
+
+.content{
+  max-width: 1200px;
+}
+.meet-container {
+  background-color: var.$background-lightGrey;
   border-radius: 13px;
-  margin-bottom: 1em;
-  padding: 1em;
-  padding-top: 0;
-  padding-bottom: 0;
-  margin-inline: 1rem;
-  margin-top: 1rem;
+  margin: 1rem 0.5rem;
+  padding: 0 1rem;
+
+  &-title{
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
 }
 
 .meets {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: space-between;
+  justify-content: center;
   padding: 1rem;
 }
 
-
-
-@media (min-width: 1024px) {
-  .allMeet{
-    margin-inline: 10rem ;
-    margin-top: 3rem;
-  }
-
+@media screen and (min-width: 1024px){
   .meets{
-    gap: 1.8rem;
+    gap: 3rem;
   } 
-  
+
+}
+
+@media screen and (min-width: 1200px) {
+  .meet-container{
+    margin: 1rem auto;
+  }
+  .meets{
+    gap: 2.5rem;
+  }
 }

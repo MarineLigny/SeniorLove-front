@@ -16,7 +16,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("http://marineligny-server.eddi.cloud/login", {
+      const response = await axios.post("https://emmanuelleeisele-server.eddi.cloud/login", {
         email,
         password,
       });
@@ -34,17 +34,18 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
     <div className="modal-backdrop">
       <div className="modal">
         <button type="button" className="modal-btn-close" onClick={onClose}><X /></button>
-        <h2 className="modal-title">Connexion</h2>
-        <div className="modal-form">
-          <form className="modal-form" onSubmit={handleLogin}>
-          <input
-            className="modal-input"
-            type="email"
-            value={email}
-            placeholder="Email"
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          <img className="modal-login-logo" src="./img/logo-connexion.png" />
+            <form className="modal-form" onSubmit={handleLogin}>
+            <p className="modal-p">Email</p>
+            <input
+              className="modal-input"
+              type="email"
+              value={email}
+              placeholder="Email"
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+           
           <input
             className="modal-input"
             type="password"
@@ -55,11 +56,9 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
           />
           {/*<a className="modal-login-link" href="/#">mot de passe oublié ?</a>*/}
           {error && <p className="modal-error">{error}</p>}
-          <button className="modal-btn" type="submit">Se connecter</button>
+          <button className="modal-btn connection" type="submit">Se connecter</button>
+          <button type="button" className="modal-btn register" onClick={onRegisterClick}> Créer un compte </button>
         </form>
-        <button type="button" className="modal-btn-register" onClick={onRegisterClick}>S'inscrire</button>
-        </div>
-        
       </div>
     </div>
   );
