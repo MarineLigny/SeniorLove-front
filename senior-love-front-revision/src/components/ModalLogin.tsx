@@ -16,7 +16,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      const response = await axios.post("https://emmanuelleeisele-server.eddi.cloud/login", {
+      const response = await axios.post("http://localhost:3000/login", {
         email,
         password,
       });
@@ -34,18 +34,18 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
     <div className="modal-backdrop">
       <div className="modal">
         <button type="button" className="modal-btn-close" onClick={onClose}><X /></button>
-          <img className="modal-login-logo" src="./img/logo-connexion.png" />
-            <form className="modal-form" onSubmit={handleLogin}>
-            <p className="modal-p">Email</p>
-            <input
-              className="modal-input"
-              type="email"
-              value={email}
-              placeholder="Email"
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-           
+        <img className="modal-login-logo" src="./img/logo-connexion.png" />
+        <form className="modal-form" onSubmit={handleLogin}>
+          <p className="modal-p">Email</p>
+          <input
+            className="modal-input"
+            type="email"
+            value={email}
+            placeholder="Email"
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+
           <input
             className="modal-input"
             type="password"

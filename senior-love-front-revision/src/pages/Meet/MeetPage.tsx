@@ -7,14 +7,14 @@ import type IUsers from "../../@types/users";
 
 export default function MeetPage() {
 	const [usersList, setUsersList] = useState<IUsers[]>([]);
-    const storedToken = localStorage.getItem("token");
+	const storedToken = localStorage.getItem("token");
 
 	useEffect(() => {
 		const getUsers = async () => {
 			try {
 				//const storedToken = localStorage.getItem("token");
 				const response = await axios.get(
-					"https://emmanuelleeisele-server.eddi.cloud/meet",
+					"http://localhost:3000/meet",
 					{
 						headers: {
 							Authorization: `Bearer ${storedToken}`,
@@ -35,11 +35,11 @@ export default function MeetPage() {
 			<FilterBar />
 
 			<div className="meet-container content">
-					<h1 className="meet-container-title">Rencontres</h1>
+				<h1 className="meet-container-title">Rencontres</h1>
 				<section className="meets">
-                    {usersList.map(user => (
-                        <UserCard key={user.id} user={user}/>
-                    ))}
+					{usersList.map(user => (
+						<UserCard key={user.id} user={user} />
+					))}
 				</section>
 			</div>
 

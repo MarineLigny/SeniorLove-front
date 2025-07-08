@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
-import { Link, useParams, useNavigate} from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import type IUsers from "../../@types/users";
 import UpdateEvent from "../../components/updateEvent";
 import { Loader } from "lucide-react";
@@ -14,8 +14,8 @@ type EventType = {
   availability: string | number;
   disponibility: boolean;
   picture: string;
-  localisation : { city: string | null};
-  users:IUsers[];
+  localisation: { city: string | null };
+  users: IUsers[];
 };
 
 
@@ -38,7 +38,7 @@ export default function EventPage() {
     availability: "",
     disponibility: true,
     picture: "",
-    localisation : { city: ""},
+    localisation: { city: "" },
     users: [],
   });
 
@@ -55,8 +55,8 @@ export default function EventPage() {
       [name]: type === "number"
         ? Number(value)
         : name === "disponibility"
-        ? value === "true"
-        : value,
+          ? value === "true"
+          : value,
     }));
   };
 
@@ -68,7 +68,7 @@ export default function EventPage() {
     }
 
     try {
-      await axios.post("https://emmanuelleeisele-server.eddi.cloud/event/form", formData, {
+      await axios.post("http://localhost:3000/event/form", formData, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
@@ -82,17 +82,17 @@ export default function EventPage() {
         availability: "",
         disponibility: true,
         picture: "",
-        localisation : { city: ""},
+        localisation: { city: "" },
         users: [],
       });
     } catch (error) {
       alert("Erreur lors de la création de l’événement");
     }
   };
-//----------------------------Fonction pour rafraichir les données modifiées ---------------------//
+  //----------------------------Fonction pour rafraichir les données modifiées ---------------------//
   const refreshEvent = async () => {
     try {
-      const response = await axios.get(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
+      const response = await axios.get(`http://localhost:3000/events/${id}`, {
         headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
       });
       setEvent(response.data);
@@ -100,7 +100,7 @@ export default function EventPage() {
       console.error("Erreur lors du rafraîchissement de l'événement :", error);
     }
   };
-  
+
   //-----------------------------Fonction pour s'inscrire à un évenment---------------------------// 
   const handleRegister = async () => {
     if (!storedToken) {
@@ -112,15 +112,16 @@ export default function EventPage() {
       alert("Utilisateur non identifié.");
       return;
     }
-  
+
     try {
-      await axios.post(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
-         user_id:userId}, //envoi de l'id 
+      await axios.post(`http://localhost:3000/events/${id}`, {
+        user_id: userId
+      }, //envoi de l'id 
         {
-        headers: {
-          Authorization: `Bearer ${storedToken}`,
-        },
-      });
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          },
+        });
       console.log("Inscription réussie !");
       await refreshEvent(); // On refresh les données de disponibilitées pour qu'il y ait le bon nombre de place 
     } catch (err) {
@@ -129,7 +130,7 @@ export default function EventPage() {
       console.error(err);
     }
   };
-  
+
 
   const handleDeleteEvent = async () => {
     if (!storedToken || !id) return;
@@ -138,21 +139,21 @@ export default function EventPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
+      await axios.delete(`http://localhost:3000/events/${id}`, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
       });
 
       alert("Événement supprimé !");
-      navigate("/event"); 
+      navigate("/event");
     } catch (err) {
       alert("Erreur lors de la suppression de l’événement.");
     }
   };
 
   useEffect(() => {
-    axios.get(`https://emmanuelleeisele-server.eddi.cloud/events/${id}`, {
+    axios.get(`http://localhost:3000/events/${id}`, {
       headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
     })
       .then(response => {
@@ -167,10 +168,10 @@ export default function EventPage() {
       });
   }, [id, storedToken]);
 
-  if (loading) return <Loader/>;
+  if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
   if (!event) return <p>Aucun événement trouvé</p>;
-console.log(event.availability)
+  console.log(event.availability)
 
 
   return (
@@ -181,8 +182,8 @@ console.log(event.availability)
           <h2>{event.name}</h2>
           <p className="particle">{event.description}</p>
           {event.localisation?.city && (
-          <p>Cette événement se tiendra à : {event.localisation.city}</p>)}
-          
+            <p>Cette événement se tiendra à : {event.localisation.city}</p>)}
+
           {/*{event.availability ? (
             <p> Nombres de places disponible : {event.availability}</p>
           ): (
@@ -190,8 +191,8 @@ console.log(event.availability)
           )}*/}
           {!event.availability || event.availability === 0 ? <p>Accès Libre</p> : <p> Nombres de places disponible : {event.availability}</p>}
 
-        
-          {!isRegistered && event.availability > 0 && (
+
+          {!isRegistered && event.availability && Number(event.availability) > 0 && (
             <button type="button" className="btnarticle btnEventPage" onClick={handleRegister}>S'inscrire</button>
           )}
           {isRegistered && (

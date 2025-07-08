@@ -24,36 +24,36 @@ import axios from 'axios';
 
 
 function App() {
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [currentUser, setCurrentUser] = useState<IUsers| null>(null);
-    const [showLoginModal, setShowLoginModal] = useState(false);
-    const [showRegisterModal, setShowRegisterModal] = useState(false);
-    const navigate = useNavigate();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const navigate = useNavigate();
 
   // verifier la présence d'un Token au chargement de la page et récupération des infos du user(pour voir si isAdmin)
   useEffect(() => {
-  const token = localStorage.getItem("token");
+    const token = localStorage.getItem("token");
 
-  if (!token) return;
+    if (!token) return;
 
-  setIsLoggedIn(true);
+    setIsLoggedIn(true);
 
-  // récupération des infos de l'utilisateur connecté
-  const fetchUser = async () => {
-    try {
-      const response = await axios.get("https://emmanuelleeisele-server.eddi.cloud/myprofile", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        }
-      });
-      setCurrentUser(response.data);
-    } catch (error) {
-      console.error("Error fetching user data:", error);
-      setIsLoggedIn(false);
-      setCurrentUser(null);
-      localStorage.removeItem("token");
-    }
-  };
+    // récupération des infos de l'utilisateur connecté
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/myprofile", {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        });
+        setCurrentUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+        setIsLoggedIn(false);
+        setCurrentUser(null);
+        localStorage.removeItem("token");
+      }
+    };
 
     fetchUser();
   }, []);
@@ -81,15 +81,15 @@ function App() {
   return (
     <>
       <NavBar
-          isLoggedIn={isLoggedIn}
-          onLoginClick={() => setShowLoginModal(true)}
-          onLogoutClick={handleLogout}
-          currentUser={currentUser}
+        isLoggedIn={isLoggedIn}
+        onLoginClick={() => setShowLoginModal(true)}
+        onLogoutClick={handleLogout}
+        currentUser={currentUser}
       />
-      
+
       <main>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path="/" element={<HomePage onRegisterSuccess={() => setIsLoggedIn(true)} />} />
           <Route path="/event" element={<EventsPage />} />
           <Route path="/event/:id" element={<EventPage />} />
           <Route path="/profile" element={<ProfilePage />} />
@@ -98,19 +98,19 @@ function App() {
           <Route path="/mymessage" element={<MyMessagePage />} />
           <Route path="/message/:contactId" element={<ConversationPage />} />
           <Route path="/confidentiality" element={<Confidentiality />} />
-          <Route path="/dashboard"  
-                element={currentUser && currentUser.role === 'admin'
-                  ? <Dashboard />
-                  : <NotFoundPage />
-                } />
+          <Route path="/dashboard"
+            element={currentUser && currentUser.role === 'admin'
+              ? <Dashboard />
+              : <NotFoundPage />
+            } />
           <Route path="*" element={<NotFoundPage />} />
-          
+
         </Routes>
       </main>
 
       <Footer />
 
-    {/*-------------- Modal de connexion ------------------- */}
+      {/*-------------- Modal de connexion ------------------- */}
       {showLoginModal && (
         <ModalLogin
           onClose={() => setShowLoginModal(false)}
@@ -122,7 +122,7 @@ function App() {
         />
       )}
 
-    {/* ---------------- Modal d'inscription -------------------- */}
+      {/* ---------------- Modal d'inscription -------------------- */}
       {showRegisterModal && (
         <ModalRegister
           onClose={() => setShowRegisterModal(false)}
@@ -130,7 +130,7 @@ function App() {
         />
       )}
     </>
-)
+  )
 };
 
 export default App

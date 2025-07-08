@@ -15,12 +15,12 @@ export default function MyMessagePage() {
         const getContacts = async () => {
             try {
                 //appel de la route en api pour récupérer les info, via axios
-                const response = await axios.get("http:///marineligny-server.eddi.cloud/messaging",
+                const response = await axios.get("http://localhost:3000/messaging",
                     {
-						headers: {
-							Authorization: `Bearer ${storedToken}`,
-						},
-					},
+                        headers: {
+                            Authorization: `Bearer ${storedToken}`,
+                        },
+                    },
                 );
                 console.log('call de responsedata', response.data);
                 setUsersList(response.data);
@@ -32,19 +32,19 @@ export default function MyMessagePage() {
         getContacts();
     }, [storedToken])
 
-    return(
+    return (
         <div>
             <h1>Messagerie</h1>
             <div className="allMeet">
-            <section className="title">
-                <h3>contacts</h3>  
-            </section>
+                <section className="title">
+                    <h3>contacts</h3>
+                </section>
 
-            <section className="meets">
-                {usersList.map(user => (
-                    <MyMessageCard key={user.id} user={user}/>
-                ))}
-            </section>
+                <section className="meets">
+                    {usersList.map(user => (
+                        <MyMessageCard key={user.id} user={user} />
+                    ))}
+                </section>
             </div>
 
         </div>

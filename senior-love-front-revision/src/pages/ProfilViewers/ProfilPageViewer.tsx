@@ -24,7 +24,7 @@ export default function ProfilPageViewer() {
 			async function fetchData() {
 				try {
 					const response = await axios.get(
-						`https://emmanuelleeisele-server.eddi.cloud/profile/${pseudo}`,
+						`http://localhost:3000/profile/${pseudo}`,
 						{
 							headers: {
 								Authorization: `Bearer ${storedToken}`, // Utilisation du token pour l'authentification
@@ -90,8 +90,8 @@ export default function ProfilPageViewer() {
 	if (error || !profile) return <p>{error || "Profil introuvable"}</p>;
 
 	const activeInterestGroups = Object.entries(profile.interest).filter(
-		([_, activities]) => Object.values(activities).some(isActive => isActive)
-	  );
+		([_, activities]) => Object.values(activities as Record<string, boolean>).some((isActive: boolean) => isActive)
+	);
 
 	return (
 		<div>
@@ -108,7 +108,7 @@ export default function ProfilPageViewer() {
 						<img
 							src={
 								profile.profile_picture
-									? `https://emmanuelleeisele-server.eddi.cloud${profile.profile_picture}` //soit image fournit
+									? `http://localhost:3000${profile.profile_picture}` //soit image fournit
 									: "/img/avatar3.png" // soit image d'un avatar en dur
 							}
 							alt={`${profile.pseudo}`}
@@ -116,27 +116,27 @@ export default function ProfilPageViewer() {
 						/>
 
 						<div className="Public-Card--form">
-                <p className="Public-Card--pseudo Public-Card-p">
-                  {profile.pseudo}
-                </p>
-                <p className="Public-Card-p">
-                  <strong>Ville : </strong>
-                  {profile.localisation?.city || "Non renseignée"}
-                </p>
-                <p className="Public-Card-p">
-                  <strong>Genre : </strong>
-                  {profile.gender}
-                </p>
-                <p className="Public-Card-p">
-                  <strong>Age: </strong>
-                  {calculateAge(profile.birth_date)} ans
-                </p>
-            </div>
-              <div className="Public-Card--btn">
-                  <a href={`/message/${profile.id}`} className="btn-message">
-                    Envoyer un message
-                  </a>
-              </div>
+							<p className="Public-Card--pseudo Public-Card-p">
+								{profile.pseudo}
+							</p>
+							<p className="Public-Card-p">
+								<strong>Ville : </strong>
+								{profile.localisation?.city || "Non renseignée"}
+							</p>
+							<p className="Public-Card-p">
+								<strong>Genre : </strong>
+								{profile.gender}
+							</p>
+							<p className="Public-Card-p">
+								<strong>Age: </strong>
+								{calculateAge(profile.birth_date)} ans
+							</p>
+						</div>
+						<div className="Public-Card--btn">
+							<a href={`/message/${profile.id}`} className="btn-message">
+								Envoyer un message
+							</a>
+						</div>
 					</div>
 					<div className="Public-Card-text">
 						<div className="Public-Card--description">
@@ -148,7 +148,7 @@ export default function ProfilPageViewer() {
 							<h2>Centres d’intérêts</h2>
 							<div className="Public-Card--interest-flex">
 								{activeInterestGroups.length > 0 ? (
-									Object.entries(profile.interest).filter(([_,activities]) => Object.values(activities).some(isActive => isActive)).map(([groupName, activites]: [string, any])=> (
+									Object.entries(profile.interest).filter(([_, activities]) => Object.values(activities as Record<string, boolean>).some((isActive: boolean) => isActive)).map(([groupName, activites]: [string, any]) => (
 										<div key={groupName} className="Public-Card--interest-group">
 											<h3>{groupName}</h3>
 											<ul>

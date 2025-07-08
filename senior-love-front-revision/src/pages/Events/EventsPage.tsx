@@ -1,4 +1,4 @@
-import FilterBar from "../../components/FilterBar";
+// import FilterBar from "../../components/FilterBar"; // Non utilisé pour le moment
 import EventCard from "../../components/EventCard";
 import MyEventCard from "../../components/MyEventCard";
 import { useEffect, useState } from "react";
@@ -14,10 +14,10 @@ export default function EventsPage() {
 	//console.log(userData);
 	const storedToken = localStorage.getItem("token");
 
-    //On fetch tous les evenements 
+	//On fetch tous les evenements 
 	useEffect(() => {
 		axios
-			.get("https://emmanuelleeisele-server.eddi.cloud/events", {
+			.get("http://localhost:3000/events", {
 				headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
 			})
 			.then((response) => {
@@ -31,21 +31,21 @@ export default function EventsPage() {
 	}, [storedToken]);
 
 
-    //On fetch pour récupérer mon profil afin d'afficher mes evenements
-    useEffect(() => {
-        if (!storedToken) return;
-    
-        axios
-            .get("https://emmanuelleeisele-server.eddi.cloud/myprofile", {
-                headers: { Authorization: `Bearer ${storedToken}` },
-            })
-            .then((response) => {
-                setUserData(response.data);
-            })
-            .catch(() => {
-                setError("Impossible de charger les données utilisateur.");
-            });
-    }, [storedToken]);
+	//On fetch pour récupérer mon profil afin d'afficher mes evenements
+	useEffect(() => {
+		if (!storedToken) return;
+
+		axios
+			.get("http://localhost:3000/myprofile", {
+				headers: { Authorization: `Bearer ${storedToken}` },
+			})
+			.then((response) => {
+				setUserData(response.data);
+			})
+			.catch(() => {
+				setError("Impossible de charger les données utilisateur.");
+			});
+	}, [storedToken]);
 
 	if (loading) return <p>Chargement...</p>;
 	if (error) return <p>{error}</p>;

@@ -1,6 +1,6 @@
 
 import axios from 'axios';
-import { Search, User } from 'lucide-react';
+import { Search } from 'lucide-react';
 import { useState } from 'react';
 import UserCard from './UserCard';
 
@@ -15,7 +15,7 @@ export default function FilterBar() {
     const inputData = async (localisation: string) => {
         try {
             const response = await axios.get(
-                "https://emmanuelleeisele-server.eddi.cloud/meet",
+                "http://localhost:3000/meet",
                 {
                     headers: {
                         Authorization: `Bearer ${storedToken}`,

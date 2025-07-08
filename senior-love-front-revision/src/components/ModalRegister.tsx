@@ -39,12 +39,12 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
     }
 
     try {
-      await axios.post("https://emmanuelleeisele-server.eddi.cloud/register", {
+      await axios.post("http://localhost:3000/register", {
         pseudo: formData.pseudo,
         birth_date: formData.birth_date,
         email: formData.email,
         password: formData.password,
-        confirmPassword: formData.confirmPassword, 
+        confirmPassword: formData.confirmPassword,
       });
 
       onRegisterSuccess();
@@ -58,7 +58,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
     <div className="modal-backdrop">
       <div className="modal">
         <button type="button" className="modal-btn-close" onClick={onClose}><X /></button>
-          <img className="modal-login-logo" src="./img/logo-inscription.png" />
+        <img className="modal-login-logo" src="./img/logo-inscription.png" />
         <form className="modal-form" onSubmit={handleSubmit}>
           <input
             className="modal-input"
@@ -70,7 +70,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
             required
           />
           <input
-          className="modal-input"
+            className="modal-input"
             type="date"
             name="birth_date"
             value={formData.birth_date}
@@ -105,7 +105,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
             required
           />
           <input
-          className="modal-input"
+            className="modal-input"
             type="checkbox"
             name="consent"
             required

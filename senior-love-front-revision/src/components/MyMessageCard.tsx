@@ -8,23 +8,26 @@ interface UserMessageCardProps {
 
 
 
-export default function MyMessageCard({user}: UserMessageCardProps){
-    
-    return (
-        <article className="meetCard">
-            <Link className="messageBtn" to={`/message/${user.id}`}>
-                <MessageCircle className="messageBtn-icone"/>
-            </Link>
-            <img className="articlePictMeet" src={
-                    user.profile_picture
-                    ? `https://emmanuelleeisele-server.eddi.cloud${user.profile_picture}` //soit image fournit
-                    : "/img/hero1.jpg" // soit image d'un avatar en dur
-                    } alt={`${user.pseudo}`} />
-            <h2>{user.pseudo}</h2>
-            <p className="particle">{calculateAge(user.birth_date)} ans</p>
-            <p className="particle" >{user.localisation?.city || "ville inconnue"}</p>
+export default function MyMessageCard({ user }: UserMessageCardProps) {
 
-            <a href={`/profile/${user.pseudo}`}  className="btn-message" >Voir Profil</a>
+    return (
+        <article className="user-card">
+            <Link className="messageBtn" to={`/message/${user.id}`}>
+                <MessageCircle className="messageBtn-icone" />
+            </Link>
+
+            {user.profile_picture ?
+                <img className="user-card-img" src={`http://localhost:3000${user.profile_picture}`} alt={`${user.pseudo}'s profile`} />
+                : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} />}
+
+            <div className="user-card-text">
+                <h2 className="user-card-title">{user.pseudo}</h2>
+                <p className="user-card-p">{calculateAge(user.birth_date)} ans</p>
+                <p className="user-card-p" >{user.localisation?.city || "ville inconnue"}</p>
+
+                <a href={`/profile/${user.pseudo}`} className="btn-see-more" >Voir Plus</a>
+
+            </div>
         </article>
     );
 };
