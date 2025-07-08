@@ -6,20 +6,21 @@
   .profile_essentials {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 1.875rem;
 
-    
 
-      img {
-        width: 9.375rem;
-        height: 9.375rem;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 0.125rem solid #ccc;
-      }
+
+    img {
+      width: 9.375rem;
+      height: 9.375rem;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 0.125rem solid #ccc;
+    }
 
     .profile_form {
-      flex: 1;
+      width: 90%;
 
 
       label {
@@ -38,59 +39,67 @@
     }
 
   }
+
   .profile_photo {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-.profile-buttons{
-  width: 80%;
+
+  .profile-buttons {
+    width: 80%;
     margin: auto;
     display: flex;
     flex-direction: column;
-}
-.hidden{
-  display: none;
-}
-.btn-submit-img{
-  margin:1rem auto ;
-  width: 80%;
-  justify-content: center;
-  background-color: #af4657;
-  color: white;
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 0.8125rem;
-  font-weight: bold;
-  cursor: pointer;
-}
+  }
 
-.btn-validate{
-  margin: 2.9em 0 1rem;
-  width: 100%;
-  background-color: #af4657;
-  color: white;
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 0.8125rem;
-  font-weight: bold;
-  cursor: pointer;
-}
-.modif-btn{
-  margin:1rem auto ;
-  background-color: #af4657;
-  color: white;
-  padding: 0.625rem 1.25rem;
-  border: none;
-  border-radius: 0.8125rem;
-  font-weight: bold;
-  cursor: pointer;
-}
+  .hidden {
+    display: none;
+  }
+
+  .btn-submit-img {
+    margin: 1rem auto;
+    width: 80%;
+    background-color: #af4657;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.8125rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    gap: 0.3rem;
+  }
+
+  .btn-validate {
+    margin: 2.9em 0 1rem;
+    width: 100%;
+    background-color: #af4657;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.8125rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .modif-btn {
+    margin: 1rem auto;
+    background-color: #af4657;
+    color: white;
+    padding: 0.625rem 1.25rem;
+    border: none;
+    border-radius: 0.8125rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
 
   .profile_details {
     width: 90%;
     margin: auto;
+
     h2 {
       font-size: 1.5rem;
       margin-bottom: 1.25rem;
@@ -128,48 +137,58 @@
       font-size: 1rem;
       resize: none;
     }
-    .profile-decription{
+
+    .profile-decription {
       height: 10rem;
     }
+
     .profile_interests {
       margin-top: 1.25rem;
     }
+
     .interest_group {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
       gap: 1.25rem;
 
-        div {
-          background-color: #f8f8f8;
-          padding: 0.9375rem;
-          border-radius: 0.625rem;
+      div {
+        background-color: #f8f8f8;
+        padding: 0.9375rem;
+        border-radius: 0.625rem;
 
-          strong {
-            display: block;
-            margin-bottom: 0.625rem;
-            color: #af4657;
-          }
+        strong {
+          display: block;
+          margin-bottom: 0.625rem;
+          color: #af4657;
+        }
 
-          label {
-            display: block;
-            margin-bottom: 0.3125rem;
-            font-weight: normal;
-            cursor: pointer;
-          }
+        label {
+          display: block;
+          margin-bottom: 0.3125rem;
+          font-weight: normal;
+          cursor: pointer;
         }
       }
-    
+    }
+
 
   }
 }
+
 @media (min-width:700px) {
-.profile{
-  .profile_photo{
-    width: 40%;
-  }
-  .btn-validate{
-    width: 50%;
-  }
-}
+  .profile {
+    .profile_photo {
+      width: 40%;
+    }
 
+    .profile_essentials {
+      .profile_form {
+        width: 40%;
+      }
+    }
+
+    .btn-validate {
+      width: 50%;
+    }
+  }
 }

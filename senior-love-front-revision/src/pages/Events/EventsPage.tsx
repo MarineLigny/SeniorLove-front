@@ -52,8 +52,7 @@ export default function EventsPage() {
 
 	return (
 		<div>
-
-			<div className="allevents">
+			<div className="allevents content">
 				<section className="title">
 					<h1>Evenements</h1>
 				</section>

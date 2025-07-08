@@ -1,6 +1,4 @@
-
-
-.messageBtn{
+.messageBtn {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,10 +11,11 @@
   left: 1rem;
   cursor: pointer;
 
-  &-icone{ 
+  &-icone {
     color: #AF4657;
   }
 }
+
 .user-card {
   display: flex;
   flex-direction: column;
@@ -24,11 +23,12 @@
   text-align: center;
   padding-bottom: 1rem;
   border-radius: 13px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   background-color: white;
   margin-bottom: 1rem;
   position: relative;
 
-  &-img{
+  &-img {
     border-top-left-radius: 13px;
     border-top-right-radius: 13px;
     border: #ffffff;
@@ -40,28 +40,29 @@
     object-position: center 30%;
     cursor: pointer;
   }
-  &-text{
+
+  &-text {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  &-title{
+  &-title {
     font-weight: 600;
     padding: 0.5rem 0;
   }
 
-  &-p{
-      color: rgb(150, 147, 147);
+  &-p {
+    color: rgb(150, 147, 147);
   }
 }
 
-.btn-see-more{
+.btn-see-more {
   background-color: #AF4657;
   border-radius: 5px;
   border: none;
   color: #fff;
-  padding: 0.5rem ;
+  padding: 0.5rem;
   margin: 1rem;
   width: 50%;
   cursor: pointer;
@@ -70,15 +71,15 @@
 
 //----        Debut media queries      ----//
 
-@media screen and (min-width : 600px){
+@media screen and (min-width : 600px) {
 
-  .user-card{
+  .user-card {
     width: 40%;
   }
 }
 
-@media screen and (min-width : 940px){
-  .user-card{
+@media screen and (min-width : 940px) {
+  .user-card {
     width: 28%;
   }
 }
@@ -88,13 +89,14 @@
     width: 25%;
   }
 
-  .btn-see-more{
+  .btn-see-more {
     margin-top: 2rem;
   }
-  
+
 }
-@media (min-width : 1280px){
-  .user-card{
+
+@media (min-width : 1280px) {
+  .user-card {
     width: 20%;
   }
 }

@@ -74,15 +74,15 @@ export default function FilterBar() {
             </div>
 
 
-            <div className="allMeet">
-                <section className="title">
+            <div className="meet-container">
+                <section className="meet-container-title">
                     <h1>Résultat de la recherche pour '{input}'</h1>
                 </section>
                 <section className="meets">
                     {results.map((user, index) => (
-                        <div key={index}>
-                            <UserCard user={user} />
-                        </div>
+
+                        <UserCard key={index} user={user} />
+
                     ))}
                 </section>
             </div>

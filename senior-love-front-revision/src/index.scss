@@ -1,7 +1,7 @@
 //-______________________carte mes events_______________________//
 .particle-event {
   color: rgb(150, 147, 147);
-  padding-bottom: 1rem;
+
 }
 
 .event {
@@ -37,11 +37,12 @@
 
 
   .event {
-    height: 30rem;
     margin: 0;
-    width: 30%;
+    width: 20%;
     box-sizing: border-box;
     text-align: center;
+    background-color: #ffffff;
+    border-radius: 1rem;
   }
 
   .articlepict {
@@ -72,8 +73,13 @@ a {
   justify-content: center;
   z-index: 1000;
 
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+
+    100% {
+      transform: rotate(360deg);
+    }
+  }
 }

@@ -1,15 +1,13 @@
 @use "/src/scss/base/variable" as var;
 
-.content{
-  max-width: 1200px;
-}
+
 .meet-container {
   background-color: var.$background-lightGrey;
   border-radius: 13px;
   margin: 1rem 0.5rem;
   padding: 0 1rem;
 
-  &-title{
+  &-title {
     font-size: 1.5rem;
     font-weight: 600;
   }
@@ -23,18 +21,19 @@
   padding: 1rem;
 }
 
-@media screen and (min-width: 1024px){
-  .meets{
+@media screen and (min-width: 1024px) {
+  .meets {
     gap: 3rem;
-  } 
+  }
 
 }
 
 @media screen and (min-width: 1200px) {
-  .meet-container{
+  .meet-container {
     margin: 1rem auto;
   }
-  .meets{
+
+  .meets {
     gap: 2.5rem;
   }
 }

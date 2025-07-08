@@ -8,7 +8,7 @@ type NavBarProps = {
   currentUser: IUsers | null;
 };
 
-const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBarProps ) => {
+const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBarProps) => {
   const [menuOpen, setMenuOpen] = useState(false);
   const isAdmin = currentUser?.role === 'admin';
 
@@ -25,28 +25,28 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBar
 
       <nav className={menuOpen ? 'menu-open' : ''}>
         {isLoggedIn && (
-        <a className="Nav-menu" href="/">Accueil</a>
+          <a className="Nav-menu" href="/">Accueil</a>
         )}
         {isLoggedIn && (
           <a className="Nav-menu" href="/meet">Rencontres</a>
         )}
         {isLoggedIn && (
-          <a className="Nav-menu" href="/event">Événements</a>
+          <a className="Nav-menu" href="/event">Évènements</a>
         )}
         {isLoggedIn && (
           <a className="Nav-menu" href="/profile">Mon Profil</a>
         )}
         {isLoggedIn && (
           <a className="Nav-menu" href="/mymessage">Messagerie</a>
-        )}  
+        )}
         {isLoggedIn && isAdmin && (
           <a className="Nav-menu" href="/dashboard">Dashboard</a>
-        )}       
+        )}
 
         {//<a href="/message">Mes Messages</a> 
-        /* À faire : créer le bouton dans la messagerie */
-        //<a href="/event/:id">Test</a>
-        } 
+          /* À faire : créer le bouton dans la messagerie */
+          //<a href="/event/:id">Test</a>
+        }
       </nav>
 
       {isLoggedIn ? (
@@ -56,7 +56,7 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBar
       )}
 
     </div>
-    
+
   );
 };
 

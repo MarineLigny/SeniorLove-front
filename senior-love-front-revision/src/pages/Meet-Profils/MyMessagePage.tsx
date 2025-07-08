@@ -35,16 +35,18 @@ export default function MyMessagePage() {
     return (
         <div>
             <h1>Messagerie</h1>
-            <div className="allMeet">
-                <section className="title">
-                    <h3>contacts</h3>
-                </section>
+            <div className="content">
+                <div className="contactsPage">
+                    <section className="contactsPage-title">
+                        <h2 className="contactsPage-title">contacts</h2>
+                    </section>
 
-                <section className="meets">
-                    {usersList.map(user => (
-                        <MyMessageCard key={user.id} user={user} />
-                    ))}
-                </section>
+                    <section className="contactsPage-card">
+                        {usersList.map(user => (
+                            <MyMessageCard key={user.id} user={user} />
+                        ))}
+                    </section>
+                </div>
             </div>
 
         </div>

@@ -31,10 +31,10 @@ export default function MeetPage() {
 	}, [storedToken]);
 
 	return (
-		<div>
+		<div className="content">
 			<FilterBar />
 
-			<div className="meet-container content">
+			<div className="meet-container">
 				<h1 className="meet-container-title">Rencontres</h1>
 				<section className="meets">
 					{usersList.map(user => (

@@ -1,26 +1,48 @@
+@use "/src/scss/base/variable" as var;
 
 // ___________________________page de contact ___________________________
 .contactsPage {
-    background-color: #f8f8f8;
-    //border: 0.125rem solid #ccc;
+    background-color: var.$background-lightGrey;
+    border-radius: 13px;
+    margin: 1rem 0.5rem;
+    padding: 0 1rem;
 
     &-title {
-        color:#af4657;
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #af4657;
         text-align: center;
+        padding: 0.5rem 0;
     }
+
     &-card {
         display: flex;
         flex-direction: column;
         gap: 15px;
     }
 }
-  //------------------ Passage format Tablette  ------------------------
+
+//------------------ Passage format Tablette  ------------------------
 @media (min-width: 700px) {
-    .contactsPage{
+    .contactsPage {
         &-card {
-        display: flex;
-        flex-direction: row;
-        gap: 15px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 15px;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    .contactsPage {
+        margin: 1rem auto;
+
+        &-card {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            gap: 15px;
         }
     }
 }
@@ -38,18 +60,18 @@
     gap: 1rem;
     cursor: pointer;
 
-
     &-img {
         border-radius: 10px;
         aspect-ratio: 1 / 1;
         width: 10%;
         height: 10%;
     }
+
     &-pseudo {
         font-size: medium;
         font-weight: bold;
     }
-    
+
     &-content {
         display: none;
     }
