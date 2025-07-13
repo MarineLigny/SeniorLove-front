@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-
 import { Link, useParams, useNavigate } from 'react-router-dom';
 import type IUsers from "../../@types/users";
 import UpdateEvent from "../../components/updateEvent";
@@ -28,6 +27,7 @@ export default function EventPage() {
 
   const [event, setEvent] = useState<EventType | null>(null);
   const [openUpdateEvent, setOpenUpdateEvent] = useState(false);
+  const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
 
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string>("");
@@ -45,6 +45,7 @@ export default function EventPage() {
   const userId = localStorage.getItem("user_id"); // récupération de l'id via le token
   const isRegistered = event?.users?.some(user => user.id.toString() === userId); // vérification= pour chaque user dans event.users, on vérifie si son id est égal à userId
   const storedToken = localStorage.getItem("token"); // récupération du token
+  const isAdmin = currentUser?.role === 'admin'; // vérification du rôle admin
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -168,6 +169,26 @@ export default function EventPage() {
       });
   }, [id, storedToken]);
 
+  // useEffect pour récupérer les infos de l'utilisateur connecté
+  useEffect(() => {
+    if (!storedToken) return;
+
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get("http://localhost:3000/myprofile", {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+          }
+        });
+        setCurrentUser(response.data);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, [storedToken]);
+
   if (loading) return <Loader />;
   if (error) return <p>{error}</p>;
   if (!event) return <p>Aucun événement trouvé</p>;
@@ -175,9 +196,9 @@ export default function EventPage() {
 
 
   return (
-    <div>
+    <div className="content">
       <div className="eventPage">
-        <article className="event middleOfPage">
+        <article className="event">
           <img className="articlepict" src={event.picture} alt={event.name} />
           <h2>{event.name}</h2>
           <p className="particle">{event.description}</p>
@@ -204,9 +225,9 @@ export default function EventPage() {
         </article>
       </div>
 
-      {storedToken && (
+      {storedToken && isAdmin && (
         <>
-          <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          <div className="admin-buttons">
             <button
               type="button"
               className="btnarticle btnAdminPage"
@@ -297,6 +318,14 @@ export default function EventPage() {
                 name="picture"
                 placeholder="URL de l'image"
                 value={formData.picture}
+                onChange={handleChange}
+                required
+              />
+              <input
+                type="text"
+                name="localisation.city"
+                placeholder="Ville"
+                value={formData.localisation.city ?? ""}
                 onChange={handleChange}
                 required
               />

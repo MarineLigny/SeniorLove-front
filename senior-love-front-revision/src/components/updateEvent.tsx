@@ -24,7 +24,10 @@ type Props = {
 };
 
 const UpdateEvent = ({ event, onUpdate }: Props) => {
-  const [formData, setFormData] = useState<EventType>(event);
+  const [formData, setFormData] = useState<EventType>({
+    ...event,
+    localisation: event.localisation || { city: "" } // Valeur par défaut si null
+  });
   const { pending } = useFormStatus();
   const { id } = useParams<{ id: string }>();
 
@@ -41,6 +44,17 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
     if (name === "disponibility") { newValue = value === "true"; }
     // Si c'est le champ "date", on s'assure que la valeur reste bien une string au bon format
     if (name === "date") { newValue = new Date(value); }
+    // Si c'est le champ "localisation.city", on met à jour la ville dans l'objet localisation
+    if (name === "localisation.city") {
+      setFormData(prev => ({
+        ...prev,
+        localisation: {
+          ...prev.localisation,
+          city: value
+        }
+      }));
+      return;
+    }
 
     // On met à jour formData avec la nouvelle valeur
     setFormData(prev => ({
@@ -49,23 +63,6 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
     }));
   };
 
-  //--------------- changement de la localisation -------------------------
-  /*const handleLocalisationChange = useCallback(
-    (e: React.ChangeEvent<HTMLInputElement>) => {
-      const inputValue = e.target.value;
-
-      const matchedLoc =
-        localisations.find(
-          (loc) => loc.city.toLowerCase() === inputValue.toLowerCase()
-        ) ?? { city: inputValue };
-
-      setFormData((prev) => ({
-        ...prev,
-        localisation: matchedLoc,
-      }));
-    },
-    [localisations]
-  );*/
 
   //------------- envoyer une requête PATCH vers ton backend afin de modifier un événement existant--------------
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -95,7 +92,7 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
         availability: availabilityInt, // assure que c’est bien un nombre
         disponibility: formData.disponibility === true, // assure que c’est un booléen
         picture: formData.picture,
-        //localisation: formData.localisation, // a changer quand recup 
+        localisation: formData.localisation, // a changer quand recup 
       };
 
       console.log("Payload envoyé :", updatedFormData);
@@ -177,6 +174,14 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
         placeholder="URL de l'image"
         value={formData.picture}
         onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="localisation.city"
+        placeholder="Ville"
+        value={formData.localisation.city ?? ""}
+        onChange={handleChange}
+        required
       />
 
       <button type="submit" disabled={pending}>

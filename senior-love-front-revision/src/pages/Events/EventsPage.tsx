@@ -51,8 +51,8 @@ export default function EventsPage() {
 	if (error) return <p>{error}</p>;
 
 	return (
-		<div>
-			<div className="allevents content">
+		<div className="content">
+			<div className="allevents">
 				<section className="title">
 					<h1>Evenements</h1>
 				</section>
