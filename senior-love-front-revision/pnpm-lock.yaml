@@ -46,7 +46,7 @@ importers:
         specifier: ^4.6.0
         version: 4.6.0(vite@7.0.4(sass@1.89.2))
       eslint:
-        specifier: ^9.30.1
+        specifier: ^9.31.0
         version: 9.31.0
       eslint-plugin-react:
         specifier: ^7.37.5
