@@ -51,14 +51,25 @@ export default function EventPage() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type } = e.target;
 
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "number"
-        ? Number(value)
-        : name === "disponibility"
-          ? value === "true"
-          : value,
-    }));
+    if (name === "localisation.city") {
+      setFormData((prev) => ({
+        ...prev,
+        localisation: {
+          ...prev.localisation,
+          city: value
+        }
+      }));
+    } else {
+      setFormData((prev) => ({
+        ...prev,
+        [name]:
+          type === "number"
+            ? Number(value)
+            : name === "disponibility"
+              ? value === "true"
+              : value,
+      }));
+    }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -69,13 +80,30 @@ export default function EventPage() {
     }
 
     try {
-      await axios.post("http://localhost:3000/event/form", formData, {
+      const payload = {
+        name: formData.name,
+        date: formData.date,
+        description: formData.description,
+        availability: Number(formData.availability),
+        disponibility: formData.disponibility,
+        picture: formData.picture,
+        city: formData.localisation.city, // Extraire city ici
+        activities: [], // Si tu as des activités à ajouter, sinon laisse vide
+      };
+      console.log("Payload envoyé :", payload); // Pour débugger
+
+      await axios.post("http://localhost:3000/event/form", payload, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
+          "Content-Type": "application/json",
         },
       });
 
       alert("Événement créé avec succès !");
+
+      await refreshEvent(); // Rafraîchir les données de l'événement
+
+      // Réinitialiser le formulaire
       setFormData({
         name: "",
         date: "",
@@ -86,8 +114,13 @@ export default function EventPage() {
         localisation: { city: "" },
         users: [],
       });
-    } catch (error) {
-      alert("Erreur lors de la création de l’événement");
+    } catch (error: any) {
+      console.error("Erreur lors de la création :", error);
+      if (error.response) {
+        console.log("Status:", error.response.status);
+        console.log("Data:", error.response.data);
+      }
+      alert("Erreur lors de la création de l'événement");
     }
   };
   //----------------------------Fonction pour rafraichir les données modifiées ---------------------//
@@ -96,6 +129,7 @@ export default function EventPage() {
       const response = await axios.get(`http://localhost:3000/events/${id}`, {
         headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
       });
+      console.log("Données rafraîchies :", response.data);
       setEvent(response.data);
     } catch (error) {
       console.error("Erreur lors du rafraîchissement de l'événement :", error);
@@ -327,7 +361,6 @@ export default function EventPage() {
                 placeholder="Ville"
                 value={formData.localisation.city ?? ""}
                 onChange={handleChange}
-                required
               />
               <button type="submit">Valider</button>
             </form>

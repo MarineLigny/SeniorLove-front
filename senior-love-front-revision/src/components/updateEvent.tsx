@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { act, useState } from "react";
 //import type IEvent from "../@types/events";
 import axios from "axios";
 import { useFormStatus } from "react-dom";
@@ -92,11 +92,12 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
         availability: availabilityInt, // assure que c’est bien un nombre
         disponibility: formData.disponibility === true, // assure que c’est un booléen
         picture: formData.picture,
-        localisation: formData.localisation, // a changer quand recup 
+        city: formData.localisation.city, // a changer quand recup ok 
+        activities: [], // Si tu as des activités à ajouter, sinon laisse vide
       };
 
       console.log("Payload envoyé :", updatedFormData);
-      console.log("id recupéré", { id });
+      //console.log("id recupéré", { id });
       const response = await axios.patch(
         `http://localhost:3000/events/${id}`,
         updatedFormData,
@@ -181,7 +182,6 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
         placeholder="Ville"
         value={formData.localisation.city ?? ""}
         onChange={handleChange}
-        required
       />
 
       <button type="submit" disabled={pending}>
