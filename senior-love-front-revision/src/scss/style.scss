@@ -10,16 +10,16 @@
 @use "./elements/searchBar.scss";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
-@use '../pages/HomePage/Homepage'; // -> fait
-@use '../pages/Events/EventsPage';
-@use '../pages/MyProfile/ProfilPage';
-@use '../pages/ProfilViewers/ProfilPageViewer';
-@use '../pages/Meet/MeetPage'; // -> fait
-@use '../pages/Conversation/ConversationPage';
-@use '../pages/Event/EventPage';
+@use '../pages/HomePage/Homepage.scss'; // -> fait
+@use '../pages/Events/EventsPage.scss';
+@use '../pages/MyProfile/ProfilPage.scss';
+@use '../pages/ProfilViewers/ProfilPageViewer.scss';
+@use '../pages/Meet/MeetPage.scss'; // -> fait
+@use '../pages/Conversation/ConversationPage.scss';
+@use '../pages/Event/EventPage.scss';
 @use '../pages/Meet-Profils/MyMessagePage';
 
 h1 {
-  font-weight: bold;
-  font-size: 2rem;
+   font-weight: bold;
+   font-size: 2rem;
 }
