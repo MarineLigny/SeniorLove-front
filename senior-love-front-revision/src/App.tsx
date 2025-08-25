@@ -20,6 +20,7 @@ import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import type IUsers from './@types/users';
 import axios from 'axios';
+import { Analytics } from '@vercel/analytics/react';
 
 
 
@@ -41,7 +42,7 @@ function App() {
       // récupération des infos de l'utilisateur connecté
       const fetchUser = async () => {
          try {
-            const response = await axios.get("http://localhost:3000/myprofile", {
+            const response = await axios.get("https://seniorlove.up.railway.app/myprofile", {
                headers: {
                   Authorization: `Bearer ${token}`,
                }
@@ -80,6 +81,7 @@ function App() {
 
    return (
       <>
+         <Analytics />
          <NavBar
             isLoggedIn={isLoggedIn}
             onLoginClick={() => setShowLoginModal(true)}

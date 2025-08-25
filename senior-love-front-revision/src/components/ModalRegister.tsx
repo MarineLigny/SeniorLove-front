@@ -39,7 +39,7 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
       }
 
       try {
-         await axios.post("http://localhost:3000/register", {
+         await axios.post("https://seniorlove.up.railway.app/register", {
             pseudo: formData.pseudo,
             birth_date: formData.birth_date,
             email: formData.email,

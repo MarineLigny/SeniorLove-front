@@ -22,7 +22,7 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
       }
 
       try {
-         const response = await axios.post("http://localhost:3000/login", {
+         const response = await axios.post("https://seniorlove.up.railway.app/login", {
             email,
             password,
          });
