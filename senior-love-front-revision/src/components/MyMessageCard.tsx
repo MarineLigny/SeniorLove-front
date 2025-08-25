@@ -17,7 +17,7 @@ export default function MyMessageCard({ user }: UserMessageCardProps) {
          </Link>
 
          {user.profile_picture ?
-            <img className="user-card-img" src={`https://seniorlove.up.railway.app/${user.profile_picture}`} alt={`${user.pseudo}'s profile`} />
+            <img className="user-card-img" src={`https://seniorlove.up.railway.app${user.profile_picture}`} alt={`${user.pseudo}'s profile`} />
             : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} />}
 
          <div className="user-card-text">

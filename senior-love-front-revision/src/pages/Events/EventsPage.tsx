@@ -18,7 +18,7 @@ export default function EventsPage() {
       const getEvents = async () => {
          try {
             const response = await axios.get(
-               "https://seniorlove.up.railway.appevents",
+               "https://seniorlove.up.railway.app/events",
                {
                   headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
                }
@@ -41,7 +41,7 @@ export default function EventsPage() {
 
          try {
             const response = await axios.get(
-               "https://seniorlove.up.railway.appmyprofile",
+               "https://seniorlove.up.railway.app/myprofile",
                {
                   headers: {
                      Authorization: `Bearer ${storedToken}`,

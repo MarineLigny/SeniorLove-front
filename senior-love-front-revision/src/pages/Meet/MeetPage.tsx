@@ -13,7 +13,7 @@ export default function MeetPage() {
       const getUsers = async () => {
          try {
             const response = await axios.get(
-               "https://seniorlove.up.railway.appmeet",
+               "https://seniorlove.up.railway.app/meet",
                {
                   headers: {
                      Authorization: `Bearer ${storedToken}`,

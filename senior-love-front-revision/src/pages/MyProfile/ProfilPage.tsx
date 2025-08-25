@@ -88,7 +88,7 @@ export default function ProfilePage() {
    useEffect(() => {
       const getUser = async () => {
          try {
-            const response = await axios.get("https://seniorlove.up.railway.appmyprofile", {
+            const response = await axios.get("https://seniorlove.up.railway.app/myprofile", {
                headers: {
                   Authorization: `Bearer ${storedToken}`,
                }
@@ -130,7 +130,7 @@ export default function ProfilePage() {
             interest: interets
          };
 
-         const response = await axios.patch("https://seniorlove.up.railway.appmyprofile", updatedData, {
+         const response = await axios.patch("https://seniorlove.up.railway.app/myprofile", updatedData, {
             headers: {
                Authorization: `Bearer ${storedToken}`,
                'Content-Type': 'application/json',
@@ -162,7 +162,7 @@ export default function ProfilePage() {
 
       try {
          const response = await axios.patch(
-            "https://seniorlove.up.railway.appmyprofile",
+            "https://seniorlove.up.railway.app/myprofile",
             formData,
             {
                headers: {
@@ -196,7 +196,7 @@ export default function ProfilePage() {
             <div className="profile_photo">
                <img
                   className="articlePictMeet"
-                  src={previewImage || `https://seniorlove.up.railway.app/${profile_picture}`} //<--- il manque pas un / apress cloud???
+                  src={previewImage || `https://seniorlove.up.railway.app${profile_picture}`}
                   alt={pseudo}
                />
                <div className='profile-buttons'>

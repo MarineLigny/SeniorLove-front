@@ -149,7 +149,7 @@ export default function EventPage() {
       }
 
       try {
-         await axios.post(`https://seniorlove.up.railway.appevents/${id}`, {
+         await axios.post(`https://seniorlove.up.railway.app/events/${id}`, {
             user_id: userId
          }, //envoi de l'id 
             {
@@ -174,7 +174,7 @@ export default function EventPage() {
       if (!confirmDelete) return;
 
       try {
-         await axios.delete(`https://seniorlove.up.railway.appevents/${id}`, {
+         await axios.delete(`https://seniorlove.up.railway.app/events/${id}`, {
             headers: {
                Authorization: `Bearer ${storedToken}`,
             },
@@ -188,7 +188,7 @@ export default function EventPage() {
    };
 
    useEffect(() => {
-      axios.get(`https://seniorlove.up.railway.appevents/${id}`, {
+      axios.get(`https://seniorlove.up.railway.app/events/${id}`, {
          headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
       })
          .then(response => {
@@ -209,7 +209,7 @@ export default function EventPage() {
 
       const fetchUser = async () => {
          try {
-            const response = await axios.get("https://seniorlove.up.railway.appmyprofile", {
+            const response = await axios.get("https://seniorlove.up.railway.app/myprofile", {
                headers: {
                   Authorization: `Bearer ${storedToken}`,
                }

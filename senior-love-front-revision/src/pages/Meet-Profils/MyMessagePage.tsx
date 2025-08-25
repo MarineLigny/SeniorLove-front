@@ -15,7 +15,7 @@ export default function MyMessagePage() {
       const getContacts = async () => {
          try {
             //appel de la route en api pour récupérer les info, via axios
-            const response = await axios.get("https://seniorlove.up.railway.appmessaging",
+            const response = await axios.get("https://seniorlove.up.railway.app/messaging",
                {
                   headers: {
                      Authorization: `Bearer ${storedToken}`,
