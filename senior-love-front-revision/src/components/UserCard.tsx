@@ -7,9 +7,6 @@ interface UserCardProps {
 }
 
 export default function UserCard({ user }: UserCardProps) {
-    //console.log(user.localisation.city)
-    //console.log(user);
-    //console.log(user.profile_picture);
     return (
         <article className="user-card">
             <Link className="messageBtn" to={`/message/${user.id}`}>
@@ -17,8 +14,12 @@ export default function UserCard({ user }: UserCardProps) {
             </Link>
 
             {user.profile_picture ?
-                <img className="user-card-img" src={`http://localhost:3000${user.profile_picture}`} alt={`${user.pseudo}'s profile`} />
-                : <img className="user-card-img avatar" src="/img/avatar3.png" alt={`${user.pseudo}'s profile`} />}
+                <img className="user-card-img" 
+                src={`http://localhost:3000${user.profile_picture}`} 
+                alt={`${user.pseudo}'s profile`} />
+                : <img className="user-card-img avatar" 
+                src="/img/avatar3.png" 
+                alt={`${user.pseudo}'s profile`} />}
 
             <div className="user-card-text">
                 <h2 className="user-card-title">{user.pseudo}</h2>

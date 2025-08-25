@@ -11,13 +11,12 @@ export default function EventCard({ event }: Props){
             <article className="event ">
             <Link to={`/event/${event.id}`}>
                 <img
-                    className="articlepict"
+                    className="event-picture"
                     src={event.picture || "/img/default.jpg"}
                     alt={event.name}
                 />
 
                 <h2>{event.name} - {event?.localisation?.city}</h2>
-                {/*<p className="particle-event">{event.description}</p>*/}
 
                 <button type="button" className="btnarticle">Voir Plus</button>
             </Link>
@@ -25,3 +24,4 @@ export default function EventCard({ event }: Props){
         
     );
 };
+

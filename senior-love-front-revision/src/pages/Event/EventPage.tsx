@@ -233,7 +233,7 @@ export default function EventPage() {
     <div className="content">
       <div className="eventPage">
         <article className="event">
-          <img className="articlepict" src={event.picture} alt={event.name} />
+          <img className="event-picture" src={event.picture} alt={event.name} />
           <h2>{event.name}</h2>
           <p className="particle">{event.description}</p>
           {event.localisation?.city && (

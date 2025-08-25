@@ -11,41 +11,51 @@ export default function EventsPage() {
 	const [loading, setLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string>("");
 	const [userData, setUserData] = useState<IUsers | null>(null);
-	//console.log(userData);
 	const storedToken = localStorage.getItem("token");
 
-	//On fetch tous les evenements 
-	useEffect(() => {
-		axios
-			.get("http://localhost:3000/events", {
-				headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
-			})
-			.then((response) => {
-				setEvents(response.data);
-				setLoading(false);
-			})
-			.catch(() => {
-				setError("Une erreur est survenue");
-				setLoading(false);
-			});
-	}, [storedToken]);
+	// Premier useEffect pour récupérer tous les événements
+    useEffect(() => {
+        const getEvents = async () => {
+            try {
+                const response = await axios.get(
+                    "http://localhost:3000/events",
+                    {
+                        headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
+                    }
+                );
+                setEvents(response.data);
+                setLoading(false);
+            } catch (error) {
+                console.error("Erreur lors de la récupération des événements :", error);
+                setError("Une erreur est survenue");
+                setLoading(false);
+            }
+        };
+        getEvents();
+    }, [storedToken]);
 
-
-	//On fetch pour récupérer mon profil afin d'afficher mes evenements
-	useEffect(() => {
-		if (!storedToken) return;
-
-		axios
-			.get("http://localhost:3000/myprofile", {
-				headers: { Authorization: `Bearer ${storedToken}` },
-			})
-			.then((response) => {
-				setUserData(response.data);
-			})
-			.catch(() => {
-				setError("Impossible de charger les données utilisateur.");
-			});
-	}, [storedToken]);
+    // Deuxième useEffect pour récupérer le profil utilisateur
+    useEffect(() => {
+        const getUserProfile = async () => {
+            if (!storedToken) return;
+            
+            try {
+                const response = await axios.get(
+                    "http://localhost:3000/myprofile",
+                    {
+                        headers: {
+                            Authorization: `Bearer ${storedToken}`,
+                        },
+                    }
+                );
+                setUserData(response.data);
+            } catch (error) {
+                console.error("Erreur lors de la récupération du profil utilisateur :", error);
+                setError("Impossible de charger les données utilisateur.");
+            }
+        };
+        getUserProfile();
+    }, [storedToken]);
 
 	if (loading) return <p>Chargement...</p>;
 	if (error) return <p>{error}</p>;
@@ -54,7 +64,7 @@ export default function EventsPage() {
 		<div className="content">
 			<div className="allevents">
 				<section className="title">
-					<h1>Evenements</h1>
+					<h1>Événements</h1>
 				</section>
 
 				<section className="events">
@@ -65,13 +75,11 @@ export default function EventsPage() {
 			</div>
 
 			<div className="allevents">
-				<section className="title">
-					<h1> Mes evenements</h1>
-				</section>
+				<h1> Mes événements</h1>
 				<section className="events">
 					{userData?.events?.length ? (
 						userData.events.map((event: IEvent) => (
-							<MyEventCard key={event.id} event={event} />
+						<MyEventCard key={event.id} event={event} />
 						))
 					) : (
 						<p className="events-empty">Aucun événement pour le moment.</p>
@@ -81,3 +89,5 @@ export default function EventsPage() {
 		</div>
 	);
 }
+
+

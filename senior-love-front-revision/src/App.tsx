@@ -24,113 +24,113 @@ import axios from 'axios';
 
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
-  const [showLoginModal, setShowLoginModal] = useState(false);
-  const [showRegisterModal, setShowRegisterModal] = useState(false);
-  const navigate = useNavigate();
+   const [isLoggedIn, setIsLoggedIn] = useState(false);
+   const [currentUser, setCurrentUser] = useState<IUsers | null>(null);
+   const [showLoginModal, setShowLoginModal] = useState(false);
+   const [showRegisterModal, setShowRegisterModal] = useState(false);
+   const navigate = useNavigate();
 
-  // verifier la présence d'un Token au chargement de la page et récupération des infos du user(pour voir si isAdmin)
-  useEffect(() => {
-    const token = localStorage.getItem("token");
+   // verifier la présence d'un Token au chargement de la page et récupération des infos du user(pour voir si isAdmin)
+   useEffect(() => {
+      const token = localStorage.getItem("token");
 
-    if (!token) return;
+      if (!token) return;
 
-    setIsLoggedIn(true);
+      setIsLoggedIn(true);
 
-    // récupération des infos de l'utilisateur connecté
-    const fetchUser = async () => {
-      try {
-        const response = await axios.get("http://localhost:3000/myprofile", {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        });
-        setCurrentUser(response.data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-        setIsLoggedIn(false);
-        setCurrentUser(null);
-        localStorage.removeItem("token");
-      }
-    };
+      // récupération des infos de l'utilisateur connecté
+      const fetchUser = async () => {
+         try {
+            const response = await axios.get("http://localhost:3000/myprofile", {
+               headers: {
+                  Authorization: `Bearer ${token}`,
+               }
+            });
+            setCurrentUser(response.data);
+         } catch (error) {
+            console.error("Error fetching user data:", error);
+            setIsLoggedIn(false);
+            setCurrentUser(null);
+            localStorage.removeItem("token");
+         }
+      };
 
-    fetchUser();
-  }, []);
+      fetchUser();
+   }, []);
 
-  //modal de connexion ok, passage à True
-  const handleLoginSuccess = () => {
-    setIsLoggedIn(true);
-    setShowLoginModal(false);
-  };
+   //modal de connexion ok, passage à True
+   const handleLoginSuccess = () => {
+      setIsLoggedIn(true);
+      setShowLoginModal(false);
+   };
 
-  //modal de creation de compte ok
-  const handleRegisterSuccess = () => {
-    // Optionnel : tu peux connecter automatiquement après inscription
-    setShowRegisterModal(false);
-  };
+   //modal de creation de compte ok
+   const handleRegisterSuccess = () => {
+      // Optionnel : tu peux connecter automatiquement après inscription
+      setShowRegisterModal(false);
+   };
 
-  //si déconnexion
-  const handleLogout = () => {
-    setIsLoggedIn(false);
-    localStorage.removeItem('token');
-    navigate("/"); // redirection vers page d'accueil />
-  };
+   //si déconnexion
+   const handleLogout = () => {
+      setIsLoggedIn(false);
+      localStorage.removeItem('token');
+      navigate("/"); // redirection vers page d'accueil />
+   };
 
 
-  return (
-    <>
-      <NavBar
-        isLoggedIn={isLoggedIn}
-        onLoginClick={() => setShowLoginModal(true)}
-        onLogoutClick={handleLogout}
-        currentUser={currentUser}
-      />
+   return (
+      <>
+         <NavBar
+            isLoggedIn={isLoggedIn}
+            onLoginClick={() => setShowLoginModal(true)}
+            onLogoutClick={handleLogout}
+            currentUser={currentUser}
+         />
 
-      <main>
-        <Routes>
-          <Route path="/" element={<HomePage onRegisterSuccess={() => setIsLoggedIn(true)} />} />
-          <Route path="/event" element={<EventsPage />} />
-          <Route path="/event/:id" element={<EventPage />} />
-          <Route path="/profile" element={<ProfilePage />} />
-          <Route path="/profile/:pseudo" element={<ProfilPageViewer />} />
-          <Route path="/meet" element={<MeetPage />} />
-          <Route path="/mymessage" element={<MyMessagePage />} />
-          <Route path="/message/:contactId" element={<ConversationPage />} />
-          <Route path="/confidentiality" element={<Confidentiality />} />
-          <Route path="/dashboard"
-            element={currentUser && currentUser.role === 'admin'
-              ? <Dashboard />
-              : <NotFoundPage />
-            } />
-          <Route path="*" element={<NotFoundPage />} />
+         <main>
+            <Routes>
+               <Route path="/" element={<HomePage onRegisterSuccess={() => setIsLoggedIn(true)} />} />
+               <Route path="/event" element={<EventsPage />} />
+               <Route path="/event/:id" element={<EventPage />} />
+               <Route path="/profile" element={<ProfilePage />} />
+               <Route path="/profile/:pseudo" element={<ProfilPageViewer />} />
+               <Route path="/meet" element={<MeetPage />} />
+               <Route path="/mymessage" element={<MyMessagePage />} />
+               <Route path="/message/:contactId" element={<ConversationPage />} />
+               <Route path="/confidentiality" element={<Confidentiality />} />
+               <Route path="/dashboard"
+                  element={currentUser && currentUser.role === 'admin'
+                     ? <Dashboard />
+                     : <NotFoundPage />
+                  } />
+               <Route path="*" element={<NotFoundPage />} />
 
-        </Routes>
-      </main>
+            </Routes>
+         </main>
 
-      <Footer />
+         <Footer />
 
-      {/*-------------- Modal de connexion ------------------- */}
-      {showLoginModal && (
-        <ModalLogin
-          onClose={() => setShowLoginModal(false)}
-          onLoginSuccess={handleLoginSuccess}
-          onRegisterClick={() => {
-            setShowLoginModal(false);
-            setShowRegisterModal(true);
-          }}
-        />
-      )}
+         {/*-------------- Modal de connexion ------------------- */}
+         {showLoginModal && (
+            <ModalLogin
+               onClose={() => setShowLoginModal(false)}
+               onLoginSuccess={handleLoginSuccess}
+               onRegisterClick={() => {
+                  setShowLoginModal(false);
+                  setShowRegisterModal(true);
+               }}
+            />
+         )}
 
-      {/* ---------------- Modal d'inscription -------------------- */}
-      {showRegisterModal && (
-        <ModalRegister
-          onClose={() => setShowRegisterModal(false)}
-          onRegisterSuccess={handleRegisterSuccess}
-        />
-      )}
-    </>
-  )
+         {/* ---------------- Modal d'inscription -------------------- */}
+         {showRegisterModal && (
+            <ModalRegister
+               onClose={() => setShowRegisterModal(false)}
+               onRegisterSuccess={handleRegisterSuccess}
+            />
+         )}
+      </>
+   )
 };
 
 export default App

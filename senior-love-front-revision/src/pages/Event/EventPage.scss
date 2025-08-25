@@ -18,7 +18,7 @@
   margin-top: 1rem;
 }
 
-.articlepict {
+.event-picture {
   width: 100%;
   object-fit: cover;
   border-top-left-radius: 1rem;
@@ -26,6 +26,10 @@
   height: 16rem;
 }
 
+h2 {
+  font-size: 1.5rem;
+  margin: 0.5rem 0;
+}
 .btnarticle {
   font-size: 1rem;
   font-weight: 700;
@@ -33,9 +37,10 @@
   border-radius: 5px;
   border: #ffffff;
   color: #fff;
-  padding: 1em;
+  padding-inline: 1rem;
   padding-top: 0.5em;
   padding-bottom: 0.5em;
+  margin-top: 1em;
   cursor: pointer;
 }
 
@@ -77,12 +82,12 @@
     width: 40%;
   }
 
-  .articlepict {
+  .event-picture {
     height: 20rem;
   }
 
   .btnarticle {
-    margin-top: 2em;
+    margin-top: 1em;
     height: 2rem;
   }
 }
