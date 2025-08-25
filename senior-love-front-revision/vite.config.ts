@@ -3,12 +3,13 @@ import react from '@vitejs/plugin-react'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData:` @use "/src/scss/base/variable" as * ;`,
+   plugins: [react()],
+   base: "/",
+   css: {
+      preprocessorOptions: {
+         scss: {
+            additionalData: ` @use "/src/scss/base/variable" as * ;`,
+         },
       },
-    },
-  },
+   },
 });
