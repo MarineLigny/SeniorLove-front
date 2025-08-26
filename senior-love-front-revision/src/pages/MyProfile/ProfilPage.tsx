@@ -231,10 +231,10 @@ export default function ProfilePage() {
                   Genre
                   <select className='profile-form-input' value={gender} onChange={(e) => setGender(e.target.value)} disabled={isSaving}>
                      <option value="">Choisir un genre</option>
-                     <option value="male">Homme</option>
-                     <option value="female">Femme</option>
-                     <option value="not-gendered">Non-genré</option>
-                     <option value="other">Autre</option>
+                     <option value="homme">Homme</option>
+                     <option value="femme">Femme</option>
+                     <option value="non-genré">Non-genré</option>
+                     <option value="autre">Autre</option>
                   </select>
                </label>
                <button className='btn-validate' type='button' onClick={handleSave} disabled={isSaving}>Valider les modifications</button>

@@ -1,91 +1,92 @@
-
 import axios from 'axios';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
 import UserCard from './UserCard';
 
 
-
 export default function FilterBar() {
-   const [input, setInput] = useState("");
-   const storedToken = localStorage.getItem("token");
+   const [search, setSearch] = useState("");
    const [results, setResults] = useState([]);
-   const [categories, setCategories] = useState("");
+   const [gender, setGender] = useState("");
 
-   const inputData = async (localisation: string) => {
+   const storedToken = localStorage.getItem("token");
+
+   async function handleSearch(formData: FormData) {
+      const localisation = formData.get("search") as string;
+      const selectedGender = formData.get("gender") as string;
+
+      setSearch(localisation);
+      setGender(selectedGender);
+
       try {
-         const response = await axios.get(
-            "https://seniorlove.up.railway.app/meet",
-            {
-               headers: {
-                  Authorization: `Bearer ${storedToken}`,
-               },
-               params: {
-                  localisation, // ← sera transmis en ?localisation=...
-               },
+         const response = await axios.get("https://seniorlove.up.railway.app/meet", {
+            headers: {
+               Authorization: `Bearer ${storedToken}`,
             },
-         );
-         console.log(response.data)
+            params: {
+               localisation,
+               gender: selectedGender,
+            },
+         });
          setResults(response.data);
+         console.log(response.data);
       } catch (error) {
-         console.log(error);
+         console.error(error);
       }
-   };
-
-   const handleInputChange = (value: string) => {
-      setInput(value);
-   };
-
-   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-      event.preventDefault();
-      inputData(input);
-      console.log("Recherche envoyée avec :", input, "et catégorie :", categories);
-   };
+   }
 
    return (
       <div>
          <div className="searchbar container">
-            <form action="" className='searchbar-form' onSubmit={handleSubmit}>
+            <form action={handleSearch} className="searchbar-form">
                <div className='searchbar-input'>
                   <Search />
                   <input
                      className="searchbar-input-text"
                      type="search"
-                     value={input}
-                     onChange={(e) => handleInputChange(e.target.value)}
                      name="search"
-                     placeholder="Recherche par mots clés" />
+                     placeholder="Recherche par ville"
+                  />
                </div>
 
                <select
                   className="category"
-                  name="category"
-                  id="category"
-                  value={categories}
-                  onChange={(e) => setCategories(e.target.value)}
+                  name="gender"
+                  id="gender"
+                  defaultValue=""
                >
-                  <option value="" disabled selected hidden>categories</option>
-                  <option value="sport">Sport</option>
-                  <option value="musique">Musique</option>
-                  <option value="jeux">Jeux</option>
-                  <option value="loisirs">Loisirs</option>
+                  <option value="" disabled hidden>
+                     Sélectionnez un genre
+                  </option>
+                  <option value="homme">Homme</option>
+                  <option value="femme">Femme</option>
+                  <option value="non_genré">Non-genré</option>
+                  <option value="autre">Autre</option>
+
                </select>
+               <button className="searchbar-button" type="submit">Rechercher</button>
             </form>
          </div>
 
+         {(search || gender) && (
+            <div className="meet-container">
+               <section className="meet-container-title">
+                  {results &&
+                     <h1 className='meet-container-title'>
+                        Résultats pour '{search}' '{gender}'
+                     </h1>
+                  }
+                  {!results.length && <h1 className='meet-container-title'>Aucun résultat trouvé</h1>}
+               </section>
+               <section className="meets">
+                  {results.map((user, index) => (
 
-         <div className="meet-container">
-            <section className="meet-container-title">
-               <h1>Résultat de la recherche pour '{input}'</h1>
-            </section>
-            <section className="meets">
-               {results.map((user, index) => (
+                     <UserCard key={index} user={user} />
 
-                  <UserCard key={index} user={user} />
-
-               ))}
-            </section>
-         </div>
+                  ))}
+               </section>
+            </div>
+         )}
       </div>
    );
 };
