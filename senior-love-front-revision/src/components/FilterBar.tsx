@@ -29,6 +29,7 @@ export default function FilterBar() {
             },
          });
          setResults(response.data);
+         console.log(response.data);
       } catch (error) {
          console.error(error);
       }
@@ -61,15 +62,20 @@ export default function FilterBar() {
                   <option value="femme">Femme</option>
                   <option value="non_genré">Non-genré</option>
                   <option value="autre">Autre</option>
+
                </select>
+               <button className="searchbar-button" type="submit">Rechercher</button>
             </form>
          </div>
 
-
-         {search && (
+         {(search || gender) && (
             <div className="meet-container">
                <section className="meet-container-title">
-                  {search && <h1 className='meet-container-title'>Résultat de la recherche pour '{search}'</h1>}
+                  {results &&
+                     <h1 className='meet-container-title'>
+                        Résultats pour '{search}' '{gender}'
+                     </h1>
+                  }
                   {!results.length && <h1 className='meet-container-title'>Aucun résultat trouvé</h1>}
                </section>
                <section className="meets">
