@@ -1,47 +1,48 @@
 .searchbar {
-  background-color: #E8EBED;
-  border-radius: 13px;
-  padding: 1em;
-  margin-top: 0.3em;
+   background-color: #E8EBED;
+   border-radius: 13px;
+   padding: 1em;
+   margin-top: 0.3em;
 
-  &-form {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 1rem;
-    width: 100%;
-  }
-
-  &-input {
-    display: flex;
-    text-align: center;
-    gap: 0.5em;
-    background-color: white;
-    border-radius: 25px;
-    padding: 0.4rem 0.8rem;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    &-text {
+   &-form {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 1rem;
       width: 100%;
+   }
+
+   &-input {
+      display: flex;
+      text-align: center;
+      gap: 0.5em;
+      background-color: white;
+      border-radius: 25px;
+      padding: 0.4rem 0.8rem;
       border: none;
-      outline: none;
-      background-color: transparent;
-      color: rgb(153, 151, 151);
-      font-size: 1rem;
-    }
-  }
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      width: 100%;
+
+      &-text {
+         width: 100%;
+         border: none;
+         outline: none;
+         background-color: transparent;
+         color: rgb(153, 151, 151);
+         font-size: 1rem;
+      }
+   }
 
 }
+
 .category {
-  border: none;
-  border-radius: 10px;
-  padding: 0.5em;
-  background-color: white;
-  color: rgb(153, 151, 151);
+   border: none;
+   border-radius: 10px;
+   padding: 0.5em;
+   background-color: white;
+   color: rgb(153, 151, 151);
 
-  @media (min-width: 1024px) {
-    width: 15%;
-  }
+   @media (min-width: 1024px) {
+      width: 15%;
+   }
 }
-

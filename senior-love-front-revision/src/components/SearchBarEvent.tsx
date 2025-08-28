@@ -1,31 +1,31 @@
 import axios from 'axios';
 import { Search } from 'lucide-react';
 import { useState } from 'react';
-import UserCard from './UserCard';
+import EventCard from './EventCard';
 
 
-export default function FilterBar() {
+export default function SearchBar() {
    const [search, setSearch] = useState("");
    const [results, setResults] = useState([]);
-   const [gender, setGender] = useState("");
+   const [category, setCategory] = useState("");
 
    const storedToken = localStorage.getItem("token");
 
    async function handleSearch(formData: FormData) {
       const localisation = formData.get("search") as string;
-      const selectedGender = formData.get("gender") as string;
+      const category = formData.get("category") as string;
 
       setSearch(localisation);
-      setGender(selectedGender);
+      setCategory(category);
 
       try {
-         const response = await axios.get("https://seniorlove.up.railway.app/meet", {
+         const response = await axios.get("https://seniorlove.up.railway.app/events", {
             headers: {
                Authorization: `Bearer ${storedToken}`,
             },
             params: {
                localisation,
-               gender: selectedGender,
+               category,
             },
          });
          setResults(response.data);
@@ -51,37 +51,38 @@ export default function FilterBar() {
 
                <select
                   className="category"
-                  name="gender"
-                  id="gender"
+                  name="category"
+                  id="category"
                   defaultValue=""
                >
                   <option value="" disabled hidden>
-                     Sélectionnez un genre
+                     Sélectionnez une catégorie
                   </option>
-                  <option value="homme">Homme</option>
-                  <option value="femme">Femme</option>
-                  <option value="non_genré">Non-genré</option>
-                  <option value="autre">Autre</option>
+
+                  <option value="musique">Musique</option>
+                  <option value="sport">Sport</option>
+                  <option value="art">Art</option>
+                  <option value="technologie">Technologie</option>
 
                </select>
                <button className="searchbar-button" type="submit">Rechercher</button>
             </form>
          </div>
 
-         {(search || gender) && (
+         {(search || category) && (
             <div className="meet-container">
                <section className="meet-container-title">
                   {results &&
                      <h1 className='meet-container-title'>
-                        Résultats pour <strong>{search}</strong> <strong>{gender}</strong>
+                        Résultats pour <strong>{search}</strong> <strong>{category}</strong>
                      </h1>
                   }
                   {!results.length && <h1 className='meet-container-title'>Aucun résultat trouvé</h1>}
                </section>
                <section className="meets">
-                  {results.map((user, index) => (
+                  {results.map((event, index) => (
 
-                     <UserCard key={index} user={user} />
+                     <EventCard key={index} event={event} />
 
                   ))}
                </section>

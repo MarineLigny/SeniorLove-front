@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import type IUsers from "../../@types/users";
 import type IEvent from "../../@types/events";
+import SearchBar from "../../components/SearchBarEvent";
 
 export default function EventsPage() {
    const [events, setEvents] = useState<IEvent[]>([]);
@@ -62,6 +63,8 @@ export default function EventsPage() {
 
    return (
       <div className="content">
+         <SearchBar />
+
          <div className="allevents">
             <section className="title">
                <h1>Événements</h1>
