@@ -10,9 +10,6 @@ const Footer = () => {
                />
             </div>
             <div className="footer-right">
-               <a className="footer-link" href="#">
-                  Tester notre application
-               </a>
 
                <a className="footer-link" href="#">
                   Notre équipe
