@@ -1,106 +1,106 @@
 @use "../base/variable.scss" as var;
 // le bouton connexion se trouve dans btn.scss
 
- //----------------- format mobile first-----------------------
+//----------------- format mobile first-----------------------
 .Navbar {
-	background-color: var.$background-color;
-	padding: 5px;
-	border-bottom: 1px solid var.$border;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	flex-wrap: wrap;
+   background-color: var.$background-color;
+   padding: 5px;
+   border-bottom: 1px solid var.$border;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   flex-wrap: wrap;
+   position: relative; // Nécessaire pour le positionnement absolu du menu
 
-	&-logo--desktop {
-		display: block;
-		height: 45px;
-	}
+   &-logo--desktop {
+      display: block;
+      height: 45px;
+   }
 
-	&-burger {
-		display: block;
-		font-size: 1.5rem;
-		font-weight: bold;
-		background: none;
-		border: none;
-		cursor: pointer;
-		&:hover {
-			opacity: 0.3;
-		}
-	}
+   &-burger {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: none;
+      border: none;
+      cursor: pointer;
+   }
 }
-	// ----------------------------------//
+
+// ----------------------------------//
 nav {
-	display: none;
-	position: absolute;
-	top: 3.5rem;
-	left: 0;
-	width: 30%;
-	margin: 10px 0;
-	padding: 10px 20px;
-	background-color: var.$background-color;
-	border-top-right-radius: 0.5rem;
-	border-bottom-right-radius: 0.5rem;
+   display: none;
+   position: absolute;
+   top: 100%;
+   left: 0;
+   width: 30%;
+   margin: 0;
+   padding: 10px 20px;
+   background-color: var.$background-color;
+   border-top-right-radius: 0.5rem;
+   border-bottom-right-radius: 0.5rem;
 
-	flex-direction: column;
-	align-items: flex-start;
-	gap: 10px;
+   flex-direction: column;
+   align-items: flex-start;
+   gap: 10px;
 
-	box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
-	z-index: 1;
+   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+   z-index: 1;
 
-	&.menu-open {
-		display: flex;
-	}
-	//----------------------------------------//
-	.Nav-menu {
-		color: var.$primary-button-color;
-		font-weight: bold;
-		&:hover {
-			border-left: 5px solid #F09B7F;
-		}
-	}
+   &.menu-open {
+      display: flex;
+   }
+
+   //----------------------------------------//
+   .Nav-menu {
+      color: var.$primary-button-color;
+      font-weight: bold;
+
+      &:hover {
+         border-left: 5px solid #F09B7F;
+      }
+   }
 }
 
- //------------------ Passage format Tablette  ------------------------
+//------------------ Passage format Tablette  ------------------------
 
-@media (min-width: 700px) {
-	.Navbar {
-		flex-wrap: nowrap;
-		padding-inline: 30px;
+@media (min-width: 900px) {
+   .Navbar {
+      flex-wrap: nowrap;
+      padding-inline: 30px;
 
-		&-burger {
-			display: none;
-		}
-	}
+      &-burger {
+         display: none;
+      }
+   }
 
-	nav {
-		position: static;
-		display: flex;
-		flex-direction: row;
-		gap: 30px;
-		align-items: center;
+   nav {
+      position: static;
+      display: flex;
+      flex-direction: row;
+      gap: 30px;
+      align-items: center;
 
-		height: auto;
-		width: auto;
-		background: none;
-		padding: 0;
-		box-shadow: none;
-		
-		.Nav-menu {
-			&:hover {
-			border-left: none;
-			color: var.$hoover-button-color;
-		}
-		}
-	}
+      height: auto;
+      width: auto;
+      background: none;
+      padding: 0;
+      box-shadow: none;
+
+      .Nav-menu {
+         &:hover {
+            border-left: none;
+            color: var.$hoover-button-color;
+         }
+      }
+   }
 }
 
 //------------------ Passage format Ordinateur  ------------------------
 
-@media (min-width: 1100px) {
-	
-	nav {
-		gap: 7rem;
-	}
-}
+@media (min-width: 1250px) {
 
+   nav {
+      gap: 7rem;
+   }
+}

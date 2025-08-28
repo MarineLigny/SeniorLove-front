@@ -11,15 +11,21 @@ const Footer = () => {
             </div>
             <div className="footer-right">
                <a className="footer-link" href="#">
+                  Tester notre application
+               </a>
+
+               <a className="footer-link" href="#">
+                  Notre équipe
+               </a>
+
+               <a className="footer-link" href="#">
                   Contact
                </a>
 
                <a className="footer-link" href="/confidentiality">
                   Politique de confidentialité
                </a>
-               <a className="footer-link" href="#">
-                  Mentions Légales
-               </a>
+
             </div>
          </footer>
          <p className="footer-copyright">
