@@ -11,12 +11,11 @@ type NavBarProps = {
 const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBarProps) => {
    const [menuOpen, setMenuOpen] = useState(false);
    const isAdmin = currentUser?.role === 'admin';
-   const hasMenuItems = isLoggedIn;
 
    return (
       <div className="Navbar container">
 
-         {hasMenuItems && (
+         {isLoggedIn && (
             <button type="button" className="Navbar-burger" aria-label="Ouvrir le menu" onClick={() => setMenuOpen(!menuOpen)}>
                ☰
             </button>
@@ -26,7 +25,7 @@ const NavBar = ({ onLoginClick, onLogoutClick, isLoggedIn, currentUser }: NavBar
             <img src="/img/LOGO2.png" alt="Logo" className="Navbar-logo--desktop" />
          </a>
 
-         {hasMenuItems && (
+         {isLoggedIn && (
             <nav className={menuOpen ? 'menu-open' : ''}>
                <a className="Nav-menu" href="/">ACCUEIL</a>
                <a className="Nav-menu" href="/meet">RENCONTRES</a>
