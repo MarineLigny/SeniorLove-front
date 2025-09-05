@@ -1,12 +1,8 @@
 import { Navigate } from "react-router-dom";
-
-const isAuthenticated = () => {
-  // TODO: Improve security by using API Check
-  return localStorage.getItem("token") !== null;
-};
+import { authService } from "../utils/auth";
 
 const PrivateRoute = ({ children }: { children: any }) => {
-  return isAuthenticated() ? children : <Navigate to="/" />;
+  return authService.isAuthenticated() ? children : <Navigate to="/" />;
 };
 
 export default PrivateRoute;
