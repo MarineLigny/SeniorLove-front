@@ -17,6 +17,7 @@
 }
 ```
 
+
 **Réponse d'erreur :**
 ```json
 {

@@ -109,8 +109,6 @@ export default function ConversationPage() {
           Retour
         </button>
 
-        {/*<h1>{message.pseudo}</h1>*/}
-
         <div className="allMessage">
           {message?.map((msg) => {
             return (

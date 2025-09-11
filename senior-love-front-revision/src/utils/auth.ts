@@ -1,31 +1,13 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'https://seniorlove.up.railway.app';
+// Configuration de l'API avec refresh automatique
+const api = axios.create({
+  baseURL: 'https://seniorlove.up.railway.app/',
+  withCredentials: true, // Important pour les cookies
+});
 
-// Service d'authentification avec gestion des refresh tokens
+// Service d'authentification
 export const authService = {
-  // Demande un nouveau token avec le refresh token (cookie)
-  async refreshToken() {
-    try {
-      const response = await axios.post(`${API_BASE_URL}/refresh-token`, {}, {
-        withCredentials: true, // Inclut les cookies dans la requête
-      });
-
-      if (response.data.token) {
-        localStorage.setItem('token', response.data.token);
-        return response.data.token;
-      }
-
-      throw new Error('No token received');
-    } catch (error) {
-      // Si le refresh échoue, supprimer le token local
-      localStorage.removeItem('token');
-      localStorage.removeItem('user_id');
-      localStorage.removeItem('pseudo');
-      throw error;
-    }
-  },
-
   // Vérifie si l'utilisateur est authentifié
   isAuthenticated() {
     return localStorage.getItem('token') !== null;
@@ -40,9 +22,7 @@ export const authService = {
   async logout() {
     try {
       // Appeler l'endpoint de déconnexion côté serveur pour supprimer le refresh token
-      await axios.post(`${API_BASE_URL}/logout`, {}, {
-        withCredentials: true,
-      });
+      await api.post('/logout');
     } catch (error) {
       console.error('Erreur lors de la déconnexion côté serveur:', error);
     }
@@ -54,7 +34,7 @@ export const authService = {
   },
 };
 
-// Intercepteur Axios pour gérer automatiquement le renouvellement des tokens
+// Intercepteur pour ajouter le token à chaque requête
 axios.interceptors.request.use(
   (config) => {
     // Ne pas ajouter le token pour les routes de login et register
@@ -67,41 +47,37 @@ axios.interceptors.request.use(
       }
     }
 
-    // Inclure les cookies pour les routes qui nécessitent le refresh token
-    if (config.url?.includes('refresh-token') || config.url?.includes('logout') || config.url?.includes('login') || config.url?.includes('register')) {
-      config.withCredentials = true;
-    }
+    // Inclure les cookies pour toutes les requêtes (refresh token)
+    config.withCredentials = true;
 
     return config;
   },
   (error) => Promise.reject(error)
 );
 
-// Intercepteur de réponse pour gérer les erreurs 401 (token expiré)
+// Intercepteur pour refresh automatique
 axios.interceptors.response.use(
-  (response) => response,
+  (response) => response, // Si succès, passer
   async (error) => {
     const originalRequest = error.config;
 
     // Ne pas tenter de refresh sur les routes d'auth
     const isAuthRoute = originalRequest.url?.includes('/login') || originalRequest.url?.includes('/register');
 
+    // Si 401 et pas déjà tenté un refresh
     if (error.response?.status === 401 && !originalRequest._retry && !isAuthRoute) {
       originalRequest._retry = true;
 
       try {
-        // Essayer de renouveler le token
-        console.log('Tentative de renouvellement du token...');
-        const newToken = await authService.refreshToken();
+        // Tenter le refresh
+        console.log('Tentative de refresh token...');
+        await api.post('/refresh-token');
 
-        // Mettre à jour l'en-tête Authorization avec le nouveau token
-        originalRequest.headers.Authorization = `Bearer ${newToken}`;
-
-        // Retenter la requête originale
-        return axios(originalRequest);
+        // Rejouer la requête originale
+        return api(originalRequest);
       } catch (refreshError) {
-        // Si le refresh échoue, nettoyer et rediriger
-        console.warn('Échec du renouvellement du token, déconnexion...', refreshError);
+        // Refresh failed → vraie déconnexion
+        console.warn('Refresh token échoué, déconnexion...', refreshError);
         authService.logout();
         window.location.href = '/';
         return Promise.reject(refreshError);
@@ -111,3 +87,6 @@ axios.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+
+// Exporter l'instance api configurée
+export default api;
