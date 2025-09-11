@@ -8,6 +8,7 @@
 @use "./elements/modals.scss";
 @use "./elements/userCard.scss";
 @use "./elements/searchBar.scss";
+@use "./elements/confidentiality.scss";
 
 //ici les fichiers scss à modifier + penser à index qui doit disparaitre
 @use '../pages/HomePage/HomePage.scss'; // -> fait
@@ -20,6 +21,6 @@
 @use '../pages/Meet-Profils/MyMessagePage';
 
 h1 {
-   font-weight: bold;
-   font-size: 2rem;
+  font-weight: bold;
+  font-size: 2rem;
 }
