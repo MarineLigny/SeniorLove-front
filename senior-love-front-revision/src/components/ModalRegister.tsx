@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../utils/auth";
 import calculateAge from "../utils/calculateAge";
 import { X } from "lucide-react";
 
@@ -39,27 +39,25 @@ export default function ModalRegister({ onClose, onRegisterSuccess }: Props) {
     }
 
     try {
-      const response = await axios.post("https://seniorlove.up.railway.app/register", {
+      const response = await api.post("/register", {
         pseudo: formData.pseudo,
         birth_date: formData.birth_date,
         email: formData.email,
         password: formData.password,
         confirmPassword: formData.confirmPassword,
-      }, {
-        withCredentials: true, // Inclut les cookies pour recevoir le refresh token
       });
 
       // Stocker le token d'accès et les infos utilisateur (l'utilisateur est connecté après inscription)
       if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("accessToken", response.data.token);
         localStorage.setItem("user_id", response.data.user.id);
         localStorage.setItem("pseudo", response.data.user.pseudo);
       }
 
       onRegisterSuccess();
       onClose();
-    } catch (err) {
-      if (axios.isAxiosError(err) && err.response?.data?.message) {
+    } catch (err: any) {
+      if (err.response?.data?.message) {
         setError(err.response.data.message);
       } else {
         setError("Erreur de connexion");

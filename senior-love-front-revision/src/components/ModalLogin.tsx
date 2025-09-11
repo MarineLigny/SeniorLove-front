@@ -1,5 +1,5 @@
 import { useState } from "react";
-import axios from "axios";
+import api from "../utils/auth";
 import { X } from "lucide-react";
 
 type Props = {
@@ -22,23 +22,22 @@ export default function ModalLogin({ onClose, onLoginSuccess, onRegisterClick }:
     }
 
     try {
-      const response = await axios.post("https://seniorlove.up.railway.app/login", {
+      const response = await api.post("/login", {
         email,
         password,
-        withCredentials: true, // Inclut les cookies pour recevoir le refresh token
       });
 
       // Stocker le token d'accès et les infos utilisateur
-      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("accessToken", response.data.token);
       localStorage.setItem("user_id", response.data.user.id);
       localStorage.setItem("pseudo", response.data.user.pseudo);
 
       onLoginSuccess();
       onClose(); // Fermer la modal après connexion réussie
       console.log("connexion reussie")
-    } catch (err) {
+    } catch (err: any) {
       console.error("Erreur de connexion:", err);
-      if (axios.isAxiosError(err)) {
+      if (err.response) {
         console.error("Détails de l'erreur:", {
           status: err.response?.status,
           data: err.response?.data,

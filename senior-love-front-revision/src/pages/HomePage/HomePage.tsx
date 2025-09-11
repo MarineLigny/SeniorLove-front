@@ -7,7 +7,7 @@ type Props = {
 
 export default function HomePage({ onRegisterSuccess }: Props) {
    const [showRegisterModal, setShowRegisterModal] = useState(false);
-   const token = localStorage.getItem("token");
+   const token = localStorage.getItem("accessToken");
 
    return (
       <div>

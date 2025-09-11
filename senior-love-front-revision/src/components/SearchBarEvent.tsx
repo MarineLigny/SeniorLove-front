@@ -9,7 +9,7 @@ export default function SearchBar() {
   const [results, setResults] = useState([]);
   const [category, setCategory] = useState("");
 
-  const storedToken = localStorage.getItem("token");
+  const storedToken = localStorage.getItem("accessToken");
 
   async function handleSearch(formData: FormData) {
     const localisation = formData.get("search") as string;

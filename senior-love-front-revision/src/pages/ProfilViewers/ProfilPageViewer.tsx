@@ -17,7 +17,7 @@ export default function ProfilPageViewer() {
 
   // ---------------------- recupération des infos de l'utilisateur -----------------------------
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("accessToken");
 
     if (storedToken && pseudo) {
       // si connecté et qu'on récupère bien un pseudo alors on récupère les données utilisateur via un Fetch

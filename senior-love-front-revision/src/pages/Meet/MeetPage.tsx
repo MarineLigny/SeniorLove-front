@@ -7,7 +7,7 @@ import type IUsers from "../../@types/users";
 
 export default function MeetPage() {
    const [usersList, setUsersList] = useState<IUsers[]>([]);
-   const storedToken = localStorage.getItem("token");
+   const storedToken = localStorage.getItem("accessToken");
 
    useEffect(() => {
       const getUsers = async () => {
