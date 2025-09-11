@@ -1,48 +1,70 @@
 .searchbar {
-   background-color: #E8EBED;
-   border-radius: 13px;
-   padding: 1em;
-   margin-top: 0.3em;
+  background-color: #E8EBED;
+  border-radius: 13px;
+  padding: 1em;
+  margin-top: 0.3em;
 
-   &-form {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      gap: 1rem;
+  &-form {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+  }
+
+  &-input {
+    display: flex;
+    text-align: center;
+    gap: 0.5em;
+    background-color: white;
+    border-radius: 25px;
+    padding: 0.4rem 0.8rem;
+    border: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+
+    &-text {
       width: 100%;
-   }
-
-   &-input {
-      display: flex;
-      text-align: center;
-      gap: 0.5em;
-      background-color: white;
-      border-radius: 25px;
-      padding: 0.4rem 0.8rem;
       border: none;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      width: 100%;
+      outline: none;
+      background-color: transparent;
+      color: rgb(153, 151, 151);
+      font-size: 1rem;
+    }
+  }
 
-      &-text {
-         width: 100%;
-         border: none;
-         outline: none;
-         background-color: transparent;
-         color: rgb(153, 151, 151);
-         font-size: 1rem;
-      }
-   }
+  &-button {
+    background-color: white;
+    padding: 0.5rem;
+    border-radius: 50%;
+    border: none;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 
 }
 
-.category {
-   border: none;
-   border-radius: 10px;
-   padding: 0.5em;
-   background-color: white;
-   color: rgb(153, 151, 151);
+.search-icon {
+  color: gray;
 
-   @media (min-width: 1024px) {
-      width: 15%;
-   }
+  &-button {
+    color: var(#AF4657);
+  }
+}
+
+.category {
+  border: none;
+  border-radius: 10px;
+  padding: 0.5em;
+  background-color: white;
+  color: rgb(153, 151, 151);
+
+  @media (min-width: 1024px) {
+    width: 15%;
+  }
 }

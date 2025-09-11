@@ -4,7 +4,7 @@
 .contactsPage {
   background-color: var.$background-lightGrey;
   border-radius: 13px;
-  margin: 1rem 0.5rem;
+  margin: 1rem 2rem;
   padding: 0 1rem;
 
   &-title {
@@ -21,7 +21,7 @@
     gap: 1rem;
     align-items: center;
     justify-content: center;
-    width: 45%;
+    //width: 45%;
   }
 }
 
@@ -39,7 +39,7 @@
 
 @media (min-width: 1024px) {
   .contactsPage {
-    margin: 1rem auto;
+    margin: 1rem 3rem;
 
     &-card {
       display: flex;

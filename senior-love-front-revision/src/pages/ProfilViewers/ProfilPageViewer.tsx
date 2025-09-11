@@ -94,7 +94,7 @@ export default function ProfilPageViewer() {
   );
 
   return (
-    <div>
+    <div className="content">
       <section className="Public Container">
         <button onClick={() => navigate(-1)} type="button" className="btn-back">
           <ArrowLeft />

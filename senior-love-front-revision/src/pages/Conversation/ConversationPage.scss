@@ -1,27 +1,33 @@
+.background-message {
+  margin-inline: 1rem;
+}
+
 .allMessage {
-    background-color: #E8EBED;
-    border-radius: 13px;
-    margin-top: 1em;
-    padding: 1em; 
-    @media (min-width: 1024px) {
-      margin: auto;
-      width: 75%;
-    }
+  background-color: #E8EBED;
+  border-radius: 13px;
+  margin-top: 1em;
+  padding: 1em;
+
+  @media (min-width: 1024px) {
+    margin: auto;
+    //width: 75%;
   }
-    
+}
+
 .message {
   background-color: white;
   border-radius: 13px;
   margin-top: 1em;
   padding: 0.2em;
 }
+
 .date {
   text-align: end;
   color: rgb(139, 138, 138);
 }
 
 //-------------Partie d'envoie du message--------------//
-.create-message{
+.create-message {
   margin: auto;
 }
 
@@ -40,21 +46,23 @@
   text-align: center;
   cursor: pointer;
 }
-.message-form{
+
+.message-form {
   display: flex;
   flex-direction: column;
   height: 17rem;
 }
+
 .MyNewMessage {
   font-family: inherit;
   margin: auto 0;
   height: 10rem;
   border-radius: 0 20px 20px;
-  border: 3px solid #0D2230; 
+  border: 3px solid #0D2230;
   resize: none;
 }
 
-.message-send-btn{
+.message-send-btn {
   border: none;
   border-radius: 100%;
   width: 3rem;
@@ -63,38 +71,41 @@
   position: relative;
   left: calc(96% - 48px);
   bottom: 5.4rem;
-  
+
 }
-.message-send-icon{
+
+.message-send-icon {
   color: #AF4657;
-    position: relative;
-    top: 0.1rem;
-    left: 0.1rem;
+  position: relative;
+  top: 0.1rem;
+  left: 0.1rem;
 }
 
 @media (min-width: 700px) {
-  .message-send-btn{
-  left: calc(98% - 48px);
+  .message-send-btn {
+    left: calc(98% - 48px);
   }
 }
+
 @media (min-width: 1024px) {
-  .create-message{
-    width: 78%;
+  .create-message {
+    //width: 78%;
   }
-  .message-send-btn{
+
+  .message-send-btn {
     left: calc(98.7% - 48px);
   }
 }
 
 .return {
-    border: none;
-    background-color: #f8f9fa;
-    margin-top: 1.5em;
-    cursor: pointer;
-    padding: 1em;
-  
-    @media (min-width: 1024px) {
-      margin-left: 8em;
-      margin-right: 8em;
-    }
+  border: none;
+  background-color: #f8f9fa;
+  margin-top: 1.5em;
+  cursor: pointer;
+  padding: 1em;
+
+  @media (min-width: 1024px) {
+    margin-left: 8em;
+    margin-right: 8em;
+  }
 }

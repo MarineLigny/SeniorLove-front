@@ -99,41 +99,42 @@ export default function ConversationPage() {
   if (error || !contactId) return <p>{error || "Contact introuvable"}</p>;
 
   return (
-    <div>
-      <button // le css se retrouve sur ProfilPageViewer.scss
-        onClick={() => navigate(-1)}
-        type="button"
-        className="btn-back">
-        <ArrowLeft />
-        Retour
-      </button>
+    <div className='content'>
+      <div className='background-message'>
+        <button // le css se retrouve sur ProfilPageViewer.scss
+          onClick={() => navigate(-1)}
+          type="button"
+          className="btn-back">
+          <ArrowLeft />
+          Retour
+        </button>
 
-      {/*<h1>{message.pseudo}</h1>*/}
+        {/*<h1>{message.pseudo}</h1>*/}
 
-      <div className="allMessage">
-        {message?.map((msg) => {
-          return (
-            <div key={msg.id}>
-              <h4>{msg.sender?.pseudo}</h4>
-              <section className="message">
-                <p>{htmlUnescape(msg.content)}</p>
-              </section>
-              <p className="date">{new Date(msg.createdAt).toLocaleString()}</p>
-            </div>
-          )
-        })}
+        <div className="allMessage">
+          {message?.map((msg) => {
+            return (
+              <div key={msg.id}>
+                <h4>{msg.sender?.pseudo}</h4>
+                <section className="message">
+                  <p>{htmlUnescape(msg.content)}</p>
+                </section>
+                <p className="date">{new Date(msg.createdAt).toLocaleString()}</p>
+              </div>
+            )
+          })}
+        </div>
+
+        <div className='create-message'>
+          <h4 className="bannerMessage">Message</h4>
+          <form action={messageForm} className='message-form'>
+            <textarea name="content" className="MyNewMessage" placeholder="Entrer votre message" />
+            <button className='message-send-btn' type='submit' value='Envoyer'>
+              <SendHorizontal className='message-send-icon' />
+            </button>
+          </form>
+        </div>
       </div>
-
-      <div className='create-message'>
-        <h4 className="bannerMessage">Message</h4>
-        <form action={messageForm} className='message-form'>
-          <textarea name="content" className="MyNewMessage" placeholder="Entrer votre message" />
-          <button className='message-send-btn' type='submit' value='Envoyer'>
-            <SendHorizontal className='message-send-icon' />
-          </button>
-        </form>
-      </div>
-
     </div>
   );
 };

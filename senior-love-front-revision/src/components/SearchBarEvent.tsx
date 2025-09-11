@@ -65,7 +65,7 @@ export default function SearchBar() {
             <option value="technologie">Technologie</option>
 
           </select>
-          <button className="searchbar-button" type="submit">Rechercher</button>
+          <button className="searchbar-button" type="submit"><Search className='search-icon-button' /></button>
         </form>
       </div>
 

@@ -1,139 +1,154 @@
 //________________ Profil page Public **Mobile First**_______________________
 
 .Public {
-	display: flex;
+  display: flex;
   flex-direction: column;
   gap: 32px;
+  margin-inline: 1em;
 
-	&-title {
-		text-align: center;
+  &-title {
+    text-align: center;
     padding-top: 1rem;
     color: #AF4657;
-		margin: 0;
-		padding: 0;
-	}
-		// ------- ici c'est le cadre gris + dedans -------------
-	&-Card {
-		background-color: #E8EBED;
-		border-radius: 20px;
-		padding: 15px 10px;
+    margin: 0;
+    padding: 0;
+  }
 
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 10px;
-		//----------------ici le btn envoyer un msg---------------
-		&--btn{
-			width: fit-content;
-			margin: 1rem auto;
-		}
-		// --------------- ici css de la photo --------------------------
-		&--picture {
-			display:flex;
-			margin: auto;
-			width: 50%;
-			aspect-ratio: 1 / 1;
-			object-fit: cover;
-			border-radius: 50%;
-			border: 0.125rem solid #ccc;
-		}
-		//--------------- ici le css des infos de l'utilisateur ----------
-		&--form {
-			background-color: #ecebeb;
-			width: 100%;
-			border-radius: 5px;
-			justify-items: center;
-		}
-		//----------------ici le pseudo --------------------//
-		&--pseudo{
-			color: #AF4657;
-			font-size: 1.2rem;
-			font-weight: 600;
-		}
-		&-p{
-			margin: 0;
-		}
-		&--presentation{
-			gap: 1rem;
-		}
-		// -------------- ici le css de la description -----------------
-		&--description {
-			background-color: #f8f9fa;
-			line-height: 1;
-			padding: 10px;
-			width: 90%;
-			border-radius: 5px;
-			margin-bottom: 2rem;
+  // ------- ici c'est le cadre gris + dedans -------------
+  &-Card {
+    background-color: #E8EBED;
+    border-radius: 20px;
+    padding: 15px 10px;
 
-			h2 {
-				margin: 0;
-				padding: 0;
-				font-size: 1.2rem;
-			}
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
 
-		}
-		// ------------ ici le css des centres d'interets -------------
-		&--interest {
-			background-color: #f8f9fa;
-			line-height: 1;
-			padding: 10px;
-			width: 90%;
-			border-radius: 5px;
+    //----------------ici le btn envoyer un msg---------------
+    &--btn {
+      width: fit-content;
+      margin: 1rem auto;
+    }
 
-			h2, h4 {
-				margin: 0;
-				padding: 0;
-				font-size: 1.2rem;
-			}
-			&-flex {
-				display: flex;
-				flex-direction: row;
-				flex-wrap: wrap;
-				column-gap: 20px;
+    // --------------- ici css de la photo --------------------------
+    &--picture {
+      display: flex;
+      margin: auto;
+      width: 50%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 0.125rem solid #ccc;
+    }
 
-				h4 {
-				font-size: 1rem;
-				}
-			}	
-		}
-	}
+    //--------------- ici le css des infos de l'utilisateur ----------
+    &--form {
+      background-color: #ecebeb;
+      width: 100%;
+      border-radius: 5px;
+      justify-items: center;
+    }
+
+    //----------------ici le pseudo --------------------//
+    &--pseudo {
+      color: #AF4657;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    &-p {
+      margin: 0;
+    }
+
+    &--presentation {
+      gap: 1rem;
+    }
+
+    // -------------- ici le css de la description -----------------
+    &--description {
+      background-color: #f8f9fa;
+      line-height: 1;
+      padding: 10px;
+      width: 90%;
+      border-radius: 5px;
+      margin-bottom: 2rem;
+
+      h2 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+      }
+
+    }
+
+    // ------------ ici le css des centres d'interets -------------
+    &--interest {
+      background-color: #f8f9fa;
+      line-height: 1;
+      padding: 10px;
+      width: 90%;
+      border-radius: 5px;
+
+      h2,
+      h4 {
+        margin: 0;
+        padding: 0;
+        font-size: 1.2rem;
+      }
+
+      &-flex {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 20px;
+
+        h4 {
+          font-size: 1rem;
+        }
+      }
+    }
+  }
 }
 
 //________________ Profil page Public **Tablette** _______________________
 
 @media (min-width: 700px) {
-	.Public-Card {
-		flex-direction: row;
-		gap:0;
-		&--presentation{
-			display: flex;
-			flex-direction: column;
-			width: 60%;
-		}
-		&--picture {
-			width: 40%;
-		}
+  .Public-Card {
+    flex-direction: row;
+    gap: 0;
 
-		&--form {
-			width: 100%;
-		}
-		
-		&--interest {
-			grid-area: 3 / 1 / 5 / 5;
-			width: 90%;
-			display: flex;
-			flex-direction: column;
-		}
-		.btn-message{
-			grid-area: 5 / 1 / 6 / 5;
-		}
-	}
+    &--presentation {
+      display: flex;
+      flex-direction: column;
+      width: 60%;
+    }
+
+    &--picture {
+      width: 40%;
+    }
+
+    &--form {
+      width: 100%;
+    }
+
+    &--interest {
+      grid-area: 3 / 1 / 5 / 5;
+      width: 90%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .btn-message {
+      grid-area: 5 / 1 / 6 / 5;
+    }
+  }
 }
 
 //________________ Profil page Public **Ordinateur** _______________________
 
 @media (min-width: 1000px) {
-	.Public-Card--picture {
-		width: 25%;
-}
+  .Public-Card--picture {
+    width: 25%;
+  }
 }
