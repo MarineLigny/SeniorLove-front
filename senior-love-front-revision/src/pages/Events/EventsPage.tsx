@@ -2,7 +2,7 @@
 import EventCard from "../../components/EventCard";
 import MyEventCard from "../../components/MyEventCard";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import api from "../../utils/auth";
 import type IUsers from "../../@types/users";
 import type IEvent from "../../@types/events";
 import SearchBar from "../../components/SearchBarEvent";
@@ -12,18 +12,13 @@ export default function EventsPage() {
    const [loading, setLoading] = useState<boolean>(true);
    const [error, setError] = useState<string>("");
    const [userData, setUserData] = useState<IUsers | null>(null);
-   const storedToken = localStorage.getItem("token");
+   const storedToken = localStorage.getItem("accessToken");
 
    // Premier useEffect pour récupérer tous les événements
    useEffect(() => {
       const getEvents = async () => {
          try {
-            const response = await axios.get(
-               "https://seniorlove.up.railway.app/events",
-               {
-                  headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
-               }
-            );
+            const response = await api.get("/events");
             setEvents(response.data);
             setLoading(false);
          } catch (error) {
@@ -41,14 +36,7 @@ export default function EventsPage() {
          if (!storedToken) return;
 
          try {
-            const response = await axios.get(
-               "https://seniorlove.up.railway.app/myprofile",
-               {
-                  headers: {
-                     Authorization: `Bearer ${storedToken}`,
-                  },
-               }
-            );
+            const response = await api.get("/myprofile");
             setUserData(response.data);
          } catch (error) {
             console.error("Erreur lors de la récupération du profil utilisateur :", error);

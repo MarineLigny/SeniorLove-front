@@ -44,7 +44,7 @@ export default function EventPage() {
 
   const userId = localStorage.getItem("user_id"); // récupération de l'id via le token
   const isRegistered = event?.users?.some(user => user.id.toString() === userId); // vérification= pour chaque user dans event.users, on vérifie si son id est égal à userId
-  const storedToken = localStorage.getItem("token"); // récupération du token
+  const storedToken = localStorage.getItem("accessToken"); // récupération du token
   const isAdmin = currentUser?.role === 'admin'; // vérification du rôle admin
 
 

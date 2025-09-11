@@ -9,7 +9,7 @@ export default function FilterBar() {
   const [results, setResults] = useState([]);
   const [gender, setGender] = useState("");
 
-  const storedToken = localStorage.getItem("token");
+  const storedToken = localStorage.getItem("accessToken");
 
   async function handleSearch(formData: FormData) {
     const localisation = formData.get("search") as string;

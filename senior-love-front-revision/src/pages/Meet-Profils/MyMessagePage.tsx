@@ -1,27 +1,19 @@
 import { useEffect, useState } from "react";
 import type IUsers from "../../@types/users";
 import MyMessageCard from "../../components/MyMessageCard";
-import axios from "axios";
+import api from "../../utils/auth";
 
 
 
 export default function MyMessagePage() {
   // import des users, creation de la liste via State et récupération des infos vie IUsers
   const [usersList, setUsersList] = useState<IUsers[]>([]);
-  // recupération du token pour identification
-  const storedToken = localStorage.getItem("token");
 
   useEffect(() => {
     const getContacts = async () => {
       try {
         //appel de la route en api pour récupérer les info, via axios
-        const response = await axios.get("https://seniorlove.up.railway.app/messaging",
-          {
-            headers: {
-              Authorization: `Bearer ${storedToken}`,
-            },
-          },
-        );
+        const response = await api.get("/messaging");
         //console.log('call de responsedata', response.data);
         setUsersList(response.data);
       } catch (error) {
@@ -30,7 +22,7 @@ export default function MyMessagePage() {
     };
     //console.log('ici se trouve la liste de mes contact', getContacts())
     getContacts();
-  }, [storedToken])
+  }, [])
 
   return (
     <div>

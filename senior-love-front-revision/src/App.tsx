@@ -19,7 +19,7 @@ import Footer from './components/Footer';
 import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import type IUsers from './@types/users';
-import axios from 'axios';
+import api from './utils/auth';
 import { Analytics } from '@vercel/analytics/react';
 import { authService } from './utils/auth';
 
@@ -43,7 +43,7 @@ function App() {
     // récupération des infos de l'utilisateur connecté
     const fetchUser = async () => {
       try {
-        const response = await axios.get("https://seniorlove.up.railway.app/myprofile");
+        const response = await api.get("/myprofile");
         setCurrentUser(response.data);
       } catch (error) {
         console.error("Error fetching user data:", error);

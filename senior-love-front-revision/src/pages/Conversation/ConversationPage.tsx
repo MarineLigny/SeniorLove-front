@@ -17,7 +17,7 @@ export default function ConversationPage() {
 
   // biome-ignore lint/correctness/useExhaustiveDependencies: <explanation>
   useEffect(() => {
-    const storedToken = localStorage.getItem("token");
+    const storedToken = localStorage.getItem("accessToken");
     const contactIdNumber = Number(contactId);
 
     //console.log("contactId:", contactId);
@@ -65,7 +65,7 @@ export default function ConversationPage() {
   // -------------ici c'est la fonction pour mettre en forme un message et l'envoyer--------------
   async function messageForm(formData: FormData) {
     try {
-      const storedToken = localStorage.getItem("token");
+      const storedToken = localStorage.getItem("accessToken");
       const contactIdNumber = Number(contactId);
       console.log(contactIdNumber)
 

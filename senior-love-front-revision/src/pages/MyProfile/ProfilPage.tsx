@@ -1,6 +1,6 @@
 import Loader from '../../components/Loader';
 import { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from '../../utils/auth';
 import type IUsers from '../../@types/users';
 import { SquarePen } from 'lucide-react';
 import { useRef } from 'react';
@@ -35,7 +35,7 @@ type Categorie = keyof Interets;
 type Interet<C extends Categorie> = keyof Interets[C];
 
 export default function ProfilePage() {
-   const storedToken = localStorage.getItem("token");
+   const storedToken = localStorage.getItem("accessToken");
    const [userData, setUserData] = useState<IUsers>();
    const [pseudo, setPseudo] = useState<string>("");
    const [city, setCity] = useState<string>("");
@@ -88,11 +88,7 @@ export default function ProfilePage() {
    useEffect(() => {
       const getUser = async () => {
          try {
-            const response = await axios.get("https://seniorlove.up.railway.app/myprofile", {
-               headers: {
-                  Authorization: `Bearer ${storedToken}`,
-               }
-            });
+            const response = await api.get("/myprofile");
             setUserData(response.data);
          } catch (error) {
             console.error("Error fetching user data:", error);
@@ -130,12 +126,7 @@ export default function ProfilePage() {
             interest: interets
          };
 
-         const response = await axios.patch("https://seniorlove.up.railway.app/myprofile", updatedData, {
-            headers: {
-               Authorization: `Bearer ${storedToken}`,
-               'Content-Type': 'application/json',
-            }
-         });
+         const response = await api.patch("/myprofile", updatedData);
 
          setUserData(response.data);
          alert("Profil mis à jour !");
@@ -161,16 +152,11 @@ export default function ProfilePage() {
       formData.append("profile_picture", selectedFile);
 
       try {
-         const response = await axios.patch(
-            "https://seniorlove.up.railway.app/myprofile",
-            formData,
-            {
+         const response = await api.patch("/myprofile", formData, {
                headers: {
-                  Authorization: `Bearer ${storedToken}`,
                   "Content-Type": "multipart/form-data",
                },
-            }
-         );
+            });
          setProfilePicture(response.data.profile_picture);
          alert("Photo de profil mise à jour !");
          setSelectedFile(null);

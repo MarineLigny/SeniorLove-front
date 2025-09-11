@@ -1,21 +1,37 @@
 import axios from 'axios';
 
-// Configuration de l'API avec refresh automatique
 const api = axios.create({
-  baseURL: 'https://seniorlove.up.railway.app/',
-  withCredentials: true, // Important pour les cookies
+  baseURL: 'https://seniorlove.up.railway.app',
+  withCredentials: true,
 });
+
+let isRefreshing = false;
+let failedQueue: Array<{
+  resolve: (value?: any) => void;
+  reject: (reason?: any) => void;
+}> = [];
+
+const processQueue = (error: any, token: string | null = null) => {
+  failedQueue.forEach(prom => {
+    if (error) {
+      prom.reject(error);
+    } else {
+      prom.resolve(token);
+    }
+  });
+  failedQueue = [];
+};
 
 // Service d'authentification
 export const authService = {
   // Vérifie si l'utilisateur est authentifié
   isAuthenticated() {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('accessToken') !== null;
   },
 
   // Récupère le token actuel
   getToken() {
-    return localStorage.getItem('token');
+    return localStorage.getItem('accessToken');
   },
 
   // Déconnexion
@@ -28,65 +44,74 @@ export const authService = {
     }
 
     // Nettoyer le localStorage
-    localStorage.removeItem('token');
+    localStorage.removeItem('accessToken');
     localStorage.removeItem('user_id');
     localStorage.removeItem('pseudo');
   },
 };
 
-// Intercepteur pour ajouter le token à chaque requête
-axios.interceptors.request.use(
-  (config) => {
-    // Ne pas ajouter le token pour les routes de login et register
-    const isAuthRoute = config.url?.includes('/login') || config.url?.includes('/register');
+// Intercepteur de requête pour ajouter automatiquement le token
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem('accessToken');
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+  return config;
+});
 
-    if (!isAuthRoute) {
-      const token = authService.getToken();
-      if (token) {
-        config.headers.Authorization = `Bearer ${token}`;
-      }
-    }
-
-    // Inclure les cookies pour toutes les requêtes (refresh token)
-    config.withCredentials = true;
-
-    return config;
-  },
-  (error) => Promise.reject(error)
-);
-
-// Intercepteur pour refresh automatique
-axios.interceptors.response.use(
-  (response) => response, // Si succès, passer
+// Intercepteur de réponse pour gérer le refresh
+api.interceptors.response.use(
+  (response) => response,
   async (error) => {
     const originalRequest = error.config;
+    
+    if (error.response?.status === 401 && !originalRequest._retry && originalRequest.url !== '/refresh-token') {
+      
+      if (isRefreshing) {
+        return new Promise((resolve, reject) => {
+          failedQueue.push({ resolve, reject });
+        }).then(() => {
+          return api(originalRequest);
+        }).catch(err => {
+          return Promise.reject(err);
+        });
+      }
 
-    // Ne pas tenter de refresh sur les routes d'auth
-    const isAuthRoute = originalRequest.url?.includes('/login') || originalRequest.url?.includes('/register');
-
-    // Si 401 et pas déjà tenté un refresh
-    if (error.response?.status === 401 && !originalRequest._retry && !isAuthRoute) {
       originalRequest._retry = true;
+      isRefreshing = true;
 
       try {
-        // Tenter le refresh
-        console.log('Tentative de refresh token...');
-        await api.post('/refresh-token');
-
-        // Rejouer la requête originale
+        console.log('🔄 Token expiré, refresh en cours...');
+        const response = await api.post('/refresh-token');
+        const newToken = response.data.token;
+        
+        // IMPORTANT : Sauvegarder le nouveau token
+        localStorage.setItem('accessToken', newToken);
+        
+        // IMPORTANT : Mettre à jour l'header de la requête originale
+        originalRequest.headers.Authorization = `Bearer ${newToken}`;
+        
+        console.log('✅ Token refreshed, nouvelle tentative');
+        processQueue(null, newToken);
+        isRefreshing = false;
+        
         return api(originalRequest);
+        
       } catch (refreshError) {
-        // Refresh failed → vraie déconnexion
-        console.warn('Refresh token échoué, déconnexion...', refreshError);
-        authService.logout();
+        console.log('❌ Refresh échoué, déconnexion');
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('user_id');
+        localStorage.removeItem('pseudo');
+        processQueue(refreshError, null);
+        isRefreshing = false;
+        
         window.location.href = '/';
         return Promise.reject(refreshError);
       }
     }
-
+    
     return Promise.reject(error);
   }
 );
 
-// Exporter l'instance api configurée
 export default api;

@@ -69,7 +69,7 @@ const UpdateEvent = ({ event, onUpdate }: Props) => {
       e.preventDefault(); //empeche le rechargement de la page 
 
       try {
-         const storedToken = localStorage.getItem("token");
+         const storedToken = localStorage.getItem("accessToken");
          if (!storedToken) {
             alert("Vous devez être connecté pour modifier un événement.");
             return;
