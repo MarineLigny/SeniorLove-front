@@ -6,189 +6,189 @@ import type IUsers from "../@types/users";
 import { useParams } from "react-router-dom";
 
 type EventType = {
-   id?: number;
-   name: string;
-   date: string;
-   description: string;
-   availability: string | number;
-   disponibility: boolean;
-   picture: string;
-   localisation: { city: string | null };
-   users: IUsers[];
+  id?: number;
+  name: string;
+  date: string;
+  description: string;
+  availability: string | number;
+  disponibility: boolean;
+  picture: string;
+  localisation: { city: string | null };
+  users: IUsers[];
 };
 
 type Props = {
-   event: EventType
-   onUpdate: (updatedEvent: EventType) => void
-   //localisations: { id: number; city: string }[];
+  event: EventType
+  onUpdate: (updatedEvent: EventType) => void
+  //localisations: { id: number; city: string }[];
 };
 
 const UpdateEvent = ({ event, onUpdate }: Props) => {
-   const [formData, setFormData] = useState<EventType>({
-      ...event,
-      localisation: event.localisation || { city: "" } // Valeur par défaut si null
-   });
-   const { pending } = useFormStatus();
-   const { id } = useParams<{ id: string }>();
+  const [formData, setFormData] = useState<EventType>({
+    ...event,
+    localisation: event.localisation || { city: "" } // Valeur par défaut si null
+  });
+  const { pending } = useFormStatus();
+  const { id } = useParams<{ id: string }>();
 
-   //------------------ mise à jour de l'objet formData avec le bon "type"----------
-   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-      const { name, value, type } = event.target;
+  //------------------ mise à jour de l'objet formData avec le bon "type"----------
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value, type } = event.target;
 
-      let newValue: string | number | boolean | Date = value;
+    let newValue: string | number | boolean | Date = value;
 
-      // Si c'est un champ number, on convertit en nombre
-      if (type === "number") { newValue = Number(value); }
+    // Si c'est un champ number, on convertit en nombre
+    if (type === "number") { newValue = Number(value); }
 
-      // Si c'est le champ "disponibility", on convertit en boolean
-      if (name === "disponibility") { newValue = value === "true"; }
-      // Si c'est le champ "date", on s'assure que la valeur reste bien une string au bon format
-      if (name === "date") { newValue = new Date(value); }
-      // Si c'est le champ "localisation.city", on met à jour la ville dans l'objet localisation
-      if (name === "localisation.city") {
-         setFormData(prev => ({
-            ...prev,
-            localisation: {
-               ...prev.localisation,
-               city: value
-            }
-         }));
-         return;
-      }
-
-      // On met à jour formData avec la nouvelle valeur
+    // Si c'est le champ "disponibility", on convertit en boolean
+    if (name === "disponibility") { newValue = value === "true"; }
+    // Si c'est le champ "date", on s'assure que la valeur reste bien une string au bon format
+    if (name === "date") { newValue = new Date(value); }
+    // Si c'est le champ "localisation.city", on met à jour la ville dans l'objet localisation
+    if (name === "localisation.city") {
       setFormData(prev => ({
-         ...prev,
-         [name]: newValue
+        ...prev,
+        localisation: {
+          ...prev.localisation,
+          city: value
+        }
       }));
-   };
+      return;
+    }
+
+    // On met à jour formData avec la nouvelle valeur
+    setFormData(prev => ({
+      ...prev,
+      [name]: newValue
+    }));
+  };
 
 
-   //------------- envoyer une requête PATCH vers ton backend afin de modifier un événement existant--------------
-   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-      e.preventDefault(); //empeche le rechargement de la page 
+  //------------- envoyer une requête PATCH vers ton backend afin de modifier un événement existant--------------
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault(); //empeche le rechargement de la page 
 
-      try {
-         const storedToken = localStorage.getItem("accessToken");
-         if (!storedToken) {
-            alert("Vous devez être connecté pour modifier un événement.");
-            return;
-         }
-
-         // Formater la date (elle est déjà en string depuis l'API)
-         const formattedDate = formData.date;
-
-         // Conversion de availability en nombre entier
-         const availabilityInt = Number(formData.availability) || null;
-         if (Number.isNaN(availabilityInt)) {
-            alert("Le nombre de places doit être un nombre valide.");
-            return;
-         }
-
-         const updatedFormData = {
-            name: formData.name,
-            date: formattedDate,
-            description: formData.description,
-            availability: availabilityInt, // assure que c’est bien un nombre
-            disponibility: formData.disponibility === true, // assure que c’est un booléen
-            picture: formData.picture,
-            city: formData.localisation.city, // a changer quand recup ok 
-            activities: [], // Si tu as des activités à ajouter, sinon laisse vide
-         };
-
-         console.log("Payload envoyé :", updatedFormData);
-         //console.log("id recupéré", { id });
-         const response = await axios.patch(
-            `https://seniorlove.up.railway.app/events/${id}`,
-            updatedFormData,
-            {
-               headers: {
-                  Authorization: `Bearer ${storedToken}`,
-                  "Content-Type": "application/json",
-               },
-            }
-         );
-
-         alert("Événement modifié avec succès !");
-         onUpdate(response.data);
-      } catch (error: any) {
-         console.error("Erreur axios :", error);
-         if (error.response) {
-            console.log("Status:", error.response.status);
-            console.log("Data:", error.response.data);
-         }
+    try {
+      const storedToken = localStorage.getItem("accessToken");
+      if (!storedToken) {
+        alert("Vous devez être connecté pour modifier un événement.");
+        return;
       }
-   };
 
-   return (
-      <form className="openForm" onSubmit={handleSubmit}>
-         <input
-            type="text"
-            name="name"
-            placeholder="Nom de l'événement"
-            value={formData.name}
-            onChange={handleChange}
-         />
-         <input
-            type="date"
-            name="date"
-            value={formData.date}
-            onChange={handleChange}
-         />
-         <input
-            type="text"
-            name="description"
-            placeholder="Description"
-            value={formData.description}
-            onChange={handleChange}
-         />
-         <input
-            type="number"
-            name="availability"
-            placeholder="Nombre de places"
-            value={formData.availability ?? ""}
-            onChange={handleChange}
-         />
-         <label>
-            <input
-               type="radio"
-               name="disponibility"
-               value="true"
-               checked={formData.disponibility === true}
-               onChange={handleChange}
-            />
-            Disponible
-         </label>
-         <label>
-            <input
-               type="radio"
-               name="disponibility"
-               value="false"
-               checked={formData.disponibility === false}
-               onChange={handleChange}
-            />
-            Indisponible
-         </label>
-         <input
-            type="text"
-            name="picture"
-            placeholder="URL de l'image"
-            value={formData.picture}
-            onChange={handleChange}
-         />
-         <input
-            type="text"
-            name="localisation.city"
-            placeholder="Ville"
-            value={formData.localisation.city ?? ""}
-            onChange={handleChange}
-         />
+      // Formater la date (elle est déjà en string depuis l'API)
+      const formattedDate = formData.date;
 
-         <button type="submit" disabled={pending}>
-            {pending ? "Modification en cours..." : "Modifier"}
-         </button>
-      </form>
-   );
+      // Conversion de availability en nombre entier
+      const availabilityInt = Number(formData.availability) || null;
+      if (Number.isNaN(availabilityInt)) {
+        alert("Le nombre de places doit être un nombre valide.");
+        return;
+      }
+
+      const updatedFormData = {
+        name: formData.name,
+        date: formattedDate,
+        description: formData.description,
+        availability: availabilityInt, // assure que c’est bien un nombre
+        disponibility: formData.disponibility === true, // assure que c’est un booléen
+        picture: formData.picture,
+        city: formData.localisation.city, // a changer quand recup ok 
+        activities: [], // Si tu as des activités à ajouter, sinon laisse vide
+      };
+
+      console.log("Payload envoyé :", updatedFormData);
+      //console.log("id recupéré", { id });
+      const response = await axios.patch(
+        `https://seniorlove-back-znlu.onrender.com/events/${id}`,
+        updatedFormData,
+        {
+          headers: {
+            Authorization: `Bearer ${storedToken}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      alert("Événement modifié avec succès !");
+      onUpdate(response.data);
+    } catch (error: any) {
+      console.error("Erreur axios :", error);
+      if (error.response) {
+        console.log("Status:", error.response.status);
+        console.log("Data:", error.response.data);
+      }
+    }
+  };
+
+  return (
+    <form className="openForm" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="name"
+        placeholder="Nom de l'événement"
+        value={formData.name}
+        onChange={handleChange}
+      />
+      <input
+        type="date"
+        name="date"
+        value={formData.date}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="description"
+        placeholder="Description"
+        value={formData.description}
+        onChange={handleChange}
+      />
+      <input
+        type="number"
+        name="availability"
+        placeholder="Nombre de places"
+        value={formData.availability ?? ""}
+        onChange={handleChange}
+      />
+      <label>
+        <input
+          type="radio"
+          name="disponibility"
+          value="true"
+          checked={formData.disponibility === true}
+          onChange={handleChange}
+        />
+        Disponible
+      </label>
+      <label>
+        <input
+          type="radio"
+          name="disponibility"
+          value="false"
+          checked={formData.disponibility === false}
+          onChange={handleChange}
+        />
+        Indisponible
+      </label>
+      <input
+        type="text"
+        name="picture"
+        placeholder="URL de l'image"
+        value={formData.picture}
+        onChange={handleChange}
+      />
+      <input
+        type="text"
+        name="localisation.city"
+        placeholder="Ville"
+        value={formData.localisation.city ?? ""}
+        onChange={handleChange}
+      />
+
+      <button type="submit" disabled={pending}>
+        {pending ? "Modification en cours..." : "Modifier"}
+      </button>
+    </form>
+  );
 };
 
 export default UpdateEvent;

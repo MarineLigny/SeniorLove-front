@@ -19,7 +19,7 @@ export default function FilterBar() {
     setGender(selectedGender);
 
     try {
-      const response = await axios.get("https://seniorlove.up.railway.app/meet", {
+      const response = await axios.get("https://seniorlove-back-znlu.onrender.com/meet", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },

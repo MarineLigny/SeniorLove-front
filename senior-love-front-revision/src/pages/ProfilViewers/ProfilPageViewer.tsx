@@ -24,7 +24,7 @@ export default function ProfilPageViewer() {
       async function fetchData() {
         try {
           const response = await axios.get(
-            `https://seniorlove.up.railway.app/profile/${pseudo}`,
+            `https://seniorlove-back-znlu.onrender.com/profile/${pseudo}`,
             {
               headers: {
                 Authorization: `Bearer ${storedToken}`, // Utilisation du token pour l'authentification
@@ -108,7 +108,7 @@ export default function ProfilPageViewer() {
             <img
               src={
                 profile.profile_picture
-                  ? `https://seniorlove.up.railway.app${profile.profile_picture}` //soit image fournit
+                  ? `https://seniorlove-back-znlu.onrender.com${profile.profile_picture}` //soit image fournit
                   : "/img/avatar3.png" // soit image d'un avatar en dur
               }
               alt={`${profile.pseudo}`}

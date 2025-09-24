@@ -19,7 +19,7 @@ export default function SearchBar() {
     setCategory(category);
 
     try {
-      const response = await axios.get("https://seniorlove.up.railway.app/events", {
+      const response = await axios.get("https://seniorlove-back-znlu.onrender.com/events", {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },

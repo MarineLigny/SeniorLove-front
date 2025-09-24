@@ -92,7 +92,7 @@ export default function EventPage() {
       };
       console.log("Payload envoyé :", payload); // Pour débugger
 
-      await axios.post("https://seniorlove.up.railway.app/event/form", payload, {
+      await axios.post("https://seniorlove-back-znlu.onrender.com/event/form", payload, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
           "Content-Type": "application/json",
@@ -126,7 +126,7 @@ export default function EventPage() {
   //----------------------------Fonction pour rafraichir les données modifiées ---------------------//
   const refreshEvent = async () => {
     try {
-      const response = await axios.get(`https://seniorlove.up.railway.app/events/${id}`, {
+      const response = await axios.get(`https://seniorlove-back-znlu.onrender.com/events/${id}`, {
         headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
       });
       //console.log("Données rafraîchies :", response.data);
@@ -149,7 +149,7 @@ export default function EventPage() {
     }
 
     try {
-      await axios.post(`https://seniorlove.up.railway.app/events/${id}`, {
+      await axios.post(`https://seniorlove-back-znlu.onrender.com/events/${id}`, {
         user_id: userId
       }, //envoi de l'id 
         {
@@ -174,7 +174,7 @@ export default function EventPage() {
     if (!confirmDelete) return;
 
     try {
-      await axios.delete(`https://seniorlove.up.railway.app/events/${id}`, {
+      await axios.delete(`https://seniorlove-back-znlu.onrender.com/events/${id}`, {
         headers: {
           Authorization: `Bearer ${storedToken}`,
         },
@@ -188,7 +188,7 @@ export default function EventPage() {
   };
 
   useEffect(() => {
-    axios.get(`https://seniorlove.up.railway.app/events/${id}`, {
+    axios.get(`https://seniorlove-back-znlu.onrender.com/events/${id}`, {
       headers: storedToken ? { Authorization: `Bearer ${storedToken}` } : {},
     })
       .then(response => {
@@ -209,7 +209,7 @@ export default function EventPage() {
 
     const fetchUser = async () => {
       try {
-        const response = await axios.get("https://seniorlove.up.railway.app/myprofile", {
+        const response = await axios.get("https://seniorlove-back-znlu.onrender.com/myprofile", {
           headers: {
             Authorization: `Bearer ${storedToken}`,
           }

@@ -35,7 +35,7 @@ export default function ConversationPage() {
     //---------------ici la fonction pour recuperer l'historique de messagerie------------
     async function fetchData() {
       try {
-        const response = await axios.get(`https://seniorlove.up.railway.app/message/${contactIdNumber}`, {
+        const response = await axios.get(`https://seniorlove-back-znlu.onrender.com/message/${contactIdNumber}`, {
           headers: {
             Authorization: `Bearer ${storedToken}`, // Utilisation du token pour l'authentification
           }
@@ -72,7 +72,7 @@ export default function ConversationPage() {
       // on récupère les données grace à la méthode "get" du formdata et au "name" de l'input
       const messages = formData.get('content') as string;
 
-      const response = await axios.post(`https://seniorlove.up.railway.app/message/${contactIdNumber}`,
+      const response = await axios.post(`https://seniorlove-back-znlu.onrender.com/message/${contactIdNumber}`,
         {
           content: messages,
         },

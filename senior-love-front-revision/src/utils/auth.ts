@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'https://seniorlove.up.railway.app',
+  baseURL: 'https://seniorlove-back-znlu.onrender.com',
   withCredentials: true,
 });
 
@@ -64,9 +64,9 @@ api.interceptors.response.use(
   (response) => response,
   async (error) => {
     const originalRequest = error.config;
-    
+
     if (error.response?.status === 401 && !originalRequest._retry && originalRequest.url !== '/refresh-token') {
-      
+
       if (isRefreshing) {
         return new Promise((resolve, reject) => {
           failedQueue.push({ resolve, reject });
@@ -84,19 +84,19 @@ api.interceptors.response.use(
         console.log('🔄 Token expiré, refresh en cours...');
         const response = await api.post('/refresh-token');
         const newToken = response.data.token;
-        
+
         // IMPORTANT : Sauvegarder le nouveau token
         localStorage.setItem('accessToken', newToken);
-        
+
         // IMPORTANT : Mettre à jour l'header de la requête originale
         originalRequest.headers.Authorization = `Bearer ${newToken}`;
-        
+
         console.log('✅ Token refreshed, nouvelle tentative');
         processQueue(null, newToken);
         isRefreshing = false;
-        
+
         return api(originalRequest);
-        
+
       } catch (refreshError) {
         console.log('❌ Refresh échoué, déconnexion');
         localStorage.removeItem('accessToken');
@@ -104,12 +104,12 @@ api.interceptors.response.use(
         localStorage.removeItem('pseudo');
         processQueue(refreshError, null);
         isRefreshing = false;
-        
+
         window.location.href = '/';
         return Promise.reject(refreshError);
       }
     }
-    
+
     return Promise.reject(error);
   }
 );
